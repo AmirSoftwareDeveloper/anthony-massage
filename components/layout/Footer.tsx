@@ -1,6 +1,9 @@
+"use client";
+
 import { faEnvelope, faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import formatPhone from "@/utils/formatPhone";
 
@@ -25,6 +28,9 @@ const FooterSection = ({ title, children }: { title: string; children: React.Rea
 );
 
 const Footer = () => {
+  const pathname = usePathname();
+
+  if (pathname === Routes.HOME) return null;
 
   return (
     <footer className="bg-black">

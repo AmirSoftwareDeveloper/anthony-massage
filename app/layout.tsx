@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react";
 
 import { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Cormorant_Garamond, Karla, Roboto } from "next/font/google";
 
 import { cn } from "@/utils";
 
@@ -21,6 +21,23 @@ const roboto = Roboto({
   display: "swap",
 });
 
+// Used by the immersive "experience" pages (currently Home) — see the
+// "Home Experience" design system in globals.css.
+const cormorantGaramond = Cormorant_Garamond({
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const karla = Karla({
+  weight: ["300", "400", "500"],
+  subsets: ["latin"],
+  variable: "--font-experience",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   ...META_DATA,
   icons: { icon: "/favicon.ico" },
@@ -29,7 +46,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className={cn("flex flex-col min-h-screen antialiased", roboto.variable)}>
+      <body
+        className={cn(
+          "flex flex-col min-h-screen antialiased",
+          roboto.variable,
+          cormorantGaramond.variable,
+          karla.variable
+        )}
+      >
         <ScrollToTop />
         <Header />
         <main className="grow flex flex-col min-h-150">{children}</main>

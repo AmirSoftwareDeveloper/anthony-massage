@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { cn } from "@/utils";
 
@@ -17,6 +18,7 @@ import NavMenu from "./NavMenu";
 const SCROLL_THRESHOLD = 40;
 
 const Header = () => {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = React.useState(false);
 
   const handleScroll = React.useCallback(() => {
@@ -32,6 +34,8 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [handleScroll]);
+
+  if (pathname === Routes.HOME) return null;
 
   return (
     <header

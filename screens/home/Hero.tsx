@@ -1,74 +1,207 @@
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
-import Link from "next/link";
+"use client";
 
-import formatPhone from "@/utils/formatPhone";
+import { cn } from "@/utils";
 
-import { INFO } from "@/constants";
-import { Routes } from "@/constants/routes";
+import { HOME_EXPERIENCE_HERO_FRAMES, PHASE_DOT_LABELS } from "@/constants/homeExperience";
 
-import Title from "@/components/title";
-import { Button } from "@/components/ui/button";
+import type { HeroExperienceEngine } from "@/lib/experience/useHeroExperience";
 
-const Hero = () => {
+const Hero = ({ engine }: { engine: HeroExperienceEngine }) => {
   return (
-    <div className="flex flex-col min-h-[calc(100dvh-138px)] sm:min-h-[calc(100dvh-150px)] lg:min-h-[calc(100dvh-145px)] relative">
-      <section className="relative flex flex-col overflow-hidden flex-1 min-h-0">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={"/images/hero/1.jpg"}
-            alt=""
-            fill
-            priority
-            className="object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-primary-dark/90 sm:from-primary-dark to-primary-dark/70 sm:via-primary-dark/50 sm:to-primary-dark/30 " />
-        </div>
-
-        <div className="relative z-10 flex flex-col justify-center flex-1 container py-14 overflow-y-auto">
-          <div className="w-full md:max-w-[80%] lg:max-w-[60%] xl:max-w-[55%]">
-            <Title
-              subTitle=""
-              white
-              className="mb-3!"
+    <header
+      ref={engine.heroRef as React.RefObject<HTMLElement>}
+      className="exp-hero"
+    >
+      <div
+        className="exp-stage"
+        role="img"
+        aria-label="A billboard for Anthony Massage Works stands over a quiet street at sunrise. An anatomical figure, curled tight in a compressed crouch, slowly unfolds as golden light grows and moves across the scene — bowing, rising, and finally standing tall with arms open and face lifted to the light."
+      >
+        <div className="exp-layer exp-world-gray">
+          {HOME_EXPERIENCE_HERO_FRAMES.map((src, i) => (
+            <img
+              key={src}
+              ref={engine.registerGrayFrame(i)}
+              className="exp-frame"
+              src={src}
+              alt=""
             />
-
-            <h1 className="font-heading text-white font-bold leading-tight mb-3"></h1>
-
-            <p className="text-white/90 text-sm sm:text-base max-w-2xl mb-5 md:mb-7"></p>
-
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-6">
-              <Link href={Routes.CONTACT}>
-                <Button>Request a Quote</Button>
-              </Link>
-
-              <Link
-                href={`tel:${formatPhone(INFO.PHONE_NUMBER)}`}
-                className="flex items-center gap-3 group"
-              >
-                <div className="w-12 h-12 rounded-lg bg-white group-hover:bg-primary-soft border border-primary/30 flex items-center justify-center shrink-0 transition-colors duration-300">
-                  <FontAwesomeIcon
-                    icon={faPhone}
-                    className="w-4 h-4 text-primary transition-colors duration-300 group-hover:text-white"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-sm font-instrument text-gray-300">Call Us Now</span>
-                  <span className="font-heading font-bold text-white text-base group-hover:text-primary-soft transition-colors duration-300">
-                    {INFO.PHONE_NUMBER}
-                  </span>
-                </div>
-              </Link>
-            </div>
-
-            <div className="flex items-center gap-y-3 gap-x-6 flex-wrap mt-6 pt-6 border-t border-gray-100/20">
-              <p className="text-white max-w-sm"></p>
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
-    </div>
+
+        <div
+          ref={engine.boardColorRef}
+          className="exp-layer exp-board-color"
+        >
+          {HOME_EXPERIENCE_HERO_FRAMES.map((src, i) => (
+            <img
+              key={src}
+              ref={engine.registerColorFrame(i)}
+              className="exp-frame"
+              src={src}
+              alt=""
+            />
+          ))}
+
+          <svg
+            ref={engine.sweepRef}
+            className="exp-light-sweep"
+            aria-hidden="true"
+            preserveAspectRatio="none"
+            viewBox="0 0 400 300"
+          >
+            <defs>
+              <linearGradient
+                id="expSweepGrad"
+                x1="0"
+                y1="0"
+                x2="1"
+                y2="0"
+              >
+                <stop
+                  offset="0%"
+                  stopColor="#fff8d6"
+                  stopOpacity="0"
+                />
+                <stop
+                  offset="42%"
+                  stopColor="#ffefb8"
+                  stopOpacity="0.2"
+                />
+                <stop
+                  offset="50%"
+                  stopColor="#fffdf2"
+                  stopOpacity="0.4"
+                />
+                <stop
+                  offset="58%"
+                  stopColor="#ffefb8"
+                  stopOpacity="0.2"
+                />
+                <stop
+                  offset="100%"
+                  stopColor="#fff8d6"
+                  stopOpacity="0"
+                />
+              </linearGradient>
+              <filter
+                id="expSweepGlow"
+                x="-40%"
+                y="-40%"
+                width="180%"
+                height="180%"
+              >
+                <feGaussianBlur
+                  stdDeviation="9"
+                  result="b"
+                />
+                <feMerge>
+                  <feMergeNode in="b" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <g filter="url(#expSweepGlow)">
+              <path
+                ref={engine.sweepGlowRef}
+                fill="url(#expSweepGrad)"
+                opacity="0.2"
+              />
+              <path
+                ref={engine.sweepCoreRef}
+                fill="url(#expSweepGrad)"
+                opacity="0.46"
+              />
+              <path
+                ref={engine.sweepRib1Ref}
+                fill="#fffdf2"
+                opacity="0.16"
+              />
+              <path
+                ref={engine.sweepRib2Ref}
+                fill="#ffe9a8"
+                opacity="0.12"
+              />
+            </g>
+          </svg>
+        </div>
+
+        <div
+          ref={engine.streetBloomRef}
+          className="exp-layer exp-street-bloom"
+        >
+          {HOME_EXPERIENCE_HERO_FRAMES.map((src, i) => (
+            <img
+              key={src}
+              ref={engine.registerStreetFrame(i)}
+              className="exp-frame"
+              src={src}
+              alt=""
+            />
+          ))}
+        </div>
+
+        <div
+          ref={engine.spillRef}
+          className="exp-light-spill"
+          aria-hidden="true"
+        />
+
+        <img
+          ref={engine.headPatchRef}
+          className="exp-head-patch"
+          src={HOME_EXPERIENCE_HERO_FRAMES[3]}
+          alt=""
+        />
+
+        <div
+          className="exp-stage-vignette"
+          aria-hidden="true"
+        />
+      </div>
+
+      <div className="exp-phase-strip">
+        <p
+          className="exp-phase-caption"
+          aria-live="polite"
+          style={{ opacity: engine.captionVisible ? 1 : 0 }}
+        >
+          {engine.captionText}
+        </p>
+
+        <div className="exp-phase-row">
+          <div
+            className="exp-phase-dots"
+            role="group"
+            aria-label="Transformation phases"
+          >
+            {PHASE_DOT_LABELS.map((label, i) => (
+              <button
+                key={label}
+                type="button"
+                className={cn("exp-dot", i === engine.captionIndex && "exp-active")}
+                aria-label={label}
+                onClick={() => engine.goToPhase(i)}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            className={cn("exp-replay", engine.replayVisible && "exp-show")}
+            aria-label="Replay the transformation"
+            onClick={engine.replay}
+          >
+            ↺ replay
+          </button>
+        </div>
+
+        <div className={cn("exp-scroll-hint", engine.hintVisible && "exp-show")}>
+          <span>The light follows you down</span>
+          <div className="exp-scroll-line" />
+        </div>
+      </div>
+    </header>
   );
 };
 
