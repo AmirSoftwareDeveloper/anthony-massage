@@ -24,6 +24,7 @@
 
   --ease-exp-release: cubic-bezier(0.22, 1, 0.36, 1);
 
+  --text-2xs: 0.7rem;
   --text-xs+: 0.8125rem;
   --text-sm+: 0.9375rem;
   --text-base+: 1.0625rem;
@@ -200,12 +201,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* ============================================================
    HOME EXPERIENCE — the immersive billboard/story design system
-   used by the Home page (screens/home/experience/*). Colors and
-   fonts are sourced from the --color-exp-* / --font-* tokens in
-   the @theme block above, so retheming only ever happens here.
-   Class names are namespaced with `exp-` to stay isolated from
-   the rest of the site's styling.
+   used by the Home page (screens/home/*). Colors and fonts are
+   sourced from the --color-exp-* / --font-* tokens in the @theme
+   block above, so retheming only ever happens here. Class names
+   are namespaced with `exp-` to stay isolated from the rest of
+   the site's styling.
+
+   Wrapped in @layer components so it sits BELOW Tailwind's
+   utilities layer — any Tailwind utility class (pt-26, px-[...],
+   text-(--var), etc.) applied alongside an exp-* class on the
+   same element will correctly win, exactly like normal Tailwind
+   components. Without this layer, this being plain unlayered CSS
+   would always beat utilities regardless of source order.
    ============================================================ */
+
+@layer components {
 
 @keyframes exp-drift-push {
   from {
@@ -867,37 +877,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
 }
 
-/* ---------- final CTA footer ---------- */
-.exp-footer {
-  text-align: center;
-  padding: 6.5rem 2.2rem 4rem;
-}
-.exp-footer-title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-style: italic;
-  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
-  margin-bottom: 0.7rem;
-  color: var(--s-heading, var(--color-exp-olive-deep));
-  transition: color 2.2s var(--ease-exp-release);
-}
-.exp-section.lit .exp-footer-title {
-  color: var(--s-heading-lit, var(--s-heading));
-}
-.exp-footer-sub {
-  margin: 0 auto 1.9rem;
-  font-weight: 300;
-  font-size: 1.05rem;
-  max-width: 30rem;
-}
-.exp-footer-fine {
-  margin-top: 4.5rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  opacity: 0.6;
-}
-
 /* ---------- the "experience" CTA button, driven by the same position spine ---------- */
 .exp-btn {
   background: var(--s-heading, var(--color-exp-olive));
@@ -1018,4 +997,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .exp-nav-links {
     transition: none;
   }
+}
+
 }

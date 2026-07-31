@@ -14,7 +14,7 @@ const HomeExperience = () => {
   const engine = useHeroExperience(HOME_EXPERIENCE_SECTIONS.length + 1);
 
   return (
-    <div className="font-experience text-exp-ink leading-[1.65]">
+    <div className="bg-exp-paper font-experience text-exp-ink leading-[1.65]">
       <WaveFrontier engine={engine} />
       <Nav />
       <Hero engine={engine} />

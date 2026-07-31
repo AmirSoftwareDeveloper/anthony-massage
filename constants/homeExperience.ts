@@ -28,7 +28,10 @@ export const HOME_EXPERIENCE_SECTIONS: HomeExperienceSection[] = [
     blocks: [
       { type: "p", text: "Stress. Injury. Repetitive movement. Long hours at a desk. Years of adapting." },
       { type: "p", text: "Over time, those patterns can become restriction." },
-      { type: "p", text: "Restriction can become pain. Pain can begin to shape the way you move through everyday life." },
+      {
+        type: "p",
+        text: "Restriction can become pain. Pain can begin to shape the way you move through everyday life.",
+      },
       { type: "p", text: "The goal isn't simply to help you feel better today." },
       { type: "p", text: "It's to help you move toward lasting change." },
     ],
@@ -53,7 +56,10 @@ export const HOME_EXPERIENCE_SECTIONS: HomeExperienceSection[] = [
     eyebrow: "Understanding",
     heading: "Your body is always adapting.",
     blocks: [
-      { type: "p", text: "The body is remarkably intelligent. When movement becomes restricted, it doesn't simply stop moving. It adapts." },
+      {
+        type: "p",
+        text: "The body is remarkably intelligent. When movement becomes restricted, it doesn't simply stop moving. It adapts.",
+      },
       { type: "p", text: "Other muscles begin working harder. Posture changes. Movement patterns shift." },
       { type: "p", text: "Over time, those compensations become so familiar they begin to feel normal." },
       { type: "p", text: "Until they don't." },
@@ -68,7 +74,10 @@ export const HOME_EXPERIENCE_SECTIONS: HomeExperienceSection[] = [
       { type: "p", text: "No two people move the same." },
       { type: "p", text: "No two bodies compensate the same." },
       { type: "p", text: "No two sessions should be the same." },
-      { type: "p", text: "Rather than following a routine, each session begins by listening to how your body moves today." },
+      {
+        type: "p",
+        text: "Rather than following a routine, each session begins by listening to how your body moves today.",
+      },
       { type: "p", text: "From there, the work follows the restriction." },
       { type: "p", text: "As your body changes, the session changes with it." },
     ],
@@ -158,7 +167,7 @@ export const HOME_EXPERIENCE_FOOTER = {
   eyebrow: "Anthony Massage Works",
   title: "Ready to imagine feeling different?",
   sub: "Scheduling is on its way.",
-  cta: "See scheduling",
+  cta: "Book your first session",
   fine: "Anthony Massage Works — Release. Realign. Renew.",
 };
 

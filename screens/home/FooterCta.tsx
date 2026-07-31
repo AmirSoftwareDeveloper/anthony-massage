@@ -24,18 +24,17 @@ const FooterCta = ({ engine }: { engine: HeroExperienceEngine }) => {
         reveal(el);
       }}
       className={cn(
-        "exp-section exp-footer exp-reveal flex flex-col items-center",
+        "exp-section exp-reveal group flex flex-col items-center px-[2.2rem] pt-26 pb-16 text-center",
         `exp-pos-${HOME_EXPERIENCE_FOOTER.position}`
       )}
     >
-      <p
-        className="exp-eyebrow"
-        style={{ marginBottom: "1.2rem" }}
-      >
+      <span className="mb-[1.2rem] block text-2xs font-medium tracking-[0.32em] text-(--s-eyebrow,var(--color-exp-gold)) uppercase transition-colors duration-2200 ease-exp-release group-[.lit]:text-(--s-eyebrow-lit,var(--s-eyebrow))">
         {HOME_EXPERIENCE_FOOTER.eyebrow}
-      </p>
-      <h2 className="exp-footer-title">{HOME_EXPERIENCE_FOOTER.title}</h2>
-      <p className="exp-footer-sub">{HOME_EXPERIENCE_FOOTER.sub}</p>
+      </span>
+      <h2 className="mb-[0.7rem] font-display text-[clamp(1.8rem,3.6vw,2.6rem)] font-normal text-(--s-heading,var(--color-exp-olive-deep)) italic transition-colors duration-2200 ease-exp-release group-[.lit]:text-(--s-heading-lit,var(--s-heading))">
+        {HOME_EXPERIENCE_FOOTER.title}
+      </h2>
+      <span className="mb-[1.9rem] block max-w-120 text-base+ font-light">{HOME_EXPERIENCE_FOOTER.sub}</span>
 
       <Link href={Routes.CONTACT}>
         <Button
@@ -46,7 +45,7 @@ const FooterCta = ({ engine }: { engine: HeroExperienceEngine }) => {
         </Button>
       </Link>
 
-      <p className="exp-footer-fine">{HOME_EXPERIENCE_FOOTER.fine}</p>
+      <span className="mt-18 block text-2xs tracking-[0.16em] uppercase opacity-60">{HOME_EXPERIENCE_FOOTER.fine}</span>
     </footer>
   );
 };

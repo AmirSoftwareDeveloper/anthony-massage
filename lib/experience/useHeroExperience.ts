@@ -197,7 +197,10 @@ export function useHeroExperience(sectionCount: number) {
       if (s.cur.unf > 0.9) setHintVisible(true);
 
       const frontDocRaw = s.heroH + s.cur.fr * s.vh * 0.3;
-      const frontDoc = Math.max(frontDocRaw, Math.min(scrollY + s.vh * 0.72, s.heroH + document.body.scrollHeight));
+      const atBottom = scrollY + s.vh >= document.body.scrollHeight - 2;
+      const frontDoc = atBottom
+        ? scrollY + s.vh
+        : Math.max(frontDocRaw, Math.min(scrollY + s.vh * 0.72, s.heroH + document.body.scrollHeight));
 
       for (let i = 0; i < sectionRefs.current.length; i++) {
         const el = sectionRefs.current[i];
@@ -214,10 +217,11 @@ export function useHeroExperience(sectionCount: number) {
       }
 
       if (waveFrontierRef.current) {
-        waveFrontierRef.current.style.opacity = String(Math.max(s.scrollGlow, flare * 0.9));
+        const restingOpacity = atBottom ? 0.85 : 0;
+        waveFrontierRef.current.style.opacity = String(Math.max(s.scrollGlow, flare * 0.9, restingOpacity));
       }
 
-      const wispPhase = now * 0.0022 * 1.4;
+      const wispPhase = now * 0.0016 * 1.4;
       for (let w = 0; w < WISP_COUNT; w++) {
         const el = wispRefs.current[w];
         if (!el) continue;
