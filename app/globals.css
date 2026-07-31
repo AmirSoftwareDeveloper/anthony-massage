@@ -1,0 +1,183 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@theme {
+  --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
+
+  --color-text: #4b5563;
+  --color-primary: #3b82f6;
+  --color-secondary: #111827;
+
+  --text-xs+: 0.8125rem;
+  --text-sm+: 0.9375rem;
+  --text-base+: 1.0625rem;
+  --text-xl+: 1.375rem;
+  --text-2xl+: 1.5625rem;
+  --text-3xl+: 2rem;
+  --text-5xl+: 3.1rem;
+  --text-6xl+: 4rem;
+  --text-7xl+: 5rem;
+
+  --breakpoint-xs: 360px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1400px;
+}
+
+@utility container {
+  margin-inline: auto;
+  max-width: none;
+  padding-inline: 1rem;
+
+  @variant md {
+    padding-inline: 2rem;
+  }
+
+  @variant lg {
+    padding-inline: 4rem;
+  }
+
+  @variant xl {
+    padding-inline: 5rem;
+  }
+
+  @variant 2xl {
+    padding-inline: 10rem;
+  }
+}
+
+@utility no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body {
+  position: relative;
+  font-family: var(--font-sans);
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+html::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 8px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[105%];
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-[125%];
+  }
+
+  h3 {
+    @apply text-(--text-xl-plus) md:text-2xl lg:text-3xl font-semibold md:leading-[115%];
+  }
+
+  h4 {
+    @apply text-xl lg:text-2xl font-semibold;
+  }
+
+  h5 {
+    @apply text-lg md:text-xl font-semibold;
+  }
+
+  h6 {
+    @apply text-lg font-semibold;
+  }
+
+  p {
+    @apply text-base text-text font-normal;
+  }
+}
+
+details {
+  interpolate-size: allow-keywords;
+}
+
+details::details-content {
+  overflow: hidden;
+  block-size: 0;
+
+  transition:
+    block-size 0.3s,
+    content-visibility 0.3s allow-discrete;
+}
+
+details[open]::details-content {
+  block-size: auto;
+}
+
+.sheetContent {
+  @apply w-full outline-none ring-0;
+}
+
+.sheetContent > button {
+  display: none;
+}
+
+.parallax-background-container {
+  clip-path: inset(0 0 0 0);
+}
+
+.padding-y {
+  @apply py-12 sm:py-16 lg:py-20;
+}
+
+.padding-t {
+  @apply pt-12 sm:pt-16 lg:pt-20;
+}
+
+.padding-b {
+  @apply pb-12 sm:pb-16 lg:pb-20;
+}
+
+.select-arrow {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  text-indent: 2px;
+  text-overflow: "";
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+
+  background-position:
+    calc(100% - 20px) calc(1em + 6px),
+    calc(100% - 15px) calc(1em + 6px),
+    calc(100% - 2.5em) 0.7em;
+
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+
+  background-repeat: no-repeat;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
