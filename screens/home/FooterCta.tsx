@@ -4,13 +4,13 @@ import Link from "next/link";
 
 import { cn } from "@/utils";
 
+import type { HeroExperienceEngine } from "@/lib/experience/useHeroExperience";
+import { useReveal } from "@/lib/experience/useReveal";
+
 import { HOME_EXPERIENCE_FOOTER } from "@/constants/homeExperience";
 import { Routes } from "@/constants/routes";
 
 import { Button } from "@/components/ui/button";
-
-import { useReveal } from "@/lib/experience/useReveal";
-import type { HeroExperienceEngine } from "@/lib/experience/useHeroExperience";
 
 const FooterCta = ({ engine }: { engine: HeroExperienceEngine }) => {
   const reveal = useReveal<HTMLElement>();
@@ -23,7 +23,10 @@ const FooterCta = ({ engine }: { engine: HeroExperienceEngine }) => {
         engine.footerRef.current = el;
         reveal(el);
       }}
-      className={cn("exp-section exp-footer exp-reveal", `exp-pos-${HOME_EXPERIENCE_FOOTER.position}`)}
+      className={cn(
+        "exp-section exp-footer exp-reveal flex flex-col items-center",
+        `exp-pos-${HOME_EXPERIENCE_FOOTER.position}`
+      )}
     >
       <p
         className="exp-eyebrow"
