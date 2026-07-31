@@ -2,9 +2,13 @@
 
 import { cn } from "@/utils";
 
+import { INFO } from "@/constants";
 import { HOME_EXPERIENCE_HERO_FRAMES, PHASE_DOT_LABELS } from "@/constants/homeExperience";
 
 import type { HeroExperienceEngine } from "@/lib/experience/useHeroExperience";
+
+const HERO_FRAME_WIDTH = 1280;
+const HERO_FRAME_HEIGHT = 853;
 
 const Hero = ({ engine }: { engine: HeroExperienceEngine }) => {
   return (
@@ -12,6 +16,10 @@ const Hero = ({ engine }: { engine: HeroExperienceEngine }) => {
       ref={engine.heroRef as React.RefObject<HTMLElement>}
       className="exp-hero"
     >
+      <h1 className="sr-only">
+        {INFO.BUSINESS_NAME} — Massage Therapy for Pain Relief, Injury Recovery & Mobility in Issaquah, WA
+      </h1>
+
       <div
         className="exp-stage"
         role="img"
@@ -24,6 +32,10 @@ const Hero = ({ engine }: { engine: HeroExperienceEngine }) => {
               ref={engine.registerGrayFrame(i)}
               className="exp-frame"
               src={src}
+              width={HERO_FRAME_WIDTH}
+              height={HERO_FRAME_HEIGHT}
+              loading={i === 0 ? "eager" : undefined}
+              fetchPriority={i === 0 ? "high" : undefined}
               alt=""
             />
           ))}
@@ -39,6 +51,10 @@ const Hero = ({ engine }: { engine: HeroExperienceEngine }) => {
               ref={engine.registerColorFrame(i)}
               className="exp-frame"
               src={src}
+              width={HERO_FRAME_WIDTH}
+              height={HERO_FRAME_HEIGHT}
+              loading={i === 0 ? "eager" : undefined}
+              fetchPriority={i === 0 ? "high" : undefined}
               alt=""
             />
           ))}
@@ -136,6 +152,8 @@ const Hero = ({ engine }: { engine: HeroExperienceEngine }) => {
               ref={engine.registerStreetFrame(i)}
               className="exp-frame"
               src={src}
+              width={HERO_FRAME_WIDTH}
+              height={HERO_FRAME_HEIGHT}
               alt=""
             />
           ))}
@@ -151,6 +169,8 @@ const Hero = ({ engine }: { engine: HeroExperienceEngine }) => {
           ref={engine.headPatchRef}
           className="exp-head-patch"
           src={HOME_EXPERIENCE_HERO_FRAMES[3]}
+          width={HERO_FRAME_WIDTH}
+          height={HERO_FRAME_HEIGHT}
           alt=""
         />
 

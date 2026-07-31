@@ -54,9 +54,20 @@ export default function RootLayout({ children }: PropsWithChildren) {
           karla.variable
         )}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-black focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
         <ScrollToTop />
         <Header />
-        <main className="grow flex flex-col min-h-150">{children}</main>
+        <main
+          id="main-content"
+          className="grow flex flex-col min-h-150"
+        >
+          {children}
+        </main>
         <Footer />
         <Toaster />
       </body>

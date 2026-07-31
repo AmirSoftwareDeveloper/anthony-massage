@@ -1,6 +1,6 @@
 import { generateJsonLd } from "@/utils/generateSchema";
 
-import { META_DATA } from "@/constants/meta";
+import { META_DATA, ORG_SCHEMA } from "@/constants/meta";
 
 import JsonLd from "@/components/json-ld";
 
@@ -15,7 +15,7 @@ const jsonLd = generateJsonLd({
 export default async function HomePage() {
   return (
     <>
-      <JsonLd schemas={[jsonLd]} />
+      <JsonLd schemas={[jsonLd, ORG_SCHEMA]} />
       <Home />
     </>
   );
