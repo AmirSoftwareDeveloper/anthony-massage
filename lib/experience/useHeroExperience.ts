@@ -28,7 +28,7 @@ function applyFrameStates(refs: ImgRefs, progress: number) {
   });
 }
 
-export function useHeroExperience(sectionCount: number) {
+export function useHeroExperience() {
   const heroRef = React.useRef<HTMLElement | null>(null);
   const boardColorRef = React.useRef<HTMLDivElement | null>(null);
   const streetBloomRef = React.useRef<HTMLDivElement | null>(null);
@@ -49,7 +49,6 @@ export function useHeroExperience(sectionCount: number) {
   const sFrameRefs = React.useRef<(HTMLImageElement | null)[]>([]);
 
   const sectionRefs = React.useRef<(HTMLElement | null)[]>([]);
-  const footerRef = React.useRef<HTMLElement | null>(null);
 
   const [captionIndex, setCaptionIndex] = React.useState(0);
   const [captionText, setCaptionText] = React.useState<string>(PHASE_CAPTIONS[0]);
@@ -209,12 +208,10 @@ export function useHeroExperience(sectionCount: number) {
         el.classList.toggle("lit", frontDoc > trigger);
       }
 
-      let flare = 0;
-      const footerEl = footerRef.current;
-      if (footerEl) {
-        const rel = (frontDoc - footerEl.offsetTop) / (s.vh * 0.55);
-        if (rel >= 0 && rel <= 1) flare = Math.sin(Math.PI * rel);
-      }
+      const docHeight = document.body.scrollHeight;
+      const distanceToEnd = docHeight - frontDoc;
+      const flareRel = 1 - clamp01(distanceToEnd / (s.vh * 0.55));
+      const flare = Math.sin(Math.PI * clamp01(flareRel));
 
       if (waveFrontierRef.current) {
         const restingOpacity = atBottom ? 0.85 : 0;
@@ -281,7 +278,6 @@ export function useHeroExperience(sectionCount: number) {
     sweepRib1Ref,
     sweepRib2Ref,
     waveFrontierRef,
-    footerRef,
     registerGrayFrame: (i: number) => registerFrame(gFrameRefs, i),
     registerColorFrame: (i: number) => registerFrame(cFrameRefs, i),
     registerStreetFrame: (i: number) => registerFrame(sFrameRefs, i),
@@ -294,7 +290,6 @@ export function useHeroExperience(sectionCount: number) {
     hintVisible,
     goToPhase,
     replay,
-    sectionCount,
   };
 }
 

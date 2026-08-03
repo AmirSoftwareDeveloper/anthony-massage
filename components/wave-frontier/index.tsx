@@ -1,9 +1,13 @@
-"use client";
+import type { RefObject } from "react";
 
 import { WISP_COUNT } from "@/lib/experience/engine";
-import type { HeroExperienceEngine } from "@/lib/experience/useHeroExperience";
 
-const WaveFrontier = ({ engine }: { engine: HeroExperienceEngine }) => {
+interface WaveFrontierEngine {
+  waveFrontierRef: RefObject<HTMLDivElement | null>;
+  registerWisp: (index: number) => (el: SVGPathElement | null) => void;
+}
+
+const WaveFrontier = ({ engine }: { engine: WaveFrontierEngine }) => {
   return (
     <div
       ref={engine.waveFrontierRef}

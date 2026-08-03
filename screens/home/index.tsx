@@ -1,16 +1,15 @@
 "use client";
 
-import { HOME_EXPERIENCE_SECTIONS } from "@/constants/homeExperience";
-
 import { useHeroExperience } from "@/lib/experience/useHeroExperience";
 
-import FooterCta from "./FooterCta";
+import Footer from "@/components/layout/Footer";
+import WaveFrontier from "@/components/wave-frontier";
+
 import Hero from "./Hero";
 import Sections from "./Sections";
-import WaveFrontier from "./WaveFrontier";
 
 const HomeExperience = () => {
-  const engine = useHeroExperience(HOME_EXPERIENCE_SECTIONS.length + 1);
+  const engine = useHeroExperience();
 
   return (
     <div className="bg-exp-paper font-experience text-exp-ink leading-[1.65]">
@@ -18,7 +17,7 @@ const HomeExperience = () => {
       <Hero engine={engine} />
 
       <Sections engine={engine} />
-      <FooterCta engine={engine} />
+      <Footer engine={engine} />
     </div>
   );
 };

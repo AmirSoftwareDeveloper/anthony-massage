@@ -1,0 +1,89 @@
+import type { HeroExperienceEngine } from "@/lib/experience/useHeroExperience";
+
+const LightSweep = ({ engine }: { engine: HeroExperienceEngine }) => {
+  return (
+    <svg
+      ref={engine.sweepRef}
+      className="exp-light-sweep"
+      aria-hidden="true"
+      preserveAspectRatio="none"
+      viewBox="0 0 400 300"
+    >
+      <defs>
+        <linearGradient
+          id="expSweepGrad"
+          x1="0"
+          y1="0"
+          x2="1"
+          y2="0"
+        >
+          <stop
+            offset="0%"
+            stopColor="#fff8d6"
+            stopOpacity="0"
+          />
+          <stop
+            offset="42%"
+            stopColor="#ffefb8"
+            stopOpacity="0.2"
+          />
+          <stop
+            offset="50%"
+            stopColor="#fffdf2"
+            stopOpacity="0.4"
+          />
+          <stop
+            offset="58%"
+            stopColor="#ffefb8"
+            stopOpacity="0.2"
+          />
+          <stop
+            offset="100%"
+            stopColor="#fff8d6"
+            stopOpacity="0"
+          />
+        </linearGradient>
+        <filter
+          id="expSweepGlow"
+          x="-40%"
+          y="-40%"
+          width="180%"
+          height="180%"
+        >
+          <feGaussianBlur
+            stdDeviation="9"
+            result="b"
+          />
+          <feMerge>
+            <feMergeNode in="b" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      <g filter="url(#expSweepGlow)">
+        <path
+          ref={engine.sweepGlowRef}
+          fill="url(#expSweepGrad)"
+          opacity="0.2"
+        />
+        <path
+          ref={engine.sweepCoreRef}
+          fill="url(#expSweepGrad)"
+          opacity="0.46"
+        />
+        <path
+          ref={engine.sweepRib1Ref}
+          fill="#fffdf2"
+          opacity="0.16"
+        />
+        <path
+          ref={engine.sweepRib2Ref}
+          fill="#ffe9a8"
+          opacity="0.12"
+        />
+      </g>
+    </svg>
+  );
+};
+
+export default LightSweep;

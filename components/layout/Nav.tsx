@@ -1,5 +1,7 @@
 "use client";
 
+import * as React from "react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -7,11 +9,27 @@ import { cn } from "@/utils";
 
 import navLinks from "@/constants/navLinks";
 
-import { useMobileNav } from "@/lib/experience/useMobileNav";
+import MobileNavSheet from "./MobileNavSheet";
 
 const Nav = () => {
   const pathname = usePathname();
-  const { navRef, open, setOpen } = useMobileNav();
+  const navRef = React.useRef<HTMLElement | null>(null);
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const setNavHeight = () => {
+      if (navRef.current) {
+        document.documentElement.style.setProperty("--exp-nav-h", `${navRef.current.offsetHeight}px`);
+      }
+    };
+    setNavHeight();
+    window.addEventListener("resize", setNavHeight);
+    window.addEventListener("load", setNavHeight);
+    return () => {
+      window.removeEventListener("resize", setNavHeight);
+      window.removeEventListener("load", setNavHeight);
+    };
+  }, []);
 
   return (
     <nav
@@ -24,33 +42,22 @@ const Nav = () => {
         <span>Works</span>
       </div>
 
-      <button
-        type="button"
-        className="exp-nav-toggle"
-        aria-label={open ? "Close menu" : "Open menu"}
-        aria-expanded={open}
-        aria-controls="primary-nav"
-        onClick={() => setOpen(!open)}
-      >
-        <span />
-        <span />
-      </button>
-
-      <div
-        id="primary-nav"
-        className={cn("exp-nav-links", open && "exp-open")}
-      >
+      <div className="exp-nav-links">
         {navLinks.map((item) => (
           <Link
             key={item.id}
             href={item.href}
             className={cn(pathname === item.href && "exp-current")}
-            onClick={() => setOpen(false)}
           >
             {item.title}
           </Link>
         ))}
       </div>
+
+      <MobileNavSheet
+        open={open}
+        onOpenChange={setOpen}
+      />
     </nav>
   );
 };

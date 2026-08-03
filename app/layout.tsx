@@ -5,6 +5,7 @@ import { Cormorant_Garamond, Karla, Roboto } from "next/font/google";
 
 import { cn } from "@/utils";
 
+import AmbientWave from "@/components/layout/AmbientWave";
 import Footer from "@/components/layout/Footer";
 import Nav from "@/components/layout/Nav";
 import ScrollToTop from "@/components/layout/ScrollToTop";
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           Skip to main content
         </a>
         <ScrollToTop />
+        <AmbientWave />
         <Nav />
         <main
           id="main-content"
