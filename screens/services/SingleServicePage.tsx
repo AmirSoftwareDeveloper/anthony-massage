@@ -1,5 +1,3 @@
-import { Routes } from "@/constants/routes";
-
 import ComingSoon from "@/components/coming-soon";
 import PageHero from "@/components/page-hero";
 
@@ -9,10 +7,10 @@ const SingleServicePage = ({ service }: { service: Service }) => {
   return (
     <>
       <PageHero
-        title={service.title}
-        pageName={service.title}
-        secondTitle="Services"
-        secondLink={Routes.SERVICES}
+        srTitle={`${service.title} | Anthony Massage Works`}
+        eyebrow={service.title}
+        caption={service.description || "Focused care, one condition at a time."}
+        frame="rising"
       />
 
       <ComingSoon />

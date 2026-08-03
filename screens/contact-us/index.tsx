@@ -5,8 +5,9 @@ const ContactUs = () => {
   return (
     <>
       <PageHero
-        title="Contact Us"
-        pageName="Contact Us"
+        srTitle="Contact Us | Anthony Massage Works"
+        eyebrow="Contact Us"
+        caption="The unfolding has arrived. Let's begin."
       />
       <ContactFormSection />
     </>

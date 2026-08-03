@@ -13,8 +13,9 @@ const ThankYouPage = () => {
   return (
     <>
       <PageHero
-        title="Thank You!"
-        pageName="Thank You"
+        srTitle="Thank You | Anthony Massage Works"
+        eyebrow="Thank You"
+        caption="Your message is on its way."
       />
       <div className="padding-y container">
         <Title

@@ -5,8 +5,9 @@ const AboutUs = () => {
   return (
     <>
       <PageHero
-        title="About Us"
-        pageName="About Us"
+        srTitle="About Us | Anthony Massage Works"
+        eyebrow="About Us"
+        caption="The work, and the person behind it."
       />
       <ComingSoon />
     </>

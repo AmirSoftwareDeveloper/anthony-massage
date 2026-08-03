@@ -8,7 +8,10 @@ const formattedDate = new Intl.DateTimeFormat("en-US", {
 
 const PrivacyPolicy = () => {
   return (
-    <section className="padding-y">
+    <section
+      className="padding-y"
+      style={{ marginTop: "var(--exp-nav-h, 5rem)" }}
+    >
       <div className="container">
         <article className="prose prose-neutral max-w-none">
           <header className="not-prose mb-10">

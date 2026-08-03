@@ -1,81 +1,68 @@
-import Image from "next/image";
-import Link from "next/link";
-
 import { cn } from "@/utils";
 
-import { Routes } from "@/constants/routes";
+export type PageHeroFrame = "compressed" | "light-enters" | "rising" | "open";
 
-type PageHeroProps = {
-  title?: string;
-  className?: string;
-
-  pageName?: string;
-
-  secondLink?: string;
-  secondTitle?: string;
-
-  hasBreadcrumb?: boolean;
+const FRAME_SRC: Record<PageHeroFrame, string> = {
+  compressed: "/images/hero/billboard-1-compressed.jpg",
+  "light-enters": "/images/hero/billboard-2-light-enters.jpg",
+  rising: "/images/hero/billboard-3-rising.jpg",
+  open: "/images/hero/billboard-4-open.jpg",
 };
 
-const Chevron = () => <span className="mx-2 text-white/70">›</span>;
+type PageHeroProps = {
+  srTitle: string;
+  eyebrow: string;
+  caption: string;
+  frame?: PageHeroFrame;
+  className?: string;
+};
 
-const PageHero = ({ title, pageName, secondLink, secondTitle, hasBreadcrumb = true, className }: PageHeroProps) => {
+const PageHero = ({ srTitle, eyebrow, caption, frame = "open", className }: PageHeroProps) => {
   return (
-    <section className="relative">
-      <div className="relative isolate flex min-h-48 flex-col justify-center overflow-hidden sm:min-h-80">
-        <Image
-          src="/images/hero/image-13.jpg"
-          alt={title || "Page hero background"}
-          fill
-          priority
-          className="object-cover -z-10"
+    <header className={cn("exp-hero exp-page-hero", className)}>
+      <h1 className="sr-only">{srTitle}</h1>
+
+      <div
+        className="exp-stage"
+        role="img"
+        aria-label={caption}
+      >
+        <img
+          src={FRAME_SRC[frame]}
+          alt=""
+          width={1280}
+          height={853}
+          loading="eager"
+          fetchPriority="high"
+          className="exp-page-hero-image"
         />
 
-        <div className={cn("relative z-10 py-10 text-white", className)}>
-          <div className="container flex flex-col items-center text-center">
-            {title && <h1 className="mb-3 max-w-2xl text-2xl font-bold sm:mb-5 sm:text-4xl lg:text-5xl">{title}</h1>}
+        <div
+          className="exp-page-hero-shine"
+          aria-hidden="true"
+        />
 
-            {hasBreadcrumb && (
-              <nav
-                aria-label="Breadcrumb"
-                className="flex items-center text-sm lg:text-lg"
-              >
-                <Link
-                  href={Routes.HOME}
-                  className="hover:text-secondary transition-colors"
-                >
-                  Home
-                </Link>
+        <div
+          className="exp-page-hero-scrim"
+          aria-hidden="true"
+        />
 
-                {secondTitle && (
-                  <>
-                    <Chevron />
+        <div
+          className="exp-page-hero-grain"
+          aria-hidden="true"
+        />
 
-                    {secondLink ? (
-                      <Link
-                        href={secondLink}
-                        className="hover:text-secondary transition-colors"
-                      >
-                        {secondTitle}
-                      </Link>
-                    ) : (
-                      <span>{secondTitle}</span>
-                    )}
-                  </>
-                )}
-
-                {pageName && (
-                  <>
-                    <Chevron />
-                    <span className="text-white">{pageName}</span>
-                  </>
-                )}
-              </nav>
-            )}
-          </div>
-        </div>
+        <div
+          className="exp-stage-vignette"
+          aria-hidden="true"
+        />
       </div>
-    </section>
+
+      <div className="exp-phase-strip">
+        <p className="exp-eyebrow">{eyebrow}</p>
+        <p className="exp-phase-caption exp-page-hero-caption-line">{caption}</p>
+      </div>
+    </header>
   );
 };
 

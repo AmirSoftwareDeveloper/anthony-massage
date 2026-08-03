@@ -6,7 +6,7 @@ import { Cormorant_Garamond, Karla, Roboto } from "next/font/google";
 import { cn } from "@/utils";
 
 import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import Nav from "@/components/layout/Nav";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -61,7 +61,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           Skip to main content
         </a>
         <ScrollToTop />
-        <Header />
+        <Nav />
         <main
           id="main-content"
           className="grow flex flex-col min-h-150"
