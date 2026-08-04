@@ -967,74 +967,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* ============================================================
    PAGE HERO — interior pages (About, Services, Contact, etc.) reuse
-   the Home Experience's `.exp-hero` billboard stage, grain, vignette
-   and typography verbatim, but hold a single static frame instead of
-   crossfading between the four story images (that read as choppy at
-   this size). The "cool" motion instead comes from a slow ambient
-   zoom on the image (same exp-drift-push keyframes as Home) plus a
-   one-time diagonal light sweep across the board on mount — both
-   pure CSS, so they stay smooth regardless of image load timing.
+   the Home Experience's `.exp-hero` billboard stage, layered color
+   system, grain, vignette and typography verbatim, but each holds a
+   single already-settled frame instead of crossfading through Home's
+   four-image story: interior pages don't replay the unfolding, they
+   inherit it. The board is fully lit and the ground-bloom fully
+   revealed from the first paint (no grayscale suspense — only Home
+   does that); the ambient ground-light wisps keep drifting at the
+   bottom as the visitor scrolls, same as Home, so the light reads as
+   continuing its journey rather than resetting on every page.
    ============================================================ */
 @layer components {
-  .exp-page-hero-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: translate(-50%, -50%);
-    animation: exp-drift-push 60s ease-in-out infinite alternate;
-    filter: saturate(0.95) brightness(0.86);
+  .exp-layer .exp-frame.exp-frame-solo {
+    opacity: 1;
   }
-  .exp-page-hero-shine {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    overflow: hidden;
-    pointer-events: none;
-  }
-  .exp-page-hero-shine::after {
-    content: "";
-    position: absolute;
-    top: -25%;
-    bottom: -25%;
-    left: -20%;
-    width: 30%;
-    background: linear-gradient(100deg, transparent 0%, rgba(255, 253, 242, 0.55) 50%, transparent 100%);
-    mix-blend-mode: screen;
-    transform: translateX(-130%) skewX(-14deg);
-    animation: exp-page-hero-sweep 2s cubic-bezier(0.22, 0.78, 0.32, 1) 0.5s 1 both;
-  }
-  .exp-page-hero-scrim {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background:
-      linear-gradient(180deg, rgba(20, 17, 11, 0.5) 0%, rgba(20, 17, 11, 0.14) 38%, rgba(20, 17, 11, 0.82) 100%),
-      radial-gradient(60% 55% at 8% 100%, rgba(0, 0, 0, 0.55), transparent 70%);
-  }
-  .exp-page-hero-grain {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    background-image: url("/images/hero/grain.png");
-    background-size: 220px 220px;
-    background-repeat: repeat;
-    mix-blend-mode: soft-light;
-    opacity: 0.5;
+  .exp-page-hero {
+    min-height: 82vh;
   }
   .exp-page-hero-caption-line {
     animation: exp-page-hero-rise 0.9s var(--ease-exp-release) 0.5s both;
-  }
-
-  @keyframes exp-page-hero-sweep {
-    from {
-      transform: translateX(-130%) skewX(-14deg);
-    }
-    to {
-      transform: translateX(430%) skewX(-14deg);
-    }
   }
 
   @keyframes exp-page-hero-rise {
@@ -1048,14 +999,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
   }
 
+  @media (orientation: portrait) and (max-width: 900px) {
+    .exp-page-hero {
+      min-height: 0;
+      height: auto;
+      padding: 5.5rem 0 0;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .exp-page-hero-image {
-      animation: none;
-    }
-    .exp-page-hero-shine::after {
-      animation: none;
-      display: none;
-    }
     .exp-page-hero-caption-line {
       animation: none;
     }

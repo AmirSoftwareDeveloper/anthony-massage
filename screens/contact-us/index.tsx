@@ -8,6 +8,7 @@ const ContactUs = () => {
         srTitle="Contact Us | Anthony Massage Works"
         eyebrow="Contact Us"
         caption="The unfolding has arrived. Let's begin."
+        variant="arrived"
       />
       <ContactFormSection />
     </>

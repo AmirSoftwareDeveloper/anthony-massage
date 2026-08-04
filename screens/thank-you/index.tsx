@@ -16,6 +16,7 @@ const ThankYouPage = () => {
         srTitle="Thank You | Anthony Massage Works"
         eyebrow="Thank You"
         caption="Your message is on its way."
+        variant="arrived"
       />
       <div className="padding-y container">
         <Title

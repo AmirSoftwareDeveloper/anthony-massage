@@ -19,7 +19,7 @@ export default function NotFoundPage() {
         srTitle="404 | Anthony Massage Works"
         eyebrow="404"
         caption="This page took a different path."
-        frame="compressed"
+        variant="compressed"
       />
       <NotFound />
     </>

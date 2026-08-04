@@ -32,6 +32,19 @@ export const HERO_NATURAL_WIDTH = 1672;
 export const HERO_NATURAL_HEIGHT = 941;
 export const HERO_BOARD = { L: 321, R: 1286, T: 315, B: 638 } as const;
 
+// interior page-hero: the billboard settles into its lit state immediately
+// (no scroll-driven story), so the spill pool stays a tight, defined glow
+// under the board rather than the wider wash Home uses once its light
+// finishes traveling
+export const PAGE_HERO_SPILL_REST = 0.52;
+
+export interface BoardBox {
+  L: number;
+  R: number;
+  T: number;
+  B: number;
+}
+
 export function clamp01(x: number): number {
   return x < 0 ? 0 : x > 1 ? 1 : x;
 }
@@ -124,7 +137,11 @@ export interface BoardRect {
   sh: number;
 }
 
-export function measureBoardRect(stageRect: { width: number; height: number }, objectFit: string): BoardRect | null {
+export function measureBoardRect(
+  stageRect: { width: number; height: number },
+  objectFit: string,
+  board: BoardBox = HERO_BOARD
+): BoardRect | null {
   if (!stageRect.width || !stageRect.height) return null;
   const scale =
     objectFit === "contain"
@@ -133,10 +150,10 @@ export function measureBoardRect(stageRect: { width: number; height: number }, o
   const ox = (stageRect.width - HERO_NATURAL_WIDTH * scale) / 2;
   const oy = (stageRect.height - HERO_NATURAL_HEIGHT * scale) / 2;
   return {
-    x: ox + HERO_BOARD.L * scale,
-    y: oy + HERO_BOARD.T * scale,
-    w: (HERO_BOARD.R - HERO_BOARD.L) * scale,
-    h: (HERO_BOARD.B - HERO_BOARD.T) * scale,
+    x: ox + board.L * scale,
+    y: oy + board.T * scale,
+    w: (board.R - board.L) * scale,
+    h: (board.B - board.T) * scale,
     sw: stageRect.width,
     sh: stageRect.height,
   };

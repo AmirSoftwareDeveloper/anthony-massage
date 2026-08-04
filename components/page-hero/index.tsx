@@ -1,54 +1,83 @@
+"use client";
+
 import { cn } from "@/utils";
 
-export type PageHeroFrame = "compressed" | "light-enters" | "rising" | "open";
+import { PAGE_HERO_VARIANTS, type PageHeroVariant } from "@/constants/pageHero";
 
-const FRAME_SRC: Record<PageHeroFrame, string> = {
-  compressed: "/images/hero/billboard-1-compressed.jpg",
-  "light-enters": "/images/hero/billboard-2-light-enters.jpg",
-  rising: "/images/hero/billboard-3-rising.jpg",
-  open: "/images/hero/billboard-4-open.jpg",
-};
+import { usePageHeroExperience } from "@/lib/experience/usePageHeroExperience";
+
+const HERO_FRAME_WIDTH = 1672;
+const HERO_FRAME_HEIGHT = 941;
 
 type PageHeroProps = {
   srTitle: string;
   eyebrow: string;
   caption: string;
-  frame?: PageHeroFrame;
+  variant?: PageHeroVariant;
   className?: string;
 };
 
-const PageHero = ({ srTitle, eyebrow, caption, frame = "open", className }: PageHeroProps) => {
+const PageHero = ({ srTitle, eyebrow, caption, variant = "arrived", className }: PageHeroProps) => {
+  const { src, iso, spill, board } = PAGE_HERO_VARIANTS[variant];
+  const engine = usePageHeroExperience(board);
+
   return (
-    <header className={cn("exp-hero exp-page-hero", className)}>
+    <header
+      ref={engine.heroRef as React.RefObject<HTMLElement>}
+      className={cn("exp-hero exp-page-hero", className)}
+    >
       <h1 className="sr-only">{srTitle}</h1>
 
       <div
+        ref={engine.stageRef}
         className="exp-stage"
         role="img"
         aria-label={caption}
       >
-        <img
-          src={FRAME_SRC[frame]}
-          alt=""
-          width={1280}
-          height={853}
-          loading="eager"
-          fetchPriority="high"
-          className="exp-page-hero-image"
-        />
+        <div className="exp-layer exp-world-gray">
+          <img
+            ref={engine.frameRef}
+            className="exp-frame exp-frame-solo"
+            src={src}
+            width={HERO_FRAME_WIDTH}
+            height={HERO_FRAME_HEIGHT}
+            loading="eager"
+            fetchPriority="high"
+            alt=""
+          />
+        </div>
 
         <div
-          className="exp-page-hero-shine"
-          aria-hidden="true"
-        />
+          ref={engine.boardColorRef}
+          className="exp-layer exp-board-color"
+        >
+          <img
+            className="exp-frame exp-frame-solo"
+            src={iso}
+            width={HERO_FRAME_WIDTH}
+            height={HERO_FRAME_HEIGHT}
+            loading="eager"
+            fetchPriority="high"
+            alt=""
+          />
+        </div>
 
         <div
-          className="exp-page-hero-scrim"
-          aria-hidden="true"
-        />
+          ref={engine.streetBloomRef}
+          className="exp-layer exp-street-bloom"
+        >
+          <img
+            className="exp-frame exp-frame-solo"
+            src={spill}
+            width={HERO_FRAME_WIDTH}
+            height={HERO_FRAME_HEIGHT}
+            alt=""
+          />
+        </div>
 
         <div
-          className="exp-page-hero-grain"
+          ref={engine.spillRef}
+          className="exp-light-spill"
           aria-hidden="true"
         />
 

@@ -8,7 +8,7 @@ const Services = () => {
         srTitle="Services | Anthony Massage Works"
         eyebrow="Services"
         caption="Where relief begins to take shape."
-        frame="rising"
+        variant="rising"
       />
       <ComingSoon />
     </>
