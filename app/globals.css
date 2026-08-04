@@ -302,7 +302,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
   .exp-nav-name {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.25rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -310,7 +310,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     line-height: 1.15;
   }
   .exp-nav-name span {
-    font-weight: 400;
+    font-weight: 700;
     color: var(--color-exp-gold);
   }
   .exp-nav-links {
@@ -427,11 +427,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
   .exp-board-color {
     z-index: 2;
-    /* Full-frame color; the billboard face is isolated in color while
-       everything else is pre-baked to grayscale in the source image, so the
-       mask below (driven in JS) can never tint the scene outside the board.
-       Color fills from the right in the light's own wake — glued to the
-       board's measured on-screen rect instead of an independent clock. */
     -webkit-mask-image: linear-gradient(to left, #000 -20%, transparent 0%);
     mask-image: linear-gradient(to left, #000 -20%, transparent 0%);
   }
@@ -440,12 +435,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     -webkit-mask-image: radial-gradient(ellipse 0% 0% at 18% 100%, #000 62%, transparent 94%);
     mask-image: radial-gradient(ellipse 0% 0% at 18% 100%, #000 62%, transparent 94%);
   }
-  /* The light's path is localized to the billboard: it enters from unseen
-     space beyond the board's right edge, becomes visible only inside the
-     billboard, and splashes down-left onto the ground on reaching the left
-     edge. JS positions these two elements onto the board's measured
-     on-screen rect (left/top/width/height), so the path stays glued to the
-     billboard at every viewport instead of drifting. */
   .exp-light-sweep {
     position: absolute;
     inset: auto;
@@ -476,7 +465,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     filter: blur(9px);
   }
 
-  /* ---------- spill cascade (light dumping into the first section) ---------- */
   .exp-spill-cascade {
     position: absolute;
     top: 0;

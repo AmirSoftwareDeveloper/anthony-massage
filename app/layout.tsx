@@ -5,13 +5,13 @@ import { Cormorant_Garamond, Karla, Roboto } from "next/font/google";
 
 import { cn } from "@/utils";
 
+import { META_DATA } from "@/constants/meta";
+
 import AmbientWave from "@/components/layout/AmbientWave";
 import Footer from "@/components/layout/Footer";
 import Nav from "@/components/layout/Nav";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import { Toaster } from "@/components/ui/toaster";
-
-import { META_DATA } from "@/constants/meta";
 
 import "./globals.css";
 
@@ -22,10 +22,8 @@ const roboto = Roboto({
   display: "swap",
 });
 
-// Used by the immersive "experience" pages (currently Home) — see the
-// "Home Experience" design system in globals.css.
 const cormorantGaramond = Cormorant_Garamond({
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
   variable: "--font-display",

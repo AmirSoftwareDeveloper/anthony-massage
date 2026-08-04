@@ -124,9 +124,6 @@ export interface BoardRect {
   sh: number;
 }
 
-/** Maps the board's natural-image pixel box onto the stage's actual on-screen
- *  rect, accounting for how object-fit crops the image per viewport — keeps
- *  the light path glued to the billboard instead of drifting on percentages. */
 export function measureBoardRect(stageRect: { width: number; height: number }, objectFit: string): BoardRect | null {
   if (!stageRect.width || !stageRect.height) return null;
   const scale =
@@ -145,10 +142,6 @@ export function measureBoardRect(stageRect: { width: number; height: number }, o
   };
 }
 
-/** Color arrives on the board in the light band's wake: a soft mask edge
- *  driven by the band's own position, with its trailing edge parked fully
- *  outside the board at v=0 so nothing tints the billboard before the light
- *  gets there. */
 export function computeLifeMask(v: number, br: BoardRect | null): string {
   if (v >= 0.999 || !br) return "none";
   const dR = ((br.sw - (br.x + br.w)) / br.sw) * 100;
