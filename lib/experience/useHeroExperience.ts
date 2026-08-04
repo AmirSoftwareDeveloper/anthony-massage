@@ -3,7 +3,10 @@
 import * as React from "react";
 
 import {
+  type BoardRect,
   FRAME_COUNT,
+  LIGHT_IN,
+  LIGHT_OUT,
   PHASE_CAPTIONS,
   TIMELINE,
   WISP_COUNT,
@@ -11,10 +14,11 @@ import {
   clamp01,
   computeBloom,
   computeFrameStates,
-  computeLifeFilter,
+  computeLifeMask,
   computeSweep,
   computeWisp,
   easeInOut,
+  measureBoardRect,
 } from "./engine";
 
 type ImgRefs = React.MutableRefObject<(HTMLImageElement | null)[]>;
@@ -30,10 +34,10 @@ function applyFrameStates(refs: ImgRefs, progress: number) {
 
 export function useHeroExperience() {
   const heroRef = React.useRef<HTMLElement | null>(null);
+  const stageRef = React.useRef<HTMLDivElement | null>(null);
   const boardColorRef = React.useRef<HTMLDivElement | null>(null);
   const streetBloomRef = React.useRef<HTMLDivElement | null>(null);
   const spillRef = React.useRef<HTMLDivElement | null>(null);
-  const headPatchRef = React.useRef<HTMLImageElement | null>(null);
 
   const sweepRef = React.useRef<SVGSVGElement | null>(null);
   const sweepGlowRef = React.useRef<SVGPathElement | null>(null);
@@ -68,6 +72,7 @@ export function useHeroExperience() {
     lastScrollY: 0,
     capIdx: -1,
     rafId: 0,
+    BR: null as BoardRect | null,
   });
 
   const goToPhase = React.useCallback((k: number) => {
@@ -99,39 +104,86 @@ export function useHeroExperience() {
       s.vh = window.innerHeight;
       s.heroH = heroRef.current?.offsetHeight ?? s.vh;
     };
+
+    // glues the light-sweep and light-spill onto the billboard's true
+    // on-screen rectangle so the light path stays locked to the board
+    // instead of drifting as object-fit re-crops the image per viewport
+    const measureBoard = () => {
+      const stageEl = stageRef.current;
+      const anyFrame = gFrameRefs.current[0];
+      if (!stageEl || !anyFrame) {
+        s.BR = null;
+        return;
+      }
+      const rect = stageEl.getBoundingClientRect();
+      const fit = getComputedStyle(anyFrame).objectFit;
+      s.BR = measureBoardRect({ width: rect.width, height: rect.height }, fit);
+      if (s.BR && sweepRef.current) {
+        sweepRef.current.style.left = `${s.BR.x}px`;
+        sweepRef.current.style.top = `${s.BR.y}px`;
+        sweepRef.current.style.width = `${s.BR.w}px`;
+        sweepRef.current.style.height = `${s.BR.h}px`;
+      }
+      if (s.BR && spillRef.current) {
+        spillRef.current.style.left = `${s.BR.x - s.BR.w * 0.42}px`;
+        spillRef.current.style.top = `${s.BR.y + s.BR.h - s.BR.h * 0.02}px`;
+        spillRef.current.style.width = `${s.BR.w * 1.4}px`;
+        spillRef.current.style.height = `${Math.max(s.BR.sh - (s.BR.y + s.BR.h) + s.BR.h * 0.55, s.BR.h * 1.3)}px`;
+      }
+    };
+
     measure();
+    measureBoard();
     window.addEventListener("resize", measure);
-    const loadTimer = window.setTimeout(measure, 250);
+    window.addEventListener("resize", measureBoard);
+    window.addEventListener("orientationchange", measureBoard);
+    const firstFrame = gFrameRefs.current[0];
+    if (firstFrame && !firstFrame.complete) firstFrame.addEventListener("load", measureBoard);
+    const loadTimer = window.setTimeout(() => {
+      measure();
+      measureBoard();
+    }, 250);
+
+    const teardown = () => {
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("resize", measureBoard);
+      window.removeEventListener("orientationchange", measureBoard);
+      if (firstFrame) firstFrame.removeEventListener("load", measureBoard);
+      window.clearTimeout(loadTimer);
+    };
 
     if (prefersReduced) {
       applyFrameStates(gFrameRefs, 1);
       applyFrameStates(cFrameRefs, 1);
       applyFrameStates(sFrameRefs, 1);
-      if (boardColorRef.current) boardColorRef.current.style.filter = computeLifeFilter(1);
-      const bloom = computeBloom(1);
+      if (boardColorRef.current) {
+        boardColorRef.current.style.maskImage = "none";
+        boardColorRef.current.style.webkitMaskImage = "none";
+      }
+      const bloom = computeBloom(1, s.BR);
       if (streetBloomRef.current) {
         streetBloomRef.current.style.maskImage = bloom.maskImage;
         streetBloomRef.current.style.webkitMaskImage = bloom.maskImage;
       }
       if (spillRef.current) spillRef.current.style.opacity = "0";
       if (sweepRef.current) sweepRef.current.style.opacity = "0";
-      if (headPatchRef.current) headPatchRef.current.style.opacity = "1";
       if (waveFrontierRef.current) waveFrontierRef.current.style.display = "none";
       setHintVisible(true);
       setReplayVisible(false);
       setCaptionIndex(FRAME_COUNT - 1);
       setCaptionText(PHASE_CAPTIONS[FRAME_COUNT - 1]);
       sectionRefs.current.forEach((el) => el?.classList.add("lit"));
-      return () => {
-        window.removeEventListener("resize", measure);
-        window.clearTimeout(loadTimer);
-      };
+      return teardown;
     }
 
     applyFrameStates(gFrameRefs, 0);
     applyFrameStates(cFrameRefs, 0);
     applyFrameStates(sFrameRefs, 0);
-    if (boardColorRef.current) boardColorRef.current.style.filter = computeLifeFilter(0);
+    if (boardColorRef.current) {
+      const mask = computeLifeMask(0, s.BR);
+      boardColorRef.current.style.maskImage = mask;
+      boardColorRef.current.style.webkitMaskImage = mask;
+    }
 
     const loop = (now: number) => {
       if (s.t0 === null) s.t0 = now;
@@ -166,22 +218,25 @@ export function useHeroExperience() {
       sweepRib1Ref.current?.setAttribute("d", sweep.rib1);
       sweepRib2Ref.current?.setAttribute("d", sweep.rib2);
 
-      if (boardColorRef.current) boardColorRef.current.style.filter = computeLifeFilter(s.cur.life);
+      if (boardColorRef.current) {
+        // color arrives on the board in the light band's own wake, not on an
+        // independent clock — ties the reveal edge to where the light visibly is
+        const lifeV = clamp01((s.cur.sweep - LIGHT_IN) / (LIGHT_OUT - LIGHT_IN));
+        const mask = computeLifeMask(lifeV, s.BR);
+        boardColorRef.current.style.maskImage = mask;
+        boardColorRef.current.style.webkitMaskImage = mask;
+      }
 
       applyFrameStates(gFrameRefs, s.cur.unf);
       applyFrameStates(cFrameRefs, s.cur.unf);
       applyFrameStates(sFrameRefs, s.cur.unf);
 
-      const bloom = computeBloom(s.cur.bloom);
+      const bloom = computeBloom(s.cur.bloom, s.BR);
       if (streetBloomRef.current) {
         streetBloomRef.current.style.maskImage = bloom.maskImage;
         streetBloomRef.current.style.webkitMaskImage = bloom.maskImage;
       }
       if (spillRef.current) spillRef.current.style.opacity = String(bloom.spillOpacity);
-
-      if (headPatchRef.current) {
-        headPatchRef.current.style.opacity = String(clamp01((s.cur.unf - 0.82) / 0.18) * s.cur.life);
-      }
 
       const idx = captionIndexFor(s.cur.unf);
       if (idx !== s.capIdx) {
@@ -238,8 +293,7 @@ export function useHeroExperience() {
     s.rafId = requestAnimationFrame(loop);
 
     return () => {
-      window.removeEventListener("resize", measure);
-      window.clearTimeout(loadTimer);
+      teardown();
       cancelAnimationFrame(s.rafId);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -268,10 +322,10 @@ export function useHeroExperience() {
 
   return {
     heroRef,
+    stageRef,
     boardColorRef,
     streetBloomRef,
     spillRef,
-    headPatchRef,
     sweepRef,
     sweepGlowRef,
     sweepCoreRef,

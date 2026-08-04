@@ -14,11 +14,23 @@ export const TIMELINE = {
   lifeB: 4.6,
   unfA: 1.6,
   unfB: 4.6,
-  bloomA: 4.2,
-  bloomB: 5.8,
+  bloomA: 4.3,
+  bloomB: 6.1,
   frA: 5.4,
   frB: 8.8,
 } as const;
+
+// where the light band's own position (0-1 crossing the board) gates the
+// color reveal — color arrives in the band's wake, not on an independent clock
+export const LIGHT_IN = 0.23;
+export const LIGHT_OUT = 0.77;
+
+// the billboard's true pixel rectangle within the natural (unscaled) hero
+// image, used to glue the light path and color reveal to the board itself
+// regardless of how object-fit crops the image per viewport
+export const HERO_NATURAL_WIDTH = 1672;
+export const HERO_NATURAL_HEIGHT = 941;
+export const HERO_BOARD = { L: 321, R: 1286, T: 315, B: 638 } as const;
 
 export function clamp01(x: number): number {
   return x < 0 ? 0 : x > 1 ? 1 : x;
@@ -56,7 +68,14 @@ export function computeFrameStates(progress: number, count = FRAME_COUNT): Frame
   return states;
 }
 
-export function ribbonPath(centerX: number, halfW: number, phase: number, amp1: number, amp2: number, skew: number): string {
+export function ribbonPath(
+  centerX: number,
+  halfW: number,
+  phase: number,
+  amp1: number,
+  amp2: number,
+  skew: number
+): string {
   const pts = 26;
   const H = 300;
   const left: [number, number][] = [];
@@ -86,7 +105,7 @@ export interface SweepPaths {
 
 export function computeSweep(s: number, phase = 0): SweepPaths {
   const opacity = s <= 0 || s >= 1 ? 0 : 1;
-  const cx = 470 - s * 540;
+  const cx = 570 - s * 740;
   return {
     opacity,
     glow: ribbonPath(cx, 95, phase * 0.8, 16, 8, 40),
@@ -96,11 +115,47 @@ export function computeSweep(s: number, phase = 0): SweepPaths {
   };
 }
 
-export function computeLifeFilter(v: number): string {
-  const sat = 0.55 + 0.45 * v;
-  const bri = 0.9 + 0.16 * v;
-  const con = 1 + 0.05 * v;
-  return `saturate(${sat}) brightness(${bri}) contrast(${con})`;
+export interface BoardRect {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  sw: number;
+  sh: number;
+}
+
+/** Maps the board's natural-image pixel box onto the stage's actual on-screen
+ *  rect, accounting for how object-fit crops the image per viewport — keeps
+ *  the light path glued to the billboard instead of drifting on percentages. */
+export function measureBoardRect(stageRect: { width: number; height: number }, objectFit: string): BoardRect | null {
+  if (!stageRect.width || !stageRect.height) return null;
+  const scale =
+    objectFit === "contain"
+      ? Math.min(stageRect.width / HERO_NATURAL_WIDTH, stageRect.height / HERO_NATURAL_HEIGHT)
+      : Math.max(stageRect.width / HERO_NATURAL_WIDTH, stageRect.height / HERO_NATURAL_HEIGHT);
+  const ox = (stageRect.width - HERO_NATURAL_WIDTH * scale) / 2;
+  const oy = (stageRect.height - HERO_NATURAL_HEIGHT * scale) / 2;
+  return {
+    x: ox + HERO_BOARD.L * scale,
+    y: oy + HERO_BOARD.T * scale,
+    w: (HERO_BOARD.R - HERO_BOARD.L) * scale,
+    h: (HERO_BOARD.B - HERO_BOARD.T) * scale,
+    sw: stageRect.width,
+    sh: stageRect.height,
+  };
+}
+
+/** Color arrives on the board in the light band's wake: a soft mask edge
+ *  driven by the band's own position, with its trailing edge parked fully
+ *  outside the board at v=0 so nothing tints the billboard before the light
+ *  gets there. */
+export function computeLifeMask(v: number, br: BoardRect | null): string {
+  if (v >= 0.999 || !br) return "none";
+  const dR = ((br.sw - (br.x + br.w)) / br.sw) * 100;
+  const dL = ((br.sw - br.x) / br.sw) * 100;
+  const a = dR - 9 + v * (dL - dR + 17);
+  const b = a + 9;
+  return `linear-gradient(to left, #000 ${a}%, transparent ${b}%)`;
 }
 
 export interface BloomState {
@@ -108,14 +163,20 @@ export interface BloomState {
   spillOpacity: number;
 }
 
-export function computeBloom(b: number): BloomState {
+/** Color dumps off the board's lower-left corner and pools outward onto the
+ *  street, anchored to the measured board rect so the pool cannot drift. */
+export function computeBloom(b: number, br: BoardRect | null): BloomState {
   const e = clamp01(b);
-  const w = 24 + e * 74;
-  const h = 14 + e * 44;
-  const cx = 18 + e * 26;
+  const spillOpacity = Math.sin(Math.PI * e) * 0.92;
+  if (!br) return { maskImage: `radial-gradient(ellipse 0% 0% at 18% 100%, #000 62%, transparent 94%)`, spillOpacity };
+  if (e >= 0.999) return { maskImage: "none", spillOpacity };
+  const ox = br.x + br.w * 0.05;
+  const oy = br.y + br.h;
+  const rx = Math.max(e * br.w * 1.85, 1);
+  const ry = Math.max(e * br.h * 2.8, 1);
   return {
-    maskImage: `radial-gradient(ellipse ${w}% ${h}% at ${cx}% 100%, #000 62%, rgba(0,0,0,0.4) 82%, transparent 94%)`,
-    spillOpacity: Math.sin(Math.PI * e) * 0.85,
+    maskImage: `radial-gradient(ellipse ${rx}px ${ry}px at ${ox}px ${oy}px, #000 54%, rgba(0,0,0,0.40) 78%, transparent 96%)`,
+    spillOpacity,
   };
 }
 
@@ -139,7 +200,10 @@ export function groundRibbonPath(cx: number, cy: number, halfLen: number, thickn
     const x = cx - halfLen + (k / pts) * halfLen * 2;
     const wob = Math.sin(x * 0.02 + phase) * (thickness * 1.2) + Math.sin(x * 0.05 - phase * 1.4) * (thickness * 0.5);
     const y = cy + wob;
-    const widthVary = 0.55 + 0.45 * (0.5 + 0.5 * Math.sin(x * 0.013 + phase * 0.7 + cx * 0.01)) + 0.18 * Math.sin(x * 0.085 - phase * 2.1);
+    const widthVary =
+      0.55 +
+      0.45 * (0.5 + 0.5 * Math.sin(x * 0.013 + phase * 0.7 + cx * 0.01)) +
+      0.18 * Math.sin(x * 0.085 - phase * 2.1);
     const th = thickness * Math.max(0.3, widthVary);
     top.push([x, y - th / 2]);
     bot.push([x, y + th / 2]);

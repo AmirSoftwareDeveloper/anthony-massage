@@ -177,3 +177,22 @@ export const HOME_EXPERIENCE_HERO_FRAMES = [
   "/images/hero/billboard-3-rising.jpg",
   "/images/hero/billboard-4-open.jpg",
 ];
+
+// board-color layer: same frames with the billboard face isolated in color
+// and everything else pre-baked to grayscale, so revealing color can never
+// tint the scene outside the board
+export const HOME_EXPERIENCE_HERO_FRAMES_ISO = [
+  "/images/hero/billboard-1-compressed-iso.jpg",
+  "/images/hero/billboard-2-light-enters-iso.jpg",
+  "/images/hero/billboard-3-rising-iso.jpg",
+  "/images/hero/billboard-4-open-iso.jpg",
+];
+
+// street-bloom layer: full-color scene revealed where the light spills off
+// the board's lower-left corner onto the street
+export const HOME_EXPERIENCE_HERO_FRAMES_SPILL = [
+  "/images/hero/billboard-1-compressed-spill.jpg",
+  "/images/hero/billboard-2-light-enters-spill.jpg",
+  "/images/hero/billboard-3-rising-spill.jpg",
+  "/images/hero/billboard-4-open-spill.jpg",
+];
