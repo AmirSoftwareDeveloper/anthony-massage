@@ -7,7 +7,8 @@ import { HOME_EXPERIENCE_SECTIONS } from "@/constants/homeExperience";
 import { useReveal } from "@/lib/experience/useReveal";
 import type { HeroExperienceEngine } from "@/lib/experience/useHeroExperience";
 
-import Block from "./sections/Block";
+import ContentBlock from "@/components/content-block";
+
 import SpillCascade from "./sections/SpillCascade";
 
 const Sections = ({ engine }: { engine: HeroExperienceEngine }) => {
@@ -31,7 +32,7 @@ const Sections = ({ engine }: { engine: HeroExperienceEngine }) => {
             <p className="exp-eyebrow">{section.eyebrow}</p>
             <h2>{section.heading}</h2>
             {section.blocks.map((block, bi) => (
-              <Block
+              <ContentBlock
                 key={bi}
                 block={block}
               />

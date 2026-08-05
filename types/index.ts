@@ -18,6 +18,20 @@ export type OptionGroup = {
   options: Option[];
 };
 
+export type ContentBlock = {
+  type: "p" | "quiet" | "list";
+  text?: string;
+  items?: string[];
+};
+
+export type InteriorSectionContent = {
+  id: string;
+  eyebrow: string;
+  title: string;
+  lead?: boolean;
+  blocks: ContentBlock[];
+};
+
 export type Service = {
   title: string;
   slug: string;

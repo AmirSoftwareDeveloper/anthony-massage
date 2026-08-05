@@ -1,15 +1,11 @@
-export interface HomeExperienceBlock {
-  type: "p" | "quiet" | "list";
-  text?: string;
-  items?: string[];
-}
+import type { ContentBlock } from "@/types";
 
 export interface HomeExperienceSection {
   id: string;
   position: number;
   eyebrow: string;
   heading: string;
-  blocks: HomeExperienceBlock[];
+  blocks: ContentBlock[];
 }
 
 export const PHASE_DOT_LABELS = [

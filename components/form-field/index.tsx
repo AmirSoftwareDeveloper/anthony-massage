@@ -12,6 +12,7 @@ interface CustomFormFieldProps {
   children: React.ReactElement;
   required?: boolean;
   className?: string;
+  labelClassName?: string;
   messageClassName?: string;
   maxLength?: number;
   [key: string]: any;
@@ -23,6 +24,7 @@ const CustomFormField = ({
   required,
   children,
   className,
+  labelClassName,
   maxLength,
   messageClassName,
   ...rest
@@ -37,7 +39,7 @@ const CustomFormField = ({
       render={({ field }) => (
         <FormItem className={cn("relative", className)}>
           {label && (
-            <FormLabel>
+            <FormLabel className={labelClassName}>
               {label}
               {required && <span className="text-red-500">*</span>}
             </FormLabel>

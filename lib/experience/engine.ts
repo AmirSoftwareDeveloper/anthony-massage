@@ -81,6 +81,36 @@ export function computeFrameStates(progress: number, count = FRAME_COUNT): Frame
   return states;
 }
 
+/** Traces a smooth quadratic curve through every point (points[0] assumed
+ *  already the current path position via a preceding M/L) instead of
+ *  straight segments — at the low point counts these ribbons use, straight
+ *  `L` joins are visibly faceted; each point becomes a curve control instead
+ *  of a hard corner. */
+function smoothEdge(points: [number, number][]): string {
+  let d = "";
+  for (let i = 0; i < points.length - 2; i++) {
+    const [cx, cy] = points[i + 1];
+    const nx = (points[i + 1][0] + points[i + 2][0]) / 2;
+    const ny = (points[i + 1][1] + points[i + 2][1]) / 2;
+    d += ` Q ${cx.toFixed(2)} ${cy.toFixed(2)} ${nx.toFixed(2)} ${ny.toFixed(2)}`;
+  }
+  const secondLast = points[points.length - 2];
+  const last = points[points.length - 1];
+  d += ` Q ${secondLast[0].toFixed(2)} ${secondLast[1].toFixed(2)} ${last[0].toFixed(2)} ${last[1].toFixed(2)}`;
+  return d;
+}
+
+/** Closes a ribbon shape from its two smoothly-curved edges, joined by a
+ *  short straight cap at each end. */
+function smoothRibbonPath(edgeA: [number, number][], edgeB: [number, number][]): string {
+  const edgeBReversed = [...edgeB].reverse();
+  let d = `M ${edgeA[0][0].toFixed(2)} ${edgeA[0][1].toFixed(2)}`;
+  d += smoothEdge(edgeA);
+  d += ` L ${edgeBReversed[0][0].toFixed(2)} ${edgeBReversed[0][1].toFixed(2)}`;
+  d += smoothEdge(edgeBReversed);
+  return `${d} Z`;
+}
+
 export function ribbonPath(
   centerX: number,
   halfW: number,
@@ -102,10 +132,7 @@ export function ribbonPath(
     right.push([centerX + halfW + wob * 0.7 + lean, y]);
   }
 
-  let d = `M ${left[0][0].toFixed(1)} ${left[0][1]}`;
-  for (let a = 1; a < left.length; a++) d += ` L ${left[a][0].toFixed(1)} ${left[a][1]}`;
-  for (let b = right.length - 1; b >= 0; b--) d += ` L ${right[b][0].toFixed(1)} ${right[b][1]}`;
-  return `${d} Z`;
+  return smoothRibbonPath(left, right);
 }
 
 export interface SweepPaths {
@@ -219,10 +246,7 @@ export function groundRibbonPath(cx: number, cy: number, halfLen: number, thickn
     bot.push([x, y + th / 2]);
   }
 
-  let d = `M ${top[0][0].toFixed(1)} ${top[0][1].toFixed(1)}`;
-  for (let a = 1; a < top.length; a++) d += ` L ${top[a][0].toFixed(1)} ${top[a][1].toFixed(1)}`;
-  for (let b = bot.length - 1; b >= 0; b--) d += ` L ${bot[b][0].toFixed(1)} ${bot[b][1].toFixed(1)}`;
-  return `${d} Z`;
+  return smoothRibbonPath(top, bot);
 }
 
 export const WISP_COUNT = 7;

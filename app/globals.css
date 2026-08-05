@@ -22,6 +22,14 @@
   --color-exp-glow: #f6d78e;
   --color-exp-dusk: #14110b;
 
+  /* interior pages' dark reading panel — lifted off pure black to
+     reduce halation behind the light serif text */
+  --color-exp-panel: #16120b;
+  --color-exp-cream: #f2e6c9;
+  --color-exp-tan: #d8cfb4;
+  --color-exp-body: #e4dbc2;
+  --color-exp-muted: #9d947c;
+
   --ease-exp-release: cubic-bezier(0.22, 1, 0.36, 1);
 
   --text-2xs: 0.7rem;
@@ -1010,6 +1018,164 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   @media (prefers-reduced-motion: reduce) {
     .exp-page-hero-caption-line {
       animation: none;
+    }
+  }
+
+  /* interior hero titles read bigger and lighter than Home's narration
+     caption — PageHero is interior-only, so this scopes safely */
+  .exp-page-hero .exp-phase-caption {
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3.4vw, 2.3rem);
+    letter-spacing: 0.02em;
+  }
+}
+
+/* ============================================================
+   INTERIOR PAGE CONTENT — About, Services, Contact.
+   Ported verbatim (colors, spacing) from the interior-page
+   prototype's "dark reading panel" pass: each chapter reads as
+   a near-black band throughout (dusk-adjacent, lifted off pure
+   black to reduce halation on the light serif text) — not the
+   light parchment tone Home settles into. Only the schedule/
+   contact-form embed stays on the light card, matching how the
+   prototype keeps its own scheduling embed light against the
+   dark page. Eyebrows are dropped on interior chapters and the
+   hero — at this size, dark-gold-on-dark-panel was unreadable,
+   and the italic title already names the section; the footer
+   keeps its eyebrow since it introduces the closing CTA.
+   ============================================================ */
+@layer components {
+  .exp-divider-band {
+    display: flex;
+    align-items: center;
+    min-height: 5.6rem;
+    padding: 1rem 2rem 0.9rem;
+    background-color: var(--color-exp-dusk);
+  }
+  .exp-divider-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .exp-divider-band .exp-eyebrow {
+    display: none;
+  }
+  .exp-divider-title {
+    margin: 0;
+    max-width: 15em;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(1.5rem, 3vw, 2.15rem);
+    line-height: 1.15;
+    color: var(--color-exp-glow);
+  }
+  @media (max-width: 430px) {
+    .exp-divider-band {
+      min-height: 7.8rem;
+    }
+  }
+
+  .exp-interior-body {
+    background-color: var(--color-exp-panel);
+    padding: 3rem 2rem 4.5rem;
+  }
+  .exp-interior-inner {
+    max-width: 660px;
+    margin: 0 auto;
+  }
+  .exp-interior-inner p,
+  .exp-interior-inner ul {
+    color: var(--color-exp-body);
+  }
+  .exp-interior-inner p {
+    max-width: 34rem;
+    margin-bottom: 1.3rem;
+    font-weight: 350;
+    font-size: 1.14rem;
+    line-height: 1.9;
+    letter-spacing: 0.006em;
+  }
+  .exp-interior-inner p:last-of-type {
+    margin-bottom: 0;
+  }
+  .exp-interior-inner h2 {
+    color: var(--color-exp-cream);
+  }
+  .exp-interior-inner .exp-quiet {
+    color: var(--color-exp-glow) !important;
+  }
+  .exp-interior-inner .exp-condition-list li {
+    border-bottom-color: rgba(214, 199, 150, 0.14);
+  }
+  .exp-interior-inner strong {
+    color: var(--color-exp-cream);
+  }
+
+  /* the lead chapter sits directly under the hero, no divider band */
+  .exp-interior-lead .exp-interior-body {
+    padding-top: 4.2rem;
+  }
+  .exp-interior-lead .exp-eyebrow {
+    display: none;
+  }
+  .exp-lead-title {
+    margin: 0.5rem 0 1.4rem;
+    max-width: 15em;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+    line-height: 1.28;
+    color: var(--color-exp-glow);
+  }
+
+  /* a thin chapter rule between the divider band and its body copy */
+  .exp-interior-chapter .exp-interior-inner::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 1px;
+    margin: 0 auto 3.2rem;
+    background: rgba(214, 199, 150, 0.14);
+  }
+
+  /* footer / CTA blocks that sit on the interior dark panel */
+  .exp-interior-tone {
+    background-color: var(--color-exp-panel);
+    color: var(--color-exp-tan);
+  }
+  .exp-interior-tone h2 {
+    color: var(--color-exp-cream);
+  }
+  .exp-interior-tone .exp-btn {
+    background: var(--color-exp-glow) !important;
+    color: var(--color-exp-dusk) !important;
+  }
+
+  /* the hero's phase label ("Rising", "Arrived"...) narrates Home's
+     crossfade; interior heroes are static, so the label is dropped */
+  .exp-page-hero .exp-phase-strip .exp-eyebrow {
+    display: none;
+  }
+
+  /* a light parchment card — same chrome the prototype used for its
+     scheduling embed, kept light against the dark page on purpose —
+     reused here to house the live contact form */
+  .exp-form-card {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(51, 39, 17, 0.14);
+    box-shadow: 0 8px 28px rgba(28, 22, 11, 0.1);
+    background: #e9dcb8;
+    padding: clamp(1.6rem, 4vw, 2.6rem);
+  }
+  @media (max-width: 760px) {
+    .exp-interior-body {
+      padding: 2.4rem 1.4rem 3.5rem;
+    }
+    .exp-interior-lead .exp-interior-body {
+      padding-top: 3.2rem;
     }
   }
 }

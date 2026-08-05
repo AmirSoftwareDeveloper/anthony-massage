@@ -18,6 +18,10 @@ import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
+const fieldClassName =
+  "h-12 rounded-md border-[rgba(51,39,17,0.18)] bg-[#fdf8ec] text-[#241c0d] placeholder:text-[#8a7a5c] focus-visible:ring-(--color-exp-gold) focus-visible:ring-offset-0";
+const labelClassName = "text-2xs font-medium tracking-[0.14em] text-[#4a3a1c] uppercase";
+
 const ContactForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -61,24 +65,30 @@ const ContactForm = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col w-full"
       >
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-5">
           <CustomFormField
             name="name"
             label="Full Name"
             required
             className="col-span-2"
+            labelClassName={labelClassName}
           >
-            <Input placeholder="Full Name" />
+            <Input
+              placeholder="Full Name"
+              className={fieldClassName}
+            />
           </CustomFormField>
 
           <CustomFormField
             name="phoneNumber"
             label="Phone Number"
             required
+            labelClassName={labelClassName}
           >
             <Input
               placeholder="Phone Number"
               onChange={handlePhoneChange}
+              className={fieldClassName}
             />
           </CustomFormField>
 
@@ -86,8 +96,12 @@ const ContactForm = () => {
             name="email"
             label="Email Address"
             required
+            labelClassName={labelClassName}
           >
-            <Input placeholder="Email Address" />
+            <Input
+              placeholder="Email Address"
+              className={fieldClassName}
+            />
           </CustomFormField>
 
           <CustomFormField
@@ -95,24 +109,33 @@ const ContactForm = () => {
             label="Subject"
             required
             className="col-span-2"
+            labelClassName={labelClassName}
           >
-            <Input placeholder="Subject" />
+            <Input
+              placeholder="Subject"
+              className={fieldClassName}
+            />
           </CustomFormField>
 
           <CustomFormField
             name="message"
             label="Message"
             className="col-span-2"
+            labelClassName={labelClassName}
           >
-            <Textarea placeholder="Describe your inquiry" />
+            <Textarea
+              placeholder="Describe your inquiry"
+              className={`${fieldClassName} min-h-32 h-auto py-3`}
+            />
           </CustomFormField>
 
           <Button
             type="submit"
             disabled={isLoading}
-            className="col-span-2"
+            variant="experience"
+            className="col-span-2 mt-2 justify-self-start"
           >
-            {isLoading ? "Sending..." : "Get Started"}
+            {isLoading ? "Sending..." : "Send Message"}
           </Button>
         </div>
       </form>
