@@ -18,6 +18,7 @@ const buttonVariants = cva(
         neutral: "bg-white text-primary-dark hover:text-white",
         experience: "exp-btn rounded-full font-medium",
         "experience-outline": "exp-btn-outline rounded-full font-medium",
+        "experience-outline-neutral": "exp-btn-outline-neutral rounded-full font-medium",
       },
       size: {
         default: "px-6 sm:px-7 lg:px-8 py-3 sm:py-3.5 lg:py-4 text-xs sm:text-sm",

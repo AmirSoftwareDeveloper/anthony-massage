@@ -38,24 +38,26 @@ const Nav = () => {
       ref={navRef as React.RefObject<HTMLElement>}
       className="exp-nav"
     >
-      <Logo />
+      <div className="container exp-nav-inner">
+        <Logo />
 
-      <div className="exp-nav-links">
-        {navLinks.map((item) => (
-          <Link
-            key={item.id}
-            href={item.href}
-            className={cn(pathname === item.href && "exp-current")}
-          >
-            {item.title}
-          </Link>
-        ))}
+        <div className="exp-nav-links">
+          {navLinks.map((item) => (
+            <Link
+              key={item.id}
+              href={item.href}
+              className={cn(pathname === item.href && "exp-current")}
+            >
+              {item.title}
+            </Link>
+          ))}
+        </div>
+
+        <MobileNavSheet
+          open={open}
+          onOpenChange={setOpen}
+        />
       </div>
-
-      <MobileNavSheet
-        open={open}
-        onOpenChange={setOpen}
-      />
     </nav>
   );
 };

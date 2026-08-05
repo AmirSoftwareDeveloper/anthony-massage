@@ -2,12 +2,10 @@ import Link from "next/link";
 
 import { cn } from "@/utils";
 
-import { PHASE_DOT_LABELS } from "@/constants/homeExperience";
-import { Routes } from "@/constants/routes";
-
 import type { HeroExperienceEngine } from "@/lib/experience/useHeroExperience";
 
-import { Button } from "@/components/ui/button";
+import { PHASE_DOT_LABELS } from "@/constants/homeExperience";
+import { Routes } from "@/constants/routes";
 
 const PhaseStrip = ({ engine }: { engine: HeroExperienceEngine }) => {
   return (
@@ -20,7 +18,7 @@ const PhaseStrip = ({ engine }: { engine: HeroExperienceEngine }) => {
         {engine.captionText}
       </p>
 
-      <div className="exp-hero-cta-row">
+      {/* <div className="exp-hero-cta-row">
         <Link href={Routes.CONTACT}>
           <Button
             variant="experience"
@@ -37,7 +35,7 @@ const PhaseStrip = ({ engine }: { engine: HeroExperienceEngine }) => {
             Explore Services
           </Button>
         </Link>
-      </div>
+      </div> */}
 
       <div className="exp-phase-row">
         <div
@@ -66,10 +64,13 @@ const PhaseStrip = ({ engine }: { engine: HeroExperienceEngine }) => {
         </button>
       </div>
 
-      <div className={cn("exp-scroll-hint", engine.hintVisible && "exp-show")}>
-        <span>The light follows you down</span>
+      <Link
+        href={Routes.SERVICES}
+        className={cn("exp-scroll-hint", engine.hintVisible && "exp-show")}
+      >
+        <span> Explore Services</span>
         <div className="exp-scroll-line" />
-      </div>
+      </Link>
     </div>
   );
 };

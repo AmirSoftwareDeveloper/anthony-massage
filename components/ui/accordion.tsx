@@ -129,7 +129,7 @@ const AccordionContent = React.forwardRef<HTMLParagraphElement, React.ComponentP
   ({ className, children, ...props }, ref) => (
     <p
       ref={ref}
-      className={cn("pb-4 pt-0 text-sm transition-all duration-300 ease-in-out", className)}
+      className={cn("pb-4 pt-0 text-base transition-all duration-300 ease-in-out", className)}
       {...props}
     >
       {children}
