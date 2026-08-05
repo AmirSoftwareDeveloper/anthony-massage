@@ -1,8 +1,13 @@
+import Link from "next/link";
+
 import { cn } from "@/utils";
 
 import { PHASE_DOT_LABELS } from "@/constants/homeExperience";
+import { Routes } from "@/constants/routes";
 
 import type { HeroExperienceEngine } from "@/lib/experience/useHeroExperience";
+
+import { Button } from "@/components/ui/button";
 
 const PhaseStrip = ({ engine }: { engine: HeroExperienceEngine }) => {
   return (
@@ -14,6 +19,25 @@ const PhaseStrip = ({ engine }: { engine: HeroExperienceEngine }) => {
       >
         {engine.captionText}
       </p>
+
+      <div className="exp-hero-cta-row">
+        <Link href={Routes.CONTACT}>
+          <Button
+            variant="experience"
+            size="experience"
+          >
+            Book Your First Session
+          </Button>
+        </Link>
+        <Link href={Routes.SERVICES}>
+          <Button
+            variant="experience-outline"
+            size="experience"
+          >
+            Explore Services
+          </Button>
+        </Link>
+      </div>
 
       <div className="exp-phase-row">
         <div

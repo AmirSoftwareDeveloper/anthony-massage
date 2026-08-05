@@ -22,7 +22,7 @@ export function useWaveFrontier() {
       return;
     }
 
-    const state = { scrollGlow: 0, lastScrollY: window.scrollY || 0, rafId: 0 };
+    const state = { scrollGlow: 0, lastScrollY: window.scrollY || 0, rafId: 0, frame: 0 };
 
     const loop = (now: number) => {
       const scrollY = window.scrollY || 0;
@@ -45,12 +45,19 @@ export function useWaveFrontier() {
         waveFrontierRef.current.style.opacity = String(Math.max(state.scrollGlow, flare * 0.9, restingOpacity));
       }
 
+      // recomputing a wisp's path forces the blur filter to re-rasterize it,
+      // which is the expensive part — during a fast scroll (already competing
+      // for main-thread time) that can fall behind and freeze the shapes into
+      // a smeared-looking band. Geometry updates every other frame; opacity
+      // stays smooth every frame since it's cheap.
+      const updateGeometry = state.frame % 2 === 0;
+      state.frame++;
       const wispPhase = now * 0.0016 * 1.4;
       for (let w = 0; w < WISP_COUNT; w++) {
         const el = wispRefs.current[w];
         if (!el) continue;
         const wisp = computeWisp(w, wispPhase, flare);
-        el.setAttribute("d", wisp.d);
+        if (updateGeometry) el.setAttribute("d", wisp.d);
         el.style.opacity = String(wisp.opacity);
       }
 

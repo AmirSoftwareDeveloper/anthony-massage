@@ -73,6 +73,7 @@ export function useHeroExperience() {
     capIdx: -1,
     rafId: 0,
     BR: null as BoardRect | null,
+    wispFrame: 0,
   });
 
   const goToPhase = React.useCallback((k: number) => {
@@ -273,12 +274,18 @@ export function useHeroExperience() {
         waveFrontierRef.current.style.opacity = String(Math.max(s.scrollGlow, flare * 0.9, restingOpacity));
       }
 
+      // geometry updates every other frame — recomputing a wisp's path forces
+      // the blur filter to re-rasterize it, which is the expensive part, and
+      // during a fast scroll that can fall behind and freeze the shapes into
+      // a smeared-looking band. Opacity stays smooth every frame since it's cheap.
+      const updateWispGeometry = s.wispFrame % 2 === 0;
+      s.wispFrame++;
       const wispPhase = now * 0.0016 * 1.4;
       for (let w = 0; w < WISP_COUNT; w++) {
         const el = wispRefs.current[w];
         if (!el) continue;
         const wisp = computeWisp(w, wispPhase, flare);
-        el.setAttribute("d", wisp.d);
+        if (updateWispGeometry) el.setAttribute("d", wisp.d);
         el.style.opacity = String(wisp.opacity);
       }
 

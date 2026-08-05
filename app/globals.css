@@ -82,8 +82,18 @@
   scrollbar-width: none;
 }
 
+/* The gap that briefly opens between one section and the next while
+   scrolling reveals `body` underneath (sections are opaque, but the
+   reveal transition isn't instant). Painting this explicitly, rather
+   than depending on it falling back to browser-default white, means
+   that gap always reads as the same warm light every section itself
+   is lit by — on Home and on every interior page alike. */
+html {
+  background: var(--color-exp-dusk);
+}
 body {
   position: relative;
+  background: var(--color-exp-paper);
   font-family: var(--font-sans);
 }
 
@@ -551,6 +561,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     transition: opacity 0.32s ease;
     text-shadow: 0 1px 14px rgba(0, 0, 0, 0.6);
   }
+  .exp-hero-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.9rem;
+    margin-top: 0.2rem;
+  }
+  .exp-hero-cta-row .exp-btn,
+  .exp-hero-cta-row .exp-btn-outline {
+    font-size: 0.88rem;
+  }
   .exp-phase-row {
     display: flex;
     align-items: center;
@@ -671,9 +692,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     opacity: 1;
   }
 
+  /* Positions 1-10 share one constant text palette (only the background
+     warms, step to step) across a smooth 10-stop interpolation from
+     #242018 to #766f57 — the same range positions 1-8 covered before,
+     just spread over two more stops now that two sections were added
+     in the middle. Position 11 (footer) keeps the original, separately-
+     tuned "arrival" jump into full light — unchanged from before. */
   .exp-pos-1 {
     --s-pre: #242018;
-    --s-post: #312b21;
+    --s-post: #2c281e;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -684,8 +711,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-2 {
-    --s-pre: #312b21;
-    --s-post: #352d23;
+    --s-pre: #2c281e;
+    --s-post: #343025;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -696,8 +723,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-3 {
-    --s-pre: #352d23;
-    --s-post: #383026;
+    --s-pre: #343025;
+    --s-post: #3d382b;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -708,8 +735,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-4 {
-    --s-pre: #383026;
-    --s-post: #3c3228;
+    --s-pre: #3d382b;
+    --s-post: #454031;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -720,8 +747,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-5 {
-    --s-pre: #3c3228;
-    --s-post: #4a3e31;
+    --s-pre: #454031;
+    --s-post: #4d4838;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -732,8 +759,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-6 {
-    --s-pre: #4a3e31;
-    --s-post: #504737;
+    --s-pre: #4d4838;
+    --s-post: #554f3e;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -744,8 +771,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-7 {
-    --s-pre: #504737;
-    --s-post: #57503d;
+    --s-pre: #554f3e;
+    --s-post: #5d5744;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -756,8 +783,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-8 {
-    --s-pre: #57503d;
-    --s-post: #68614a;
+    --s-pre: #5d5744;
+    --s-post: #665f4a;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -768,6 +795,30 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-9 {
+    --s-pre: #665f4a;
+    --s-post: #6e6751;
+    --s-heading: #efd9a0;
+    --s-body: #e8dec4;
+    --s-eyebrow: #e3c98c;
+    --s-rule: rgba(227, 201, 140, 0.4);
+    --s-heading-lit: #efd9a0;
+    --s-body-lit: #e8dec4;
+    --s-eyebrow-lit: #e3c98c;
+    --s-rule-lit: rgba(227, 201, 140, 0.4);
+  }
+  .exp-pos-10 {
+    --s-pre: #6e6751;
+    --s-post: #766f57;
+    --s-heading: #efd9a0;
+    --s-body: #e8dec4;
+    --s-eyebrow: #e3c98c;
+    --s-rule: rgba(227, 201, 140, 0.4);
+    --s-heading-lit: #efd9a0;
+    --s-body-lit: #e8dec4;
+    --s-eyebrow-lit: #e3c98c;
+    --s-rule-lit: rgba(227, 201, 140, 0.4);
+  }
+  .exp-pos-11 {
     --s-pre: #766f57;
     --s-post: #e2d2ab;
     --s-heading: #fffcf3;
@@ -883,6 +934,305 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
   }
 
+  /* ---------- structured content: category grid ("What I Help With") ---------- */
+  .exp-category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.4rem 2.2rem;
+    margin-top: 0.6rem;
+  }
+  .exp-category-card h3 {
+    margin-bottom: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.28rem;
+    color: var(--s-heading, var(--color-exp-olive-deep));
+    transition: color 2.2s var(--ease-exp-release);
+  }
+  .exp-section.lit .exp-category-card h3 {
+    color: var(--s-heading-lit, var(--s-heading));
+  }
+  .exp-category-card p {
+    margin-bottom: 0;
+    font-size: 0.96rem;
+    line-height: 1.7;
+    opacity: 0.88;
+  }
+  @media (max-width: 560px) {
+    .exp-category-grid {
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+    }
+  }
+
+  /* ---------- structured content: numbered steps ("How Sessions Work") ---------- */
+  .exp-step-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    margin-top: 0.6rem;
+  }
+  .exp-step {
+    display: flex;
+    gap: 1.4rem;
+    align-items: baseline;
+  }
+  .exp-step-num {
+    flex: 0 0 auto;
+    width: 2.6rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--s-heading, var(--color-exp-olive-deep));
+    opacity: 0.55;
+    transition: color 2.2s var(--ease-exp-release);
+  }
+  .exp-section.lit .exp-step-num {
+    color: var(--s-heading-lit, var(--s-heading));
+  }
+  .exp-step-body h3 {
+    margin-bottom: 0.4rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--s-heading, var(--color-exp-olive-deep));
+    transition: color 2.2s var(--ease-exp-release);
+  }
+  .exp-section.lit .exp-step-body h3 {
+    color: var(--s-heading-lit, var(--s-heading));
+  }
+  .exp-step-body p {
+    margin-bottom: 0;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    opacity: 0.88;
+  }
+
+  /* ---------- structured content: inline text CTA within a section ---------- */
+  .exp-inline-cta {
+    margin-top: 1.8rem;
+  }
+
+  /* a small, unstyled aside for disclaimers ("sample pricing") — distinct
+     from .exp-quiet, which is a poetic emphasis line, not a footnote */
+  .exp-note {
+    margin-top: 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-style: normal;
+    opacity: 0.62;
+  }
+
+  /* ---------- structured content: framed image ---------- */
+  .exp-media-frame {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+    margin-top: 0.9rem;
+    box-shadow: 0 8px 28px rgba(28, 22, 11, 0.14);
+  }
+
+  /* ---------- structured content: service grid ("Our Services") ---------- */
+  .exp-service-block {
+    margin-top: 0.6rem;
+  }
+  .exp-service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+    margin-top: 1rem;
+  }
+  .exp-service-card {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    border: 1px solid var(--s-rule, rgba(77, 90, 58, 0.14));
+    font-size: 0.96rem;
+    font-weight: 500;
+    transition: border-color 2.2s var(--ease-exp-release);
+  }
+  .exp-section.lit .exp-service-card {
+    border-color: var(--s-rule-lit, var(--s-rule));
+  }
+  .exp-service-icon {
+    flex: 0 0 auto;
+    width: 1.15rem;
+    height: 1.15rem;
+    color: var(--s-heading, var(--color-exp-olive));
+    transition: color 2.2s var(--ease-exp-release);
+  }
+  .exp-section.lit .exp-service-icon {
+    color: var(--s-heading-lit, var(--s-heading));
+  }
+  @media (max-width: 560px) {
+    .exp-service-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---------- structured content: pricing list ("Pricing Plans") ---------- */
+  .exp-pricing-block {
+    margin-top: 0.6rem;
+  }
+  .exp-pricing-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    list-style: none;
+  }
+  .exp-pricing-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--s-rule, rgba(77, 90, 58, 0.14));
+    transition: border-color 2.2s var(--ease-exp-release);
+  }
+  .exp-section.lit .exp-pricing-row {
+    border-bottom-color: var(--s-rule-lit, var(--s-rule));
+  }
+  .exp-pricing-label {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-size: 0.98rem;
+    font-weight: 500;
+  }
+  .exp-pricing-price {
+    flex: 0 0 auto;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--s-heading, var(--color-exp-olive-deep));
+    transition: color 2.2s var(--ease-exp-release);
+  }
+  .exp-section.lit .exp-pricing-price {
+    color: var(--s-heading-lit, var(--s-heading));
+  }
+
+  /* ---------- structured content: feature grid ("Welcome") ---------- */
+  .exp-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.4rem 2.2rem;
+    margin-top: 1.6rem;
+  }
+  .exp-feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+  .exp-feature-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    color: var(--s-heading, var(--color-exp-olive));
+    transition: color 2.2s var(--ease-exp-release);
+  }
+  .exp-section.lit .exp-feature-icon {
+    color: var(--s-heading-lit, var(--s-heading));
+  }
+  .exp-feature-card h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--s-heading, var(--color-exp-olive-deep));
+    transition: color 2.2s var(--ease-exp-release);
+  }
+  .exp-section.lit .exp-feature-card h3 {
+    color: var(--s-heading-lit, var(--s-heading));
+  }
+  .exp-feature-card p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    opacity: 0.88;
+  }
+  .exp-feature-card .exp-btn,
+  .exp-feature-card .exp-btn-outline {
+    margin-top: 0.2rem;
+  }
+  @media (max-width: 760px) {
+    .exp-feature-grid {
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+    }
+  }
+
+  /* ---------- split layout: eyebrow/heading beside content ("FAQ") ---------- */
+  .exp-section-inner--split {
+    max-width: 1040px;
+    display: grid;
+    grid-template-columns: minmax(220px, 320px) 1fr;
+    gap: 2rem 3rem;
+    align-items: start;
+  }
+  /* the inter-section divider is a ::before pseudo-element, which becomes a
+     real grid item (and steals the first cell) once the parent turns into a
+     grid container here — drop it for the split layout only. Selector
+     mirrors .exp-section + .exp-section .exp-section-inner::before so its
+     specificity actually wins. */
+  .exp-section + .exp-section .exp-section-inner--split::before {
+    content: none;
+  }
+  .exp-split-head {
+    position: sticky;
+    top: 8rem;
+  }
+  .exp-split-body {
+    min-width: 0;
+  }
+  @media (max-width: 860px) {
+    .exp-section-inner--split {
+      grid-template-columns: 1fr;
+    }
+    .exp-split-head {
+      position: static;
+    }
+  }
+
+  /* ---------- structured content: FAQ accordion ---------- */
+  .exp-faq {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 0.6rem;
+  }
+  .exp-faq-item {
+    border: 1px solid var(--s-rule, rgba(77, 90, 58, 0.14));
+    border-radius: 12px;
+    padding: 0.2rem 1.2rem;
+    transition: border-color 2.2s var(--ease-exp-release);
+  }
+  .exp-section.lit .exp-faq-item {
+    border-color: var(--s-rule-lit, var(--s-rule));
+  }
+  .exp-faq-trigger {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--s-heading, var(--color-exp-olive-deep));
+    transition: color 2.2s var(--ease-exp-release);
+  }
+  .exp-section.lit .exp-faq-trigger {
+    color: var(--s-heading-lit, var(--s-heading));
+  }
+  .exp-faq-content {
+    font-size: 0.96rem;
+    line-height: 1.75;
+    opacity: 0.88;
+  }
+
   /* ---------- the "experience" CTA button, driven by the same position spine ---------- */
   .exp-btn {
     background: var(--s-heading, var(--color-exp-olive));
@@ -899,6 +1249,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .exp-btn:hover {
     transform: translateY(-2px);
     opacity: 0.88;
+  }
+
+  /* a quieter companion CTA — translucent gold outline, same family as
+     the hero's own .exp-replay chip — for a secondary action beside .exp-btn */
+  .exp-btn-outline {
+    background: transparent;
+    border: 1px solid rgba(246, 215, 142, 0.4);
+    color: var(--color-exp-glow);
+    transition:
+      transform 0.3s var(--ease-exp-release),
+      background-color 0.3s var(--ease-exp-release),
+      border-color 0.3s var(--ease-exp-release);
+  }
+  .exp-btn-outline:hover {
+    transform: translateY(-2px);
+    background: rgba(246, 215, 142, 0.1);
+    border-color: var(--color-exp-glow);
   }
 
   /* ---------- responsive ---------- */

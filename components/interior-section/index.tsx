@@ -6,6 +6,8 @@ import { cn } from "@/utils";
 
 import { useReveal } from "@/lib/experience/useReveal";
 
+import Title from "@/components/title";
+
 type InteriorSectionProps = {
   id?: string;
   eyebrow: string;
@@ -27,8 +29,12 @@ const InteriorSection = ({ id, eyebrow, title, lead, className, children }: Inte
       >
         <div className="exp-interior-body">
           <div className={cn("exp-interior-inner", className)}>
-            <p className="exp-eyebrow">{eyebrow}</p>
-            <h2 className="exp-lead-title">{title}</h2>
+            <Title
+              variant="exp"
+              subTitle={eyebrow}
+              title={title}
+              titleClassName="exp-lead-title"
+            />
             {children}
           </div>
         </div>
@@ -44,8 +50,12 @@ const InteriorSection = ({ id, eyebrow, title, lead, className, children }: Inte
     >
       <div className="exp-divider-band">
         <div className="exp-divider-inner">
-          <p className="exp-eyebrow">{eyebrow}</p>
-          <h2 className="exp-divider-title">{title}</h2>
+          <Title
+            variant="exp"
+            subTitle={eyebrow}
+            title={title}
+            titleClassName="exp-divider-title"
+          />
         </div>
       </div>
 

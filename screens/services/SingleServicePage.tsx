@@ -10,7 +10,7 @@ const SingleServicePage = ({ service }: { service: Service }) => {
         srTitle={`${service.title} | Anthony Massage Works`}
         eyebrow={service.title}
         caption={service.description || "Focused care, one condition at a time."}
-        variant="rising"
+        variant="session"
       />
 
       <ComingSoon />

@@ -6,6 +6,8 @@ import { PAGE_HERO_VARIANTS, type PageHeroVariant } from "@/constants/pageHero";
 
 import { usePageHeroExperience } from "@/lib/experience/usePageHeroExperience";
 
+import Title from "@/components/title";
+
 const HERO_FRAME_WIDTH = 1672;
 const HERO_FRAME_HEIGHT = 941;
 
@@ -88,7 +90,10 @@ const PageHero = ({ srTitle, eyebrow, caption, variant = "arrived", className }:
       </div>
 
       <div className="exp-phase-strip">
-        <p className="exp-eyebrow">{eyebrow}</p>
+        <Title
+          variant="exp"
+          subTitle={eyebrow}
+        />
         <p className="exp-phase-caption exp-page-hero-caption-line">{caption}</p>
       </div>
     </header>

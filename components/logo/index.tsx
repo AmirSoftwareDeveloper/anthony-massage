@@ -7,31 +7,22 @@ import { Routes } from "@/constants/routes";
 
 interface LogoProps {
   className?: string;
-  variant?: "light" | "dark";
 }
 
-const Logo = ({ className, variant = "dark" }: LogoProps) => {
-  const isLight = variant === "light";
-  const src = variant === "light" ? "/logo-white.png" : "/logo.png";
+const Logo = ({ className }: LogoProps) => {
+  const words = INFO.BUSINESS_NAME.split(" ");
+  const lastWord = words.pop();
+  const leadWords = words.join(" ");
 
   return (
     <Link
       href={Routes.HOME}
       aria-label={`${INFO.BUSINESS_NAME} home`}
-      className={cn("flex w-fit items-center", className)}
+      className={cn("exp-nav-name", className)}
     >
-      {/* <Image
-        src={src}
-        alt={INFO.BUSINESS_NAME}
-        width={120}
-        height={40}
-        priority
-        className="h-auto w-auto"
-      /> */}
-
-      <span className={cn("text-xl font-bold tracking-tight transition-colors", isLight ? "text-white" : "text-black")}>
-        {INFO.BUSINESS_NAME}
-      </span>
+      {leadWords}
+      <br />
+      <span>{lastWord}</span>
     </Link>
   );
 };

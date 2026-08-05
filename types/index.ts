@@ -18,10 +18,56 @@ export type OptionGroup = {
   options: Option[];
 };
 
+export type ContentBlockEntry = {
+  title: string;
+  text: string;
+};
+
+export type ServiceEntry = {
+  icon: string;
+  title: string;
+  price?: string;
+};
+
+export type FAQEntry = {
+  question: string;
+  answer: string;
+};
+
+export type FeatureEntry = {
+  icon: string;
+  title: string;
+  text: string;
+  ctaText?: string;
+  ctaHref?: string;
+};
+
 export type ContentBlock = {
-  type: "p" | "quiet" | "list";
+  type:
+    | "p"
+    | "quiet"
+    | "list"
+    | "categories"
+    | "steps"
+    | "cta"
+    | "image"
+    | "service-grid"
+    | "pricing-list"
+    | "faq"
+    | "features";
   text?: string;
   items?: string[];
+  entries?: ContentBlockEntry[];
+  href?: string;
+  src?: string;
+  alt?: string;
+  ratio?: string;
+  note?: string;
+  services?: ServiceEntry[];
+  faqs?: FAQEntry[];
+  features?: FeatureEntry[];
+  ctaText?: string;
+  ctaHref?: string;
 };
 
 export type InteriorSectionContent = {

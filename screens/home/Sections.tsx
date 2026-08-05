@@ -1,13 +1,12 @@
 "use client";
 
-import { cn } from "@/utils";
-
 import { HOME_EXPERIENCE_SECTIONS } from "@/constants/homeExperience";
 
 import { useReveal } from "@/lib/experience/useReveal";
 import type { HeroExperienceEngine } from "@/lib/experience/useHeroExperience";
 
 import ContentBlock from "@/components/content-block";
+import HomeSection from "@/components/home-section";
 
 import SpillCascade from "./sections/SpillCascade";
 
@@ -17,28 +16,26 @@ const Sections = ({ engine }: { engine: HeroExperienceEngine }) => {
   return (
     <>
       {HOME_EXPERIENCE_SECTIONS.map((section, i) => (
-        <section
+        <HomeSection
           key={section.id}
           id={section.id}
-          ref={(el) => {
+          eyebrow={section.eyebrow}
+          heading={section.heading}
+          position={section.position}
+          layout={section.layout}
+          sectionRef={(el) => {
             engine.registerSection(i)(el);
             reveal(el);
           }}
-          className={cn("exp-section exp-reveal", `exp-pos-${section.position}`)}
+          decoration={i === 0 && <SpillCascade />}
         >
-          {i === 0 && <SpillCascade />}
-
-          <div className="exp-section-inner">
-            <p className="exp-eyebrow">{section.eyebrow}</p>
-            <h2>{section.heading}</h2>
-            {section.blocks.map((block, bi) => (
-              <ContentBlock
-                key={bi}
-                block={block}
-              />
-            ))}
-          </div>
-        </section>
+          {section.blocks.map((block, bi) => (
+            <ContentBlock
+              key={bi}
+              block={block}
+            />
+          ))}
+        </HomeSection>
       ))}
     </>
   );

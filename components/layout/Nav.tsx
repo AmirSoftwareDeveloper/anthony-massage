@@ -9,6 +9,8 @@ import { cn } from "@/utils";
 
 import navLinks from "@/constants/navLinks";
 
+import Logo from "@/components/logo";
+
 import MobileNavSheet from "./MobileNavSheet";
 
 const Nav = () => {
@@ -36,11 +38,7 @@ const Nav = () => {
       ref={navRef as React.RefObject<HTMLElement>}
       className="exp-nav"
     >
-      <div className="exp-nav-name">
-        Anthony Massage
-        <br />
-        <span>Works</span>
-      </div>
+      <Logo />
 
       <div className="exp-nav-links">
         {navLinks.map((item) => (

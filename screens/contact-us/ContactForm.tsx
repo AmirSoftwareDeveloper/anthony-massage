@@ -133,7 +133,7 @@ const ContactForm = () => {
             type="submit"
             disabled={isLoading}
             variant="experience"
-            className="col-span-2 mt-2 justify-self-start"
+            className="col-span-2 mt-2 justify-self-start bg-exp-glow text-exp-dusk hover:opacity-90"
           >
             {isLoading ? "Sending..." : "Send Message"}
           </Button>

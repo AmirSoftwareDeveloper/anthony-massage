@@ -61,7 +61,7 @@ const WaveFrontier = ({ engine }: { engine: WaveFrontierEngine }) => {
             height="260%"
           >
             <feGaussianBlur
-              stdDeviation="12"
+              stdDeviation="9"
               result="b"
             />
             <feMerge>

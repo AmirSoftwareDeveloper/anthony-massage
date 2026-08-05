@@ -9,6 +9,8 @@ interface TitleProps extends HTMLAttributes<HTMLElement> {
 
   center?: boolean;
   white?: boolean;
+  /** "exp" reproduces the gold-eyebrow / italic-display heading treatment used by the exp-* experience sections (home, about, services, contact, page hero). */
+  variant?: "default" | "exp";
 
   titleClassName?: string;
   subTitleClassName?: string;
@@ -25,6 +27,7 @@ const Title = ({
 
   center = false,
   white = false,
+  variant = "default",
 
   className,
   titleClassName,
@@ -36,6 +39,15 @@ const Title = ({
 
   ...props
 }: TitleProps) => {
+  if (variant === "exp") {
+    return (
+      <>
+        {subTitle ? <p className={cn("exp-eyebrow", subTitleClassName)}>{subTitle}</p> : null}
+        {title ? <HeadingTag className={titleClassName}>{title}</HeadingTag> : null}
+      </>
+    );
+  }
+
   const alignmentClass = center ? "items-center text-center" : "items-start text-left";
 
   const textColorClass = white ? "text-white" : "text-black";
