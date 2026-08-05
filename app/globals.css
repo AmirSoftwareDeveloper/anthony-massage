@@ -712,15 +712,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     opacity: 1;
   }
 
-  /* Positions 1-10 share one constant text palette (only the background
-     warms, step to step) across a smooth 10-stop interpolation from
-     #242018 to #766f57 — the same range positions 1-8 covered before,
-     just spread over two more stops now that two sections were added
-     in the middle. Position 11 (footer) keeps the original, separately-
-     tuned "arrival" jump into full light — unchanged from before. */
+  /* Positions 1-11 share one constant text palette (only the background
+     warms, step to step) across a smooth 11-stop interpolation from
+     #242018 to #766f57 — the same range positions 1-10 covered before,
+     re-spread over one more stop now that the "Our Approach" section was
+     added after Philosophy. Position 12 (footer) keeps the original,
+     separately-tuned "arrival" jump into full light — values unchanged,
+     only its index moved as the spine grew. */
   .exp-pos-1 {
     --s-pre: #242018;
-    --s-post: #2c281e;
+    --s-post: #2b271e;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -731,8 +732,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-2 {
-    --s-pre: #2c281e;
-    --s-post: #343025;
+    --s-pre: #2b271e;
+    --s-post: #332e23;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -743,8 +744,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-3 {
-    --s-pre: #343025;
-    --s-post: #3d382b;
+    --s-pre: #332e23;
+    --s-post: #3a3629;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -755,8 +756,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-4 {
-    --s-pre: #3d382b;
-    --s-post: #454031;
+    --s-pre: #3a3629;
+    --s-post: #423d2f;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -767,8 +768,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-5 {
-    --s-pre: #454031;
-    --s-post: #4d4838;
+    --s-pre: #423d2f;
+    --s-post: #494435;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -779,8 +780,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-6 {
-    --s-pre: #4d4838;
-    --s-post: #554f3e;
+    --s-pre: #494435;
+    --s-post: #514b3a;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -791,8 +792,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-7 {
-    --s-pre: #554f3e;
-    --s-post: #5d5744;
+    --s-pre: #514b3a;
+    --s-post: #585240;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -803,8 +804,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-8 {
-    --s-pre: #5d5744;
-    --s-post: #665f4a;
+    --s-pre: #585240;
+    --s-post: #605946;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -815,8 +816,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-9 {
-    --s-pre: #665f4a;
-    --s-post: #6e6751;
+    --s-pre: #605946;
+    --s-post: #67614c;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -827,8 +828,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-10 {
-    --s-pre: #6e6751;
-    --s-post: #766f57;
+    --s-pre: #67614c;
+    --s-post: #6f6851;
     --s-heading: #efd9a0;
     --s-body: #e8dec4;
     --s-eyebrow: #e3c98c;
@@ -839,6 +840,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
   .exp-pos-11 {
+    --s-pre: #6f6851;
+    --s-post: #766f57;
+    --s-heading: #efd9a0;
+    --s-body: #e8dec4;
+    --s-eyebrow: #e3c98c;
+    --s-rule: rgba(227, 201, 140, 0.4);
+    --s-heading-lit: #efd9a0;
+    --s-body-lit: #e8dec4;
+    --s-eyebrow-lit: #e3c98c;
+    --s-rule-lit: rgba(227, 201, 140, 0.4);
+  }
+  .exp-pos-12 {
     --s-pre: #766f57;
     --s-post: #e2d2ab;
     --s-heading: #fffcf3;
@@ -874,32 +887,48 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-left: auto;
     margin-right: auto;
   }
+  /* The eyebrow is a <p>, so `.exp-section p` below (0-1-1) outranks a bare
+     `.exp-eyebrow` (0-1-0) and would blow the label up to body size. Excluding
+     it there lets this rule land, and carrying its own margin keeps the
+     eyebrow→heading gap identical on the home page and interior pages. */
   .exp-eyebrow {
+    display: block;
     font-size: 0.7rem;
     letter-spacing: 0.32em;
     text-transform: uppercase;
     color: var(--s-eyebrow, var(--color-exp-gold));
     font-weight: 500;
+    margin: 0 0 1.1rem;
     transition: color 2.2s var(--ease-exp-release);
   }
   .exp-section.lit .exp-eyebrow {
     color: var(--s-eyebrow-lit, var(--s-eyebrow));
   }
-  .exp-section h2 {
+  /* One heading treatment for every section on the site, so a chapter title on
+     an interior page sits identically to a section title on the home page.
+     Interior titles differ only in color — they sit on the fixed panel
+     background rather than the scroll-driven color spine. */
+  .exp-section h2,
+  .exp-collage-title,
+  .exp-team-title {
     font-family: var(--font-display);
     font-weight: 400;
     font-style: italic;
     font-size: clamp(1.7rem, 3.2vw, 2.5rem);
     line-height: 1.28;
     color: var(--s-heading, var(--color-exp-olive-deep));
-    margin-bottom: 2.1rem;
+    margin: 0 0 2.1rem;
     max-width: 15em;
     transition: color 2.2s var(--ease-exp-release);
+  }
+  .exp-collage-title,
+  .exp-team-title {
+    color: var(--color-exp-glow);
   }
   .exp-section.lit h2 {
     color: var(--s-heading-lit, var(--s-heading));
   }
-  .exp-section p {
+  .exp-section p:not(.exp-eyebrow) {
     max-width: 50rem;
     margin-bottom: 1.3rem;
     /* temporary: force light gray/white regardless of section theme */
@@ -908,7 +937,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 1.08rem;
     line-height: 1.85;
   }
-  .exp-section p:last-of-type {
+  /* excluded here too: in the split layout the eyebrow is the only <p> in its
+     column, so it would match :last-of-type and lose its gap to the heading */
+  .exp-section p:not(.exp-eyebrow):last-of-type {
     margin-bottom: 0;
   }
   .exp-quiet {
@@ -1258,6 +1289,132 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
   }
 
+  /* ---------- header row: heading beside a lead paragraph, media below ("Our Approach") ---------- */
+  .exp-header-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem 5rem;
+    align-items: start;
+    margin-bottom: 3.4rem;
+  }
+  .exp-header-row-heading h2 {
+    margin-bottom: 0;
+    max-width: 11em;
+  }
+  .exp-header-row-lead p {
+    margin-bottom: 1.4rem;
+  }
+  .exp-header-row-lead p:last-of-type {
+    margin-bottom: 0;
+  }
+  @media (max-width: 860px) {
+    .exp-header-row {
+      grid-template-columns: 1fr;
+      gap: 1.6rem;
+      margin-bottom: 2.2rem;
+    }
+  }
+
+  .exp-header-media-figure {
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    box-shadow: 0 10px 32px rgba(28, 22, 11, 0.18);
+  }
+
+  /* ---------- media split: a portrait image beside the section's copy ("Philosophy") ---------- */
+  .exp-media-split {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 2.5rem 4.5rem;
+    align-items: center;
+  }
+  /* near-square, a touch portrait: the figure has to stand taller than the copy
+     beside it to anchor the section — a landscape frame reads as a stamp */
+  .exp-media-split-figure {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 13 / 14;
+    border-radius: 20px;
+    box-shadow: 0 10px 32px rgba(28, 22, 11, 0.2);
+  }
+  /* max-width only — the closing gap stays on the shared heading rule so this
+     heading sits like every other one on the site */
+  .exp-media-split-body h2 {
+    max-width: 13em;
+  }
+  @media (max-width: 860px) {
+    .exp-media-split {
+      grid-template-columns: 1fr;
+      gap: 2.2rem;
+    }
+  }
+
+  /* ---------- stats band: sits full-width beneath a section's main layout ---------- */
+  .exp-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 5.5rem;
+  }
+  .exp-stat {
+    padding: 0 2.4rem;
+    border-left: 1px solid var(--s-rule, rgba(77, 90, 58, 0.14));
+    transition: border-color 2.2s var(--ease-exp-release);
+  }
+  .exp-section.lit .exp-stat {
+    border-left-color: var(--s-rule-lit, var(--s-rule));
+  }
+  .exp-stat:first-child {
+    border-left: none;
+    padding-left: 0;
+  }
+  .exp-stat-value {
+    display: block;
+    /* equal-width digits, so a counting figure doesn't jitter mid-count */
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 4.4vw, 3.2rem);
+    line-height: 1.1;
+    color: var(--s-heading, var(--color-exp-olive-deep));
+    transition: color 2.2s var(--ease-exp-release);
+  }
+  .exp-section.lit .exp-stat-value {
+    color: var(--s-heading-lit, var(--s-heading));
+  }
+  .exp-stat-label {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--s-eyebrow, var(--color-exp-gold));
+    transition: color 2.2s var(--ease-exp-release);
+  }
+  .exp-section.lit .exp-stat-label {
+    color: var(--s-eyebrow-lit, var(--s-eyebrow));
+  }
+  @media (max-width: 860px) {
+    .exp-stat-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.4rem 0;
+      margin-top: 3.5rem;
+    }
+    .exp-stat:nth-child(odd) {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+  @media (max-width: 420px) {
+    .exp-stat-grid {
+      grid-template-columns: 1fr;
+    }
+    .exp-stat {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+
   /* ---------- structured content: FAQ accordion ---------- */
   .exp-faq {
     display: flex;
@@ -1599,6 +1756,246 @@ input[type="date"]::-webkit-calendar-picker-indicator {
      crossfade; interior heroes are static, so the label is dropped */
   .exp-page-hero .exp-phase-strip .exp-eyebrow {
     display: none;
+  }
+
+  /* ---------- interior collage: chapters as a staggered two-column
+     image/copy grid, replacing the single 660px reading column. The two
+     columns flow independently, so the offset between a tall figure and
+     its copy is what produces the stagger — no absolute positioning. ---------- */
+  /* padding-block matches .exp-section-inner exactly, so a chapter on an
+     interior page breathes the same as a section on the home page */
+  .exp-collage-section {
+    position: relative;
+    background-color: var(--color-exp-panel);
+    padding: 9rem 2rem;
+  }
+
+  /* Consecutive chapters otherwise share one flat panel color and run
+     together. Each one carries its own light instead: a warm glow off the
+     top-left corner, and a diagonal sheen sweeping across it, blended
+     soft-light so it reads as light falling on the panel rather than a
+     drawn divider. Both sit above the content but ignore the pointer. */
+  .exp-collage-section::before,
+  .exp-team-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(120% 80% at 12% 0%, rgba(255, 240, 210, 0.12), transparent 60%);
+    opacity: 1;
+    transition: opacity 1.6s var(--ease-exp-release);
+  }
+  /* the glow arrives with the chapter rather than being there before it */
+  .exp-collage-section.exp-reveal:not(.in-view)::before {
+    opacity: 0;
+  }
+  .exp-collage-section::after,
+  .exp-team-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+    background-image:
+      linear-gradient(
+        202deg,
+        transparent 26%,
+        rgba(255, 250, 230, 0.22) 46%,
+        rgba(255, 248, 225, 0.09) 60%,
+        transparent 76%
+      ),
+      url("/images/hero/grain.png");
+  }
+  .exp-collage {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem;
+    align-items: stretch;
+    max-width: 1280px;
+    margin-inline: auto;
+  }
+  /* alternating chapters swap which column the figure sits in; the copy
+     column keeps its source order so the heading still reads first */
+  .exp-collage-section--flip .exp-collage-col--media {
+    order: 2;
+  }
+  .exp-collage-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    min-width: 0;
+  }
+  /* drops the copy down against the tall figure beside it, which is what
+     reads as the stagger rather than two columns starting flush */
+  .exp-collage-col--copy {
+    padding-top: 5rem;
+  }
+
+  .exp-collage-figure {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    background-color: rgba(214, 199, 150, 0.07);
+  }
+  /* the feature image spans its chapter rather than holding a fixed ratio:
+     chapter copy runs anywhere from 450px to 970px, so any single ratio leaves
+     one of them with a void beside it. Stretching keeps every chapter's two
+     columns ending flush, which is what makes the stagger read. */
+  .exp-collage-col--media .exp-collage-figure {
+    flex: 1;
+    min-height: 26rem;
+  }
+  /* accents are square and stay half-column wide even when there's only one —
+     a lone accent blown up to full column width outweighs the feature image */
+  .exp-collage-figure--small {
+    aspect-ratio: 1 / 1;
+  }
+  .exp-collage-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* typography comes from the shared heading/eyebrow rules — only the panel
+     color is set here, so interior chapters can't drift from the home page */
+  .exp-collage-section .exp-eyebrow {
+    color: var(--color-exp-gold);
+  }
+  .exp-collage-copy p {
+    max-width: 34rem;
+    margin-bottom: 1.3rem;
+    font-weight: 350;
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--color-exp-body);
+  }
+  .exp-collage-copy p:last-of-type {
+    margin-bottom: 0;
+  }
+  .exp-collage-copy .exp-quiet {
+    color: var(--color-exp-glow) !important;
+  }
+  .exp-collage-copy .exp-condition-list li {
+    border-bottom-color: rgba(214, 199, 150, 0.14);
+  }
+  .exp-collage-copy strong {
+    color: var(--color-exp-cream);
+  }
+
+  @media (max-width: 900px) {
+    .exp-collage {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    /* stacked, the figure always leads its chapter — the flip only ever
+       meant "which side", which no longer applies in one column */
+    .exp-collage-section--flip .exp-collage-col--media {
+      order: 0;
+    }
+    .exp-collage-col--copy {
+      padding-top: 0;
+    }
+    .exp-collage-section {
+      padding: 6rem 1.4rem;
+    }
+  }
+
+  /* ---------- team grid: portrait cards with name, role and socials ---------- */
+  .exp-team-section {
+    position: relative;
+    background-color: var(--color-exp-panel);
+    padding: 9rem 2rem;
+  }
+  .exp-team-inner {
+    max-width: 1280px;
+    margin-inline: auto;
+  }
+  /* no margin of its own — the shared heading rule's 2.1rem closing gap is what
+     every other section on the site uses between a title and its content */
+  .exp-team-head {
+    margin-bottom: 0;
+  }
+  .exp-team-head .exp-eyebrow {
+    color: var(--color-exp-gold);
+  }
+
+  .exp-team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+  /* 4:5 matches the portrait source files, so headshots show uncropped */
+  .exp-team-photo {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    border-radius: 14px;
+    margin-bottom: 1.1rem;
+    background-color: rgba(214, 199, 150, 0.07);
+  }
+  .exp-team-name {
+    margin: 0 0 0.25rem;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.25;
+    color: var(--color-exp-cream);
+  }
+  .exp-team-role {
+    margin: 0 0 0.9rem;
+    font-size: 0.92rem;
+    font-weight: 300;
+    color: var(--color-exp-muted);
+  }
+  .exp-team-socials {
+    display: flex;
+    gap: 0.9rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .exp-team-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    border: 1px solid rgba(214, 199, 150, 0.22);
+    color: var(--color-exp-tan);
+    transition:
+      color 0.25s,
+      border-color 0.25s,
+      background-color 0.25s;
+  }
+  .exp-team-socials a:hover {
+    color: var(--color-exp-dusk);
+    background-color: var(--color-exp-glow);
+    border-color: var(--color-exp-glow);
+  }
+  .exp-team-socials a:focus-visible {
+    outline: 2px solid var(--color-exp-gold);
+    outline-offset: 3px;
+  }
+  .exp-team-social-icon {
+    width: 0.85rem;
+    height: 0.85rem;
+  }
+
+  @media (max-width: 1024px) {
+    .exp-team-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem 1.5rem;
+    }
+  }
+  @media (max-width: 560px) {
+    .exp-team-grid {
+      grid-template-columns: 1fr;
+    }
+    .exp-team-section {
+      padding: 6rem 1.4rem;
+    }
   }
 
   /* a light parchment card — same chrome the prototype used for its

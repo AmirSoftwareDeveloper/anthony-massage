@@ -10,7 +10,7 @@ const Services = ({ sectionRef }: ServicesProps) => (
     id="services"
     eyebrow="Our Services"
     heading="Bodywork built around your body, not a menu."
-    position={5}
+    position={6}
     sectionRef={sectionRef}
   >
     <p>

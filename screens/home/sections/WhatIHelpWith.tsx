@@ -10,7 +10,7 @@ const WhatIHelpWith = ({ sectionRef }: WhatIHelpWithProps) => (
     id="what-i-help-with"
     eyebrow="What I Help With"
     heading="Here's where most people begin."
-    position={4}
+    position={5}
     sectionRef={sectionRef}
   >
     <p>People come to the table for all kinds of reasons. Most of them fall into a few familiar shapes.</p>

@@ -42,6 +42,14 @@ export type FeatureEntry = {
   ctaHref?: string;
 };
 
+export type StatEntry = {
+  /** counted up from zero when the band scrolls into view */
+  value: number;
+  /** rendered immediately after the figure, e.g. "+" */
+  suffix?: string;
+  label: string;
+};
+
 export type ContentBlock = {
   type:
     | "p"
@@ -70,12 +78,25 @@ export type ContentBlock = {
   ctaHref?: string;
 };
 
+export type InteriorImage = {
+  src: string;
+  alt: string;
+};
+
+export type InteriorMedia = {
+  /** the tall feature image set beside the chapter's copy */
+  main?: InteriorImage;
+  /** an optional pair of smaller images stacked beneath the copy */
+  pair?: InteriorImage[];
+};
+
 export type InteriorSectionContent = {
   id: string;
   eyebrow: string;
   title: string;
   lead?: boolean;
   blocks: ContentBlock[];
+  media?: InteriorMedia;
 };
 
 export type Service = {
@@ -97,6 +118,15 @@ export type SocialLink = {
   name: string;
   href: string;
   icon: IconDefinition;
+};
+
+export type TeamMember = {
+  name: string;
+  role: string;
+  image: string;
+  imageAlt?: string;
+  /** falls back to the site-wide social links when a member has none of their own */
+  socials?: SocialLink[];
 };
 
 export type Testimonial = {

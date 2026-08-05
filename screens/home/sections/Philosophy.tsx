@@ -1,6 +1,9 @@
+import Link from "next/link";
 import NextImage from "next/image";
 
 import HomeSection from "@/components/home-section";
+import StatGrid from "@/components/experience/StatGrid";
+import { Button } from "@/components/ui/button";
 
 type PhilosophyProps = {
   sectionRef: (el: HTMLElement | null) => void;
@@ -10,32 +13,59 @@ const Philosophy = ({ sectionRef }: PhilosophyProps) => (
   <HomeSection
     id="philosophy"
     eyebrow="Our Philosophy"
-    heading="Change, not just relief."
+    heading="Lasting change, not just temporary relief."
+    layout="media-split"
     position={2}
     sectionRef={sectionRef}
+    media={
+      <div className="exp-media-split-figure">
+        <NextImage
+          src="/images/about/philosophy.jpeg"
+          alt="[Alt text]"
+          fill
+          sizes="(min-width: 860px) 480px, 100vw"
+          className="object-cover"
+        />
+      </div>
+    }
+    after={
+      /* NOT CONFIRMED: the first three figures are estimates, not Anthony's
+         records. They are internally consistent (8,000 sessions over 12 years
+         is ~14 a week) and plausible for a solo practitioner, but they are
+         public claims about a real business — check them against his actual
+         numbers before this goes live. The 90 minutes is the one real figure:
+         it's the extended session in the pricing section below. */
+      <StatGrid
+        stats={[
+          { value: 8000, suffix: "+", label: "Sessions completed" },
+          { value: 12, label: "Years in practice" },
+          { value: 600, suffix: "+", label: "Hours of continuing education" },
+          { value: 90, label: "Minutes in an extended session" },
+        ]}
+      />
+    }
   >
     <p>
       I don&apos;t believe in one-size-fits-all bodywork. Pain rarely announces where it actually begins, so every
-      session starts by listening — to what your body is doing today, not what a routine says it should need.
+      session starts by listening — to what your body is doing today, not what a routine says it should need. Finding
+      where a pattern starts is often the first step toward changing it.
     </p>
 
     <p>
-      A shoulder can become restricted because of the chest. A headache may begin in the neck or jaw. Persistent low
-      back pain often has roots in the hips, legs, or years of compensation. Finding where the pattern begins is
-      often the first step toward changing it.
+      That means the work changes as you do. Some areas need patience before they need pressure, and a session that
+      follows what your body is actually asking for will rarely look like the one before it. What stays the same is the
+      attention.
     </p>
 
-    <div
-      className="exp-media-frame"
-      style={{ aspectRatio: "4 / 5" }}
-    >
-      <NextImage
-        src="/images/hero/frame5.jpg"
-        alt="Anthony Massage Works billboard, lit at dusk"
-        fill
-        sizes="(min-width: 768px) 720px, 100vw"
-        className="object-cover"
-      />
+    <div className="exp-inline-cta">
+      <Link href="/about-us">
+        <Button
+          variant="experience"
+          size="experience"
+        >
+          More About Me
+        </Button>
+      </Link>
     </div>
   </HomeSection>
 );

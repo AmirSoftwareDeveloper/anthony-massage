@@ -16,6 +16,9 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
       },
       { type: "p", text: "That way of seeing has shaped more than my work. It has shaped the way I move through life." },
     ],
+    media: {
+      main: { src: "/images/about/intro.jpeg", alt: "[Alt text]" },
+    },
   },
   {
     id: "the-work",
@@ -29,6 +32,15 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
       },
       { type: "p", text: "What follows is less a philosophy and more a way of paying attention." },
     ],
+    media: {
+      main: { src: "/images/about/the-work.jpeg", alt: "[Alt text]" },
+      pair: [
+        { src: "/images/about/the-work-detail.jpeg", alt: "[Alt text]" },
+        // PLACEHOLDER: the reference pairs two accents here, but the about
+        // folder had no tenth photo. Drop a real square-ish image in to replace.
+        { src: "/images/about/the-work-detail-2.jpeg", alt: "[Alt text]" },
+      ],
+    },
   },
   {
     id: "restriction",
@@ -44,6 +56,9 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
         text: "The place that hurts isn't always where the problem began. My work is finding that beginning, not just addressing where it hurts now.",
       },
     ],
+    media: {
+      main: { src: "/images/about/restriction.jpeg", alt: "[Alt text]" },
+    },
   },
   {
     id: "technique",
@@ -66,6 +81,9 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
       { type: "p", text: "It took me a while to stop." },
       { type: "p", text: "I can't make a nervous system do anything. I can only meet it. And when it's ready, it comes halfway." },
     ],
+    media: {
+      main: { src: "/images/about/technique.jpeg", alt: "[Alt text]" },
+    },
   },
   {
     id: "path",
@@ -89,6 +107,9 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
       { type: "p", text: "I know what it's like to wonder if your body will ever feel different." },
       { type: "quiet", text: "And I know how meaningful it is when it finally does." },
     ],
+    media: {
+      main: { src: "/images/about/path.jpeg", alt: "[Alt text]" },
+    },
   },
   {
     id: "still-learning",
@@ -104,6 +125,9 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
       { type: "p", text: "Every person teaches me something." },
       { type: "p", text: "Helping someone better understand what is happening within their own body remains one of the things I love most about this work." },
     ],
+    media: {
+      main: { src: "/images/about/still-learning.jpeg", alt: "[Alt text]" },
+    },
   },
   {
     id: "beyond",
@@ -119,5 +143,8 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
       { type: "p", text: "I am drawn to things that become more meaningful the longer you stay with them." },
       { type: "quiet", text: "Bodies are like that. People are too." },
     ],
+    media: {
+      main: { src: "/images/about/beyond.jpeg", alt: "[Alt text]" },
+    },
   },
 ];

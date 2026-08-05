@@ -5,6 +5,7 @@ import type { HeroExperienceEngine } from "@/lib/experience/useHeroExperience";
 
 import Welcome from "./sections/Welcome";
 import Philosophy from "./sections/Philosophy";
+import OurApproach from "./sections/OurApproach";
 import Adapting from "./sections/Adapting";
 import WhatIHelpWith from "./sections/WhatIHelpWith";
 import Services from "./sections/Services";
@@ -26,14 +27,15 @@ const Sections = ({ engine }: { engine: HeroExperienceEngine }) => {
     <>
       <Welcome sectionRef={sectionRef(0)} />
       <Philosophy sectionRef={sectionRef(1)} />
-      <Adapting sectionRef={sectionRef(2)} />
-      <WhatIHelpWith sectionRef={sectionRef(3)} />
-      <Services sectionRef={sectionRef(4)} />
-      <Pricing sectionRef={sectionRef(5)} />
-      <HowSessionsWork sectionRef={sectionRef(6)} />
-      <Showcase sectionRef={sectionRef(7)} />
-      <WhyAnthony sectionRef={sectionRef(8)} />
-      <Faq sectionRef={sectionRef(9)} />
+      <OurApproach sectionRef={sectionRef(2)} />
+      <Adapting sectionRef={sectionRef(3)} />
+      <WhatIHelpWith sectionRef={sectionRef(4)} />
+      <Services sectionRef={sectionRef(5)} />
+      <Pricing sectionRef={sectionRef(6)} />
+      <HowSessionsWork sectionRef={sectionRef(7)} />
+      <Showcase sectionRef={sectionRef(8)} />
+      <WhyAnthony sectionRef={sectionRef(9)} />
+      <Faq sectionRef={sectionRef(10)} />
     </>
   );
 };

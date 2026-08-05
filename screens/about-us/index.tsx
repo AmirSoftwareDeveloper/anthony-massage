@@ -1,9 +1,12 @@
 import PageHero from "@/components/page-hero";
 
 import { ABOUT_US_SECTIONS } from "@/constants/aboutUs";
+import { TEAM_MEMBERS, TEAM_SECTION } from "@/constants/team";
 
 import ContentBlock from "@/components/content-block";
-import InteriorSection from "@/components/interior-section";
+import InteriorCollage from "@/components/interior-collage";
+import TeamGrid from "@/components/experience/TeamGrid";
+import Title from "@/components/title";
 
 const AboutUs = () => {
   return (
@@ -15,13 +18,14 @@ const AboutUs = () => {
         variant="present"
       />
 
-      {ABOUT_US_SECTIONS.map((section) => (
-        <InteriorSection
+      {ABOUT_US_SECTIONS.map((section, i) => (
+        <InteriorCollage
           key={section.id}
           id={section.id}
           eyebrow={section.eyebrow}
           title={section.title}
-          lead={section.lead}
+          media={section.media}
+          flip={i % 2 === 1}
         >
           {section.blocks.map((block, bi) => (
             <ContentBlock
@@ -29,8 +33,26 @@ const AboutUs = () => {
               block={block}
             />
           ))}
-        </InteriorSection>
+        </InteriorCollage>
       ))}
+
+      <section
+        id="team"
+        className="exp-team-section"
+      >
+        <div className="exp-team-inner">
+          <div className="exp-team-head">
+            <Title
+              variant="exp"
+              subTitle={TEAM_SECTION.eyebrow}
+              title={TEAM_SECTION.title}
+              titleClassName="exp-team-title"
+            />
+          </div>
+
+          <TeamGrid members={TEAM_MEMBERS} />
+        </div>
+      </section>
     </>
   );
 };

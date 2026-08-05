@@ -10,7 +10,7 @@ const Faq = ({ sectionRef }: FaqProps) => (
     id="faq"
     eyebrow="Got a Question?"
     heading="Frequently Asked Questions"
-    position={10}
+    position={11}
     layout="split"
     sectionRef={sectionRef}
   >

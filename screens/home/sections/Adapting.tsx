@@ -9,7 +9,7 @@ const Adapting = ({ sectionRef }: AdaptingProps) => (
     id="adapting"
     eyebrow="Understanding"
     heading="Your body is always adapting."
-    position={3}
+    position={4}
     sectionRef={sectionRef}
   >
     <p>The body is remarkably intelligent. When movement becomes restricted, it doesn&apos;t simply stop moving. It adapts.</p>

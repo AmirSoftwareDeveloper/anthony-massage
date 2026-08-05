@@ -10,7 +10,7 @@ const HowSessionsWork = ({ sectionRef }: HowSessionsWorkProps) => (
     id="how-sessions-work"
     eyebrow="How Sessions Work"
     heading="What happens when we begin."
-    position={7}
+    position={8}
     sectionRef={sectionRef}
   >
     <p>Every session follows the same rhythm, even though no two sessions look the same.</p>
