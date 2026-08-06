@@ -5,6 +5,7 @@ import { useReveal } from "@/lib/experience/useReveal";
 import Faq from "./sections/Faq";
 import OurApproach from "./sections/OurApproach";
 import Philosophy from "./sections/Philosophy";
+import Services from "./sections/Services";
 import Testimonials from "./sections/Testimonials";
 import Welcome from "./sections/Welcome";
 
@@ -23,7 +24,7 @@ const Sections = ({ engine }: { engine: HeroExperienceEngine }) => {
       <OurApproach sectionRef={sectionRef(2)} />
       {/* <Adapting sectionRef={sectionRef(3)} /> */}
       {/* <WhatIHelpWith sectionRef={sectionRef(4)} /> */}
-      {/* <Services sectionRef={sectionRef(5)} /> */}
+      <Services sectionRef={sectionRef(5)} />
       {/* <WhyChooseUs sectionRef={sectionRef(6)} /> */}
       {/* <Pricing sectionRef={sectionRef(7)} /> */}
       {/* <HowSessionsWork sectionRef={sectionRef(8)} /> */}

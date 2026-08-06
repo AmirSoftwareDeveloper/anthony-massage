@@ -1,5 +1,7 @@
 import type { IconDefinition } from "@fortawesome/free-brands-svg-icons";
 
+import type { ServiceIconName } from "@/components/experience/service-icons";
+
 export type NavItemChild = { slug: string; href: string; title: string };
 
 export type NavItem = {
@@ -27,6 +29,18 @@ export type ServiceEntry = {
   icon: string;
   title: string;
   price?: string;
+};
+
+/** A photographic service card: image, hairline icon, and copy revealed on hover. */
+export type ServiceCardEntry = {
+  icon: ServiceIconName;
+  title: string;
+  /** One short line under the title, ahead of the fuller description. */
+  tagline: string;
+  text: string;
+  imgSrc: string;
+  alt: string;
+  href: string;
 };
 
 export type FAQEntry = {

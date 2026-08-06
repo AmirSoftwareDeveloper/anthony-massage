@@ -61,12 +61,12 @@ const HomeSection = ({
       {decoration}
 
       {layout === "split" ? (
-        <div className="container exp-section-inner exp-section-inner--split grid grid-cols-1 items-start gap-8 py-24 md:py-36 lg:grid-cols-[minmax(220px,320px)_1fr] lg:gap-x-12">
+        <div className="container section-y exp-section-inner exp-section-inner--split grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(220px,320px)_1fr] lg:gap-x-12">
           <div className="static lg:sticky lg:top-32">{title}</div>
           <div className="min-w-0">{children}</div>
         </div>
       ) : layout === "header-media" ? (
-        <div className="exp-section-inner mx-auto w-full max-w-340 px-6 py-24 md:px-9 md:py-36">
+        <div className="container section-y exp-section-inner">
           <div className="mb-9 grid grid-cols-1 items-start gap-6 lg:mb-14 lg:grid-cols-2 lg:gap-x-20 lg:gap-y-8">
             <div className="[&_h2]:mb-0 [&_h2]:max-w-[11em]">{title}</div>
             <div>{lead}</div>
@@ -75,7 +75,7 @@ const HomeSection = ({
           {after}
         </div>
       ) : layout === "media-split" ? (
-        <div className="exp-section-inner mx-auto w-full max-w-340 px-6 py-24 md:px-9 md:py-36">
+        <div className="container section-y exp-section-inner">
           <div className="grid grid-cols-1 items-center gap-9 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-x-18 lg:gap-y-10">
             <div>{media}</div>
             <div className="[&_h2]:max-w-[13em]">
@@ -86,7 +86,7 @@ const HomeSection = ({
           {after}
         </div>
       ) : layout === "aside-media" ? (
-        <div className="exp-section-inner mx-auto w-full max-w-340 px-6 py-24 md:px-9 md:py-36">
+        <div className="container section-y exp-section-inner">
           <div className="grid grid-cols-1 items-start gap-9 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:gap-x-14 lg:gap-y-10">
             {/* The heading sits tight to the figure below it: the h2's own
                 2.1rem margin is the whole gap, so it isn't doubled by a wrapper. */}
@@ -101,7 +101,7 @@ const HomeSection = ({
       ) : (
         <div
           className={cn(
-            "exp-section-inner mx-auto w-full max-w-340 px-6 py-24 md:px-9 md:py-36",
+            "container section-y exp-section-inner",
             layout === "centered" && "text-center [&>p]:mx-auto [&_h2]:mx-auto [&_h2]:max-w-[46em]"
           )}
         >

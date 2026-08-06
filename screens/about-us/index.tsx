@@ -8,6 +8,11 @@ import PageHero from "@/components/page-hero";
 import Title from "@/components/title";
 
 const AboutUs = () => {
+  /* The image side alternates across the chapters that *have* an image, so a
+     text-only chapter added later can't land two photographs on the same side.
+     Services and Contact count theirs the same way. */
+  let illustrated = 0;
+
   return (
     <>
       <PageHero
@@ -17,14 +22,14 @@ const AboutUs = () => {
         variant="present"
       />
 
-      {ABOUT_US_SECTIONS.map((section, i) => (
+      {ABOUT_US_SECTIONS.map((section) => (
         <InteriorCollage
           key={section.id}
           id={section.id}
           eyebrow={section.eyebrow}
           title={section.title}
           media={section.media}
-          flip={i % 2 === 1}
+          flip={Boolean(section.media?.main) && illustrated++ % 2 === 1}
         >
           {section.blocks.map((block, bi) => (
             <ContentBlock
@@ -39,7 +44,7 @@ const AboutUs = () => {
         id="team"
         className="exp-team-section"
       >
-        <div className="mx-auto w-full max-w-340 px-6 py-24 md:px-9 md:py-36">
+        <div className="container section-y">
           <div className="mb-0">
             <Title
               variant="exp"

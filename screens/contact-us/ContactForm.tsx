@@ -129,11 +129,15 @@ const ContactForm = () => {
             />
           </CustomFormField>
 
+          {/* Colors come from the .exp-light-card token block on the card
+              around it, so this matches every other CTA on the site instead of
+              carrying its own one-off background. */}
           <Button
             type="submit"
             disabled={isLoading}
             variant="experience"
-            className="col-span-2 mt-2 justify-self-start bg-exp-glow text-exp-dusk hover:opacity-90"
+            size="experience"
+            className="col-span-2 mt-2 justify-self-start"
           >
             {isLoading ? "Sending..." : "Send Message"}
           </Button>

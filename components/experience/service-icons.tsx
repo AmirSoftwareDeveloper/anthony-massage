@@ -3,8 +3,9 @@ import type { SVGProps } from "react";
 /** Hand-drawn line icons for the service cards. Lucide has nothing for
  *  bodywork — no hands-on-a-back, no stacked stones, no jaw release — so these
  *  are drawn here in one consistent hairline style: a 48-unit box, 1.2 stroke,
- *  round caps and joins, no fills. Keep any new one on that grid so the set
- *  stays even at card size. */
+ *  round caps and joins, no fills. Each mark fills most of that box; drawn
+ *  smaller they read as specks once the card scales them down. Keep any new one
+ *  on the same grid so the set stays even. */
 const base = {
   viewBox: "0 0 48 48",
   fill: "none",
@@ -15,49 +16,60 @@ const base = {
   "aria-hidden": "true",
 } as const;
 
-/** A pair of hands working a reclining back. */
+/** A hand working a reclining back. */
 const MassageIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     {...base}
     {...props}
   >
-    <circle cx="9.5" cy="30" r="3.2" />
-    <path d="M13 32.5c3.6-2.6 8.3-4 13.5-4 5 0 9.4 1.4 12.5 3.9" />
-    <path d="M12 39.5h24" />
-    <path d="M19.5 24v-6.8a1.6 1.6 0 0 1 3.2 0v5.6" />
-    <path d="M22.7 22.8v-8a1.6 1.6 0 0 1 3.2 0v7.4" />
-    <path d="M25.9 22.2v-7.2a1.6 1.6 0 0 1 3.2 0v7" />
-    <path d="M19.5 22.4v2.4c0 2.7 2.2 4.9 4.9 4.9h.3c2.6 0 4.6-2.1 4.6-4.6v-5.6" />
+    <circle
+      cx="9"
+      cy="31"
+      r="4"
+    />
+    <path d="M13.5 34c4.2-3 9.6-4.6 15.5-4.6 5.6 0 10.5 1.5 13.9 4.3" />
+    <path d="M10 41h28" />
+    <path d="M20 23.5v-8a1.9 1.9 0 0 1 3.8 0v6.6" />
+    <path d="M23.8 22.2v-9.4a1.9 1.9 0 0 1 3.8 0v8.7" />
+    <path d="M27.6 21.5v-8.5a1.9 1.9 0 0 1 3.8 0v8.2" />
+    <path d="M20 21.5v3.2c0 3.2 2.6 5.8 5.8 5.8h.4c3 0 5.4-2.4 5.4-5.4v-6.6" />
   </svg>
 );
 
-/** A figure opening into a stretch. */
+/** A seated figure, open through the shoulders and crossed at the legs. Drawn
+ *  entirely from curves — a jointed stick figure reads as a crash-test dummy at
+ *  this size, and an angle-and-arc diagram reads as a pie chart. */
 const StretchIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     {...base}
     {...props}
   >
-    <circle cx="24" cy="10.5" r="3.6" />
-    <path d="M24 14.6v11.2" />
-    <path d="m24 18.8-9.6-6.4" />
-    <path d="m24 18.8 9.6-6.4" />
-    <path d="M24 25.8 16.8 38.6" />
-    <path d="m24 25.8 7.2 12.8" />
+    <circle
+      cx="24"
+      cy="10.5"
+      r="3.6"
+    />
+    <path d="M24 15.5c-5 0-9 3.2-10.6 8" />
+    <path d="M24 15.5c5 0 9 3.2 10.6 8" />
+    <path d="M9 32.5c3.4-2.8 9-4.4 15-4.4s11.6 1.6 15 4.4" />
+    <path d="M9 32.5c2.4 2.8 8 4.6 15 4.6s12.6-1.8 15-4.6" />
   </svg>
 );
 
-/** Face held at the jaw — the intraoral / jaw release work. */
+/** A head in profile with the jaw joint marked, just ahead of the ear. */
 const JawIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     {...base}
     {...props}
   >
-    <circle cx="24" cy="21.5" r="10" />
-    <path d="M19.5 19.5h.01" />
-    <path d="M28.5 19.5h.01" />
-    <path d="M20.8 26.4c1.9 1.7 4.5 1.7 6.4 0" />
-    <path d="M11 25.5c.6 3.9 2.7 7.2 5.7 9.2" />
-    <path d="M37 25.5c-.6 3.9-2.7 7.2-5.7 9.2" />
+    <path d="M28 5.5c-8.3 0-15 6.7-15 15 0 3.1-2.3 4.8-2.3 6.6 0 1.8 2.3 2.3 2.3 2.3v3.7c0 1.8 1.4 3.2 3.2 3.2h2.9v6.2" />
+    <path d="M28 5.5c7.2 0 13.1 5.9 13.1 13.1 0 4.8-1.9 7.9-4.8 10.4" />
+    <circle
+      cx="22"
+      cy="24.5"
+      r="2.9"
+    />
+    <path d="M24.5 30.2c3.6-.5 6.6-2.4 8.6-5.2" />
   </svg>
 );
 
@@ -67,31 +79,63 @@ const StonesIcon = (props: SVGProps<SVGSVGElement>) => (
     {...base}
     {...props}
   >
-    <ellipse cx="24" cy="35.4" rx="12.8" ry="4.3" />
-    <ellipse cx="24" cy="27.2" rx="10.3" ry="3.8" />
-    <ellipse cx="24" cy="19.6" rx="7.9" ry="3.3" />
-    <ellipse cx="24" cy="12.8" rx="5.4" ry="2.7" />
+    <ellipse
+      cx="24"
+      cy="38"
+      rx="15.5"
+      ry="5"
+    />
+    <ellipse
+      cx="24"
+      cy="28.5"
+      rx="12.5"
+      ry="4.4"
+    />
+    <ellipse
+      cx="24"
+      cy="19.8"
+      rx="9.5"
+      ry="3.8"
+    />
+    <ellipse
+      cx="24"
+      cy="11.8"
+      rx="6.5"
+      ry="3.1"
+    />
   </svg>
 );
 
-/** Dropper bottle beside a leaf — the infused oil. */
+/** A dropper bottle beside a leaf — the infused oil. */
 const OilIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     {...base}
     {...props}
   >
-    <path d="M16 22h10v12.5a4 4 0 0 1-4 4h-2a4 4 0 0 1-4-4z" />
-    <path d="M18.6 22v-3.4h4.8V22" />
+    <path d="M13 22h11.5v14.5a4.5 4.5 0 0 1-4.5 4.5h-2.5a4.5 4.5 0 0 1-4.5-4.5z" />
+    <path d="M16 22v-4h5.5v4" />
     <rect
-      x="17"
-      y="11.4"
-      width="8"
-      height="4.2"
-      rx="2.1"
+      x="14.5"
+      y="9.5"
+      width="8.5"
+      height="4.6"
+      rx="2.3"
     />
-    <path d="M21 15.6v3" />
-    <path d="M31 33.5c5.2 0 9.4-4.2 9.4-9.4-5.2 0-9.4 4.2-9.4 9.4z" />
-    <path d="M31 33.5c1.2-3.6 3.6-6.4 6.6-7.8" />
+    <path d="M18.75 14.1v3.9" />
+    <path d="M29 37c6.1 0 11-4.9 11-11-6.1 0-11 4.9-11 11z" />
+    <path d="M29 37c1.4-4.2 4.2-7.5 7.7-9.1" />
+  </svg>
+);
+
+/** A lotus in three petals — the closing panel's mark, not a service. */
+const LotusIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    {...base}
+    {...props}
+  >
+    <path d="M24 39c-6.2-3.8-10-10.5-10-18 0-4.7 3.7-9.6 10-12.6 6.3 3 10 7.9 10 12.6 0 7.5-3.8 14.2-10 18z" />
+    <path d="M24 39c-8.2-1.6-14.9-8.2-16.4-16.4 5.7-.6 10.9 1.4 14.4 5.3" />
+    <path d="M24 39c8.2-1.6 14.9-8.2 16.4-16.4-5.7-.6-10.9 1.4-14.4 5.3" />
   </svg>
 );
 
@@ -101,6 +145,7 @@ export const SERVICE_ICONS = {
   jaw: JawIcon,
   stones: StonesIcon,
   oil: OilIcon,
+  lotus: LotusIcon,
 } as const;
 
 export type ServiceIconName = keyof typeof SERVICE_ICONS;

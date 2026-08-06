@@ -13,6 +13,12 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
         text: "We'll spend the first few minutes just talking about what's been going on, what you're feeling, and what you'd like out of today's session. I'm not listening for the perfect explanation. I'm trying to understand your experience and get a sense of the lay of the land.",
       },
     ],
+    media: {
+      main: {
+        src: "/images/about/room-towels.jpeg",
+        alt: "Folded towels on a dressed treatment table, candles lit behind",
+      },
+    },
   },
   {
     id: "both-sides",
@@ -23,7 +29,10 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
         type: "p",
         text: "If you've been living with pain for a while, you might know this feeling: lying on the table, hoping the therapist stops right there. Hoping they find the spot. Hoping they don't glide past it.",
       },
-      { type: "p", text: "I've lived with pain too. I know that hope from the other side of the table. It's part of why I won't glide past it." },
+      {
+        type: "p",
+        text: "I've lived with pain too. I know that hope from the other side of the table. It's part of why I won't glide past it.",
+      },
     ],
   },
   {
@@ -40,6 +49,9 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
         text: "Throughout the session, my goal is always to help move you in the direction of your goal. Sometimes that means staying right where it hurts. Sometimes it means following what your body is presenting somewhere completely different. If we end up working somewhere you weren't expecting, I'll usually tell you what I'm finding and why we're going there, so you understand what we're exploring together. Unless you're the type to sleep through this kind of work. That's okay too.",
       },
     ],
+    media: {
+      main: { src: "/images/about/lower-back.jpeg", alt: "Both hands working the lower back during a session" },
+    },
   },
   {
     id: "depth",
@@ -57,7 +69,10 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
     eyebrow: "Your Voice",
     title: "Tell me what you feel.",
     blocks: [
-      { type: "p", text: "Most of the time I can feel that under my hands. Every now and then, though, your experience tells me something mine can't." },
+      {
+        type: "p",
+        text: "Most of the time I can feel that under my hands. Every now and then, though, your experience tells me something mine can't.",
+      },
       {
         type: "p",
         text: "If you're noticing something, tell me. Especially if it's connected to something you've been trying to work through. You feel everything from the inside. I don't.",
@@ -66,8 +81,17 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
         type: "p",
         text: "Sometimes the worry of waiting to see if I'll find “the spot” can become part of what your body is holding onto. Sometimes just saying it out loud is enough to change things. It gives us another way in.",
       },
-      { type: "p", text: "Not everyone needs this. Plenty of people would rather surrender and let me work. Both are good. It depends on what you're working through, and what feels right to you." },
+      {
+        type: "p",
+        text: "Not everyone needs this. Plenty of people would rather surrender and let me work. Both are good. It depends on what you're working through, and what feels right to you.",
+      },
     ],
+    media: {
+      main: {
+        src: "/images/about/head-massage.jpeg",
+        alt: "Scalp and temple work by candlelight, client lying face up",
+      },
+    },
   },
   {
     id: "the-moment",
@@ -98,13 +122,22 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
         text: "No two sessions are the same. Your body is always changing. Because of that, I don't expect every session to unfold the same way. We simply begin with what your body is presenting that day and go from there.",
       },
     ],
+    media: {
+      main: {
+        src: "/images/about/candlelit-session.jpeg",
+        alt: "Candles in the foreground, a session underway in soft focus behind",
+      },
+    },
   },
   {
     id: "areas",
     eyebrow: "Areas I Commonly Work With",
     title: "Where relief often begins.",
     blocks: [
-      { type: "p", text: "Many people come in because something simply isn't moving the way it used to. Common reasons include:" },
+      {
+        type: "p",
+        text: "Many people come in because something simply isn't moving the way it used to. Common reasons include:",
+      },
       {
         type: "list",
         items: [
@@ -118,7 +151,16 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
           "Mobility",
         ],
       },
-      { type: "quiet", text: "If your experience isn't listed, that's okay. The body doesn't organize itself into categories. People don't either." },
+      {
+        type: "quiet",
+        text: "If your experience isn't listed, that's okay. The body doesn't organize itself into categories. People don't either.",
+      },
     ],
+    media: {
+      main: {
+        src: "/images/about/abdominal-work.jpeg",
+        alt: "Abdominal work against a dark background, lit from the side",
+      },
+    },
   },
 ];
