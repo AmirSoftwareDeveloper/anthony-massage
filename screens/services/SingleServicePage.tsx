@@ -14,8 +14,6 @@ const SingleServicePage = ({ service }: { service: Service }) => {
       />
 
       <ComingSoon />
-
-      {/* <ServiceDetails {...{ service }} /> */}
     </>
   );
 };

@@ -20,22 +20,13 @@ export const TIMELINE = {
   frB: 8.8,
 } as const;
 
-// where the light band's own position (0-1 crossing the board) gates the
-// color reveal — color arrives in the band's wake, not on an independent clock
 export const LIGHT_IN = 0.23;
 export const LIGHT_OUT = 0.77;
 
-// the billboard's true pixel rectangle within the natural (unscaled) hero
-// image, used to glue the light path and color reveal to the board itself
-// regardless of how object-fit crops the image per viewport
 export const HERO_NATURAL_WIDTH = 1672;
 export const HERO_NATURAL_HEIGHT = 941;
 export const HERO_BOARD = { L: 321, R: 1286, T: 315, B: 638 } as const;
 
-// interior page-hero: the billboard settles into its lit state immediately
-// (no scroll-driven story), so the spill pool stays a tight, defined glow
-// under the board rather than the wider wash Home uses once its light
-// finishes traveling
 export const PAGE_HERO_SPILL_REST = 0.52;
 
 export interface BoardBox {
@@ -81,11 +72,6 @@ export function computeFrameStates(progress: number, count = FRAME_COUNT): Frame
   return states;
 }
 
-/** Traces a smooth quadratic curve through every point (points[0] assumed
- *  already the current path position via a preceding M/L) instead of
- *  straight segments — at the low point counts these ribbons use, straight
- *  `L` joins are visibly faceted; each point becomes a curve control instead
- *  of a hard corner. */
 function smoothEdge(points: [number, number][]): string {
   let d = "";
   for (let i = 0; i < points.length - 2; i++) {
@@ -100,8 +86,6 @@ function smoothEdge(points: [number, number][]): string {
   return d;
 }
 
-/** Closes a ribbon shape from its two smoothly-curved edges, joined by a
- *  short straight cap at each end. */
 function smoothRibbonPath(edgeA: [number, number][], edgeB: [number, number][]): string {
   const edgeBReversed = [...edgeB].reverse();
   let d = `M ${edgeA[0][0].toFixed(2)} ${edgeA[0][1].toFixed(2)}`;
@@ -200,8 +184,6 @@ export interface BloomState {
   spillOpacity: number;
 }
 
-/** Color dumps off the board's lower-left corner and pools outward onto the
- *  street, anchored to the measured board rect so the pool cannot drift. */
 export function computeBloom(b: number, br: BoardRect | null): BloomState {
   const e = clamp01(b);
   const spillOpacity = Math.sin(Math.PI * e) * 0.92;

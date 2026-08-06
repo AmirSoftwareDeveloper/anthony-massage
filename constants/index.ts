@@ -5,10 +5,6 @@ export const INFO = {
   BUSINESS_NAME: "Anthony Massage Works",
   WEBSITE_URL: "https://www.anthonymassageworks.com",
   MAP_LOCATION_URL: "https://maps.google.com/?q=22525+SE+64th+Pl+Ste+200+Issaquah+WA+98027",
-  OPERATING_HOURS: "Sat–Sun, 10 AM – 4 PM",
-  // OPERATING_HOURS: {
-  //   WEEKDAYS: "Mon–Fri, 9 AM – 5 PM",
-  //   WEEKENDS: "Sat–Sun, 10 AM – 4 PM",
-  // },
+  OPERATING_HOURS: "Sat-Sun, 10 AM - 4 PM",
   MOTTO: "Release. Realign. Renew.",
 };

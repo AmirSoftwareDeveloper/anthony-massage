@@ -29,7 +29,7 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
   {
     id: "the-work",
     eyebrow: "The Work",
-    title: "A conversation with your body.",
+    title: "A Conversation With Your Body.",
     blocks: [
       { type: "p", text: "This isn't a routine. It's a conversation with your body." },
       {
@@ -49,7 +49,7 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
   {
     id: "restriction",
     eyebrow: "How I Think About Restriction",
-    title: "The pain is rarely the whole story.",
+    title: "The Pain Is Rarely the Whole Story.",
     blocks: [
       {
         type: "p",
@@ -67,7 +67,7 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
   {
     id: "technique",
     eyebrow: "What Guides My Hands",
-    title: "I can only meet it.",
+    title: "I Can Only Meet It.",
     blocks: [
       {
         type: "p",
@@ -95,7 +95,7 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
   {
     id: "path",
     eyebrow: "My Path",
-    title: "I knew pain from the inside.",
+    title: "I Knew Pain From the Inside.",
     blocks: [
       {
         type: "p",
@@ -127,7 +127,7 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
   {
     id: "still-learning",
     eyebrow: "Still Learning",
-    title: "Every body is different.",
+    title: "Every Body Is Different.",
     blocks: [
       { type: "p", text: "People sometimes ask how long I have been doing this." },
       { type: "p", text: "It has been a while now, but the honest answer is that I am still learning." },
@@ -148,7 +148,7 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
   {
     id: "beyond",
     eyebrow: "Outside the Room",
-    title: "Beneath the surface.",
+    title: "Beneath the Surface.",
     blocks: [
       { type: "p", text: "Outside the treatment room, I value many of the same things." },
       { type: "p", text: "Quiet. Nature. Meaningful conversation. Time to think." },

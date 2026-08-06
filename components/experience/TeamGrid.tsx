@@ -13,7 +13,7 @@ const TeamGrid = ({ members }: { members: TeamMember[] }) => (
 
       return (
         <article key={member.name + member.image}>
-          <div className="relative mb-4 aspect-[4/5] overflow-hidden rounded-xl bg-exp-tan/7">
+          <div className="relative mb-4 aspect-[4/5] overflow-hidden rounded-xl border border-exp-tan/18 bg-exp-tan/7">
             <NextImage
               src={member.image}
               alt={member.imageAlt ?? member.name}

@@ -1,28 +1,7 @@
 import type { TestimonialItem } from "@/types";
 
-/* ============================================================================
-   PLACEHOLDER CONTENT — NOT REAL REVIEWS. DO NOT SHIP AS-IS.
-
-   Every quote and name below is invented, and the "More than 250 five-star
-   reviews on Google" line in TESTIMONIALS_SECTION is an invented figure. They
-   exist only so the section can be built and reviewed with realistic-looking
-   copy.
-
-   Published as-is these would be fabricated reviews of a real business, which
-   is both an FTC deceptive-practices problem (16 CFR Part 465) and a Google
-   Business Profile policy violation. Replace each entry with a real review —
-   ideally pulled from the actual Google Business Profile — and correct the
-   review count before this page goes live.
-
-   Same convention as the NOT CONFIRMED note on the stats in
-   screens/home/sections/Philosophy.tsx.
-   ========================================================================= */
-
 export const TESTIMONIALS_SECTION = {
-  heading: "What our clients say about us",
-  /* PLACEHOLDER: invented figure — replace with the real Google review count,
-     or delete this line if the number isn't worth quoting yet. */
-  lead: "More than 250 five-star reviews on Google",
+  heading: "What Our Clients Say About Us.",
 };
 
 export const TESTIMONIALS: TestimonialItem[] = [

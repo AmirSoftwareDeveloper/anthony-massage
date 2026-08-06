@@ -9,7 +9,6 @@ interface TitleProps extends HTMLAttributes<HTMLElement> {
 
   center?: boolean;
   white?: boolean;
-  /** "exp" reproduces the gold-eyebrow / italic-display heading treatment used by the exp-* experience sections (home, about, services, contact, page hero). */
   variant?: "default" | "exp";
 
   titleClassName?: string;
@@ -40,10 +39,6 @@ const Title = ({
   ...props
 }: TitleProps) => {
   if (variant === "exp") {
-    /* Wrapped rather than returned as a fragment: as loose siblings the eyebrow
-       and heading become separate flex/grid items, so any parent `gap` lands
-       between them and the pair drifts apart from page to page. The block keeps
-       them together; the heading's own margin still spaces it from what follows. */
     return (
       <div className={cn("exp-title-block", className)}>
         {subTitle ? (

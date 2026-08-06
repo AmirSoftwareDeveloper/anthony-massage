@@ -1,11 +1,5 @@
 import type { SVGProps } from "react";
 
-/** Hand-drawn line icons for the service cards. Lucide has nothing for
- *  bodywork — no hands-on-a-back, no stacked stones, no jaw release — so these
- *  are drawn here in one consistent hairline style: a 48-unit box, 1.2 stroke,
- *  round caps and joins, no fills. Each mark fills most of that box; drawn
- *  smaller they read as specks once the card scales them down. Keep any new one
- *  on the same grid so the set stays even. */
 const base = {
   viewBox: "0 0 48 48",
   fill: "none",
@@ -16,7 +10,6 @@ const base = {
   "aria-hidden": "true",
 } as const;
 
-/** A hand working a reclining back. */
 const MassageIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     {...base}
@@ -36,9 +29,6 @@ const MassageIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-/** A seated figure, open through the shoulders and crossed at the legs. Drawn
- *  entirely from curves — a jointed stick figure reads as a crash-test dummy at
- *  this size, and an angle-and-arc diagram reads as a pie chart. */
 const StretchIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     {...base}
@@ -56,7 +46,6 @@ const StretchIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-/** A head in profile with the jaw joint marked, just ahead of the ear. */
 const JawIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     {...base}
@@ -73,7 +62,6 @@ const JawIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-/** Stacked basalt stones. */
 const StonesIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     {...base}
@@ -106,7 +94,6 @@ const StonesIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-/** A dropper bottle beside a leaf — the infused oil. */
 const OilIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     {...base}
@@ -127,7 +114,6 @@ const OilIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-/** A lotus in three petals — the closing panel's mark, not a service. */
 const LotusIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     {...base}

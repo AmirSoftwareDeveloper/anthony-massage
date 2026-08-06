@@ -8,7 +8,6 @@
   --color-primary: #3b82f6;
   --color-secondary: #111827;
 
-  /* ---- "Home Experience" design system (immersive billboard page) ---- */
   --font-display: var(--font-display), Georgia, "Times New Roman", serif;
   --font-experience: var(--font-experience), -apple-system, "Segoe UI", sans-serif;
 
@@ -22,8 +21,6 @@
   --color-exp-glow: #f6d78e;
   --color-exp-dusk: #14110b;
 
-  /* interior pages' dark reading panel — lifted off pure black to
-     reduce halation behind the light serif text */
   --color-exp-panel: #16120b;
   --color-exp-cream: #f2e6c9;
   --color-exp-tan: #d8cfb4;
@@ -51,13 +48,6 @@
   --breakpoint-2xl: 1400px;
 }
 
-/* The one container on the site. Home, About, Services, Contact, the nav and
-   the legacy text pages all measure from this, so a heading on one page lines
-   up with the heading on the next and with the logo above them. It was
-   previously two competing rhythms — this utility (1520px, padding ramping to
-   8rem) and an inline `w-full max-w-340 px-6 md:px-9` copy-pasted across the
-   experience sections. The inline one is what the nav aligned to, so it won:
-   its values are the ones written here, and the copies now call this. */
 @utility container {
   margin-inline: auto;
   width: 100%;
@@ -69,9 +59,6 @@
   }
 }
 
-/* Vertical rhythm of a full-page section, paired with `container`. Kept apart
-   from it because bands that only set the tone (the nav, the page hero) want
-   the measure without the height. */
 @utility section-y {
   padding-block: 6rem;
 
@@ -89,12 +76,6 @@
   scrollbar-width: none;
 }
 
-/* The gap that briefly opens between one section and the next while
-   scrolling reveals `body` underneath (sections are opaque, but the
-   reveal transition isn't instant). Painting this explicitly, rather
-   than depending on it falling back to browser-default white, means
-   that gap always reads as the same warm light every section itself
-   is lit by — on Home and on every interior page alike. */
 html {
   background: var(--color-exp-dusk);
 }
@@ -177,22 +158,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
-/* ============================================================
-   HOME EXPERIENCE — the immersive billboard/story design system
-   used by the Home page (screens/home/*). Colors and fonts are
-   sourced from the --color-exp-* / --font-* tokens in the @theme
-   block above, so retheming only ever happens here. Class names
-   are namespaced with `exp-` to stay isolated from the rest of
-   the site's styling.
-
-   Wrapped in @layer components so it sits BELOW Tailwind's
-   utilities layer — any Tailwind utility class (pt-26, px-[...],
-   text-(--var), etc.) applied alongside an exp-* class on the
-   same element will correctly win, exactly like normal Tailwind
-   components. Without this layer, this being plain unlayered CSS
-   would always beat utilities regardless of source order.
-   ============================================================ */
-
 @layer components {
   @keyframes exp-drift-push {
     from {
@@ -240,7 +205,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
   }
 
-  /* ---------- ambient ground light (fixed, bottom of viewport) ---------- */
   .exp-wave-frontier {
     position: fixed;
     left: 0;
@@ -257,7 +221,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     will-change: opacity;
   }
 
-  /* ---------- nav ---------- */
   .exp-nav {
     position: fixed;
     top: 0;
@@ -313,7 +276,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-radius: 3px;
   }
 
-  /* ---------- hero stage (billboard) ---------- */
   .exp-hero {
     position: relative;
     height: 100vh;
@@ -424,7 +386,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     animation-delay: 0.03s;
   }
 
-  /* ---------- narration strip (lower-left of hero) ---------- */
   .exp-phase-strip {
     position: absolute;
     inset-inline: 0;
@@ -467,7 +428,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     animation: exp-line-drop 1.9s var(--ease-exp-release) infinite;
   }
 
-  /* ---------- muted → lit sections: the 9-position color spine ---------- */
   .exp-section {
     position: relative;
     padding: 0;
@@ -514,13 +474,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     opacity: 1;
   }
 
-  /* Positions 1-13 share one constant text palette (only the background
-     warms, step to step) across a smooth interpolation from #242018 to
-     #847d67. The ramp grew a step at a time as sections were added: "Our
-     Approach" after Philosophy, then Testimonials before the FAQ, then "Why
-     Choose Us" after Services. Position 14 (footer) keeps the original,
-     separately-tuned "arrival" jump into full light — values unchanged, only
-     its index moved as the spine grew. */
   .exp-pos-1 {
     --s-pre: #242018;
     --s-post: #2b271e;
@@ -653,10 +606,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-eyebrow-lit: #e3c98c;
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
-  /* One more step on the same ramp, added when the Testimonials section landed
-     between "Why people keep coming back" and the FAQ. Rather than re-spreading
-     all eleven stops, the ramp simply runs one step further before the footer's
-     arrival. */
   .exp-pos-12 {
     --s-pre: #766f57;
     --s-post: #7d7660;
@@ -669,8 +618,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-eyebrow-lit: #e3c98c;
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
-  /* Same again for "Why Choose Us", which landed between Services and Pricing.
-     The ramp keeps its step size and simply runs one stop further. */
   .exp-pos-13 {
     --s-pre: #7d7660;
     --s-post: #847d67;
@@ -683,8 +630,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-eyebrow-lit: #e3c98c;
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
-  /* Footer: the separately-tuned "arrival" jump into full light. Values are
-     unchanged from when this was position 12 — only its index moved. */
   .exp-pos-14 {
     --s-pre: #847d67;
     --s-post: #e2d2ab;
@@ -698,24 +643,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: rgba(58, 44, 20, 0.3);
   }
 
-  /* ---------- section typography ---------- */
   .exp-section-inner {
     padding-block: 9rem;
   }
 
-  /* Title(variant="exp") wraps its eyebrow and heading in this. It carries no
-     spacing of its own — the heading's margin-bottom is the single source of
-     the gap to whatever follows, on every page. Its job is to stop a parent's
-     flex/grid `gap` from landing between the eyebrow and the heading. */
   .exp-title-block {
     display: block;
   }
 
-  /* The eyebrow is a <p>, so `.exp-section p` below (0-1-1) outranks a bare
-     `.exp-eyebrow` (0-1-0) and would blow the label up to body size — which is
-     why that rule excludes it. Title(variant="exp") now also inlines these as
-     utilities; what this rule still carries is the `display: block` that the
-     `.exp-page-hero .exp-phase-strip .exp-eyebrow` hide below overrides. */
   .exp-eyebrow {
     display: block;
     font-size: 0.7rem;
@@ -729,10 +664,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .exp-section.lit .exp-eyebrow {
     color: var(--s-eyebrow-lit, var(--s-eyebrow));
   }
-  /* The one heading treatment still driven from CSS: on the home page the
-     Title component renders its <h2> without a className, so this rule is what
-     styles it. Interior pages pass their own `titleClassName` utilities and no
-     longer depend on this. */
   .exp-section h2 {
     font-family: var(--font-display);
     font-weight: 400;
@@ -740,9 +671,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: clamp(1.7rem, 3.2vw, 2.5rem);
     line-height: 1.28;
     color: var(--s-heading, var(--color-exp-olive-deep));
-    /* longhands, not the `margin` shorthand: the centered layout sets
-       margin-inline: auto on the heading, and a shorthand here would reset it
-       back to 0 and knock the heading off-center */
     margin-top: 0;
     margin-bottom: 2.1rem;
     max-width: 15em;
@@ -754,14 +682,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .exp-section p:not(.exp-eyebrow) {
     max-width: 50rem;
     margin-bottom: 1.3rem;
-    /* temporary: force light gray/white regardless of section theme */
     color: rgba(255, 255, 255, 0.85);
     font-weight: 300;
     font-size: 1.08rem;
     line-height: 1.85;
   }
-  /* excluded here too: in the split layout the eyebrow is the only <p> in its
-     column, so it would match :last-of-type and lose its gap to the heading */
   .exp-section p:not(.exp-eyebrow):last-of-type {
     margin-bottom: 0;
   }
@@ -788,7 +713,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     transform: translateY(0);
   }
 
-  .exp-section + .exp-section .exp-section-inner::before {
+  .exp-section .exp-section-inner::before {
     content: "";
     display: block;
     width: 40px;
@@ -826,29 +751,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
   }
 
-  /* ---------- split layout: eyebrow/heading beside content ("FAQ") ---------- */
-  .exp-section-inner--split {
-    max-width: 1040px;
-    display: grid;
-    grid-template-columns: minmax(220px, 320px) 1fr;
-    gap: 2rem 3rem;
-    align-items: start;
-  }
-  /* the inter-section divider is a ::before pseudo-element, which becomes a
-     real grid item (and steals the first cell) once the parent turns into a
-     grid container here — drop it for the split layout only. Selector
-     mirrors .exp-section + .exp-section .exp-section-inner::before so its
-     specificity actually wins. */
-  .exp-section + .exp-section .exp-section-inner--split::before {
-    content: none;
-  }
-  @media (max-width: 860px) {
-    .exp-section-inner--split {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* ---------- the "experience" CTA button, driven by the same position spine ---------- */
   .exp-btn {
     background: var(--s-heading, var(--color-exp-olive));
     color: var(--s-pre, var(--color-exp-paper));
@@ -866,8 +768,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     opacity: 0.88;
   }
 
-  /* a quieter companion CTA — translucent gold outline, same family as
-     the hero's own .exp-replay chip — for a secondary action beside .exp-btn */
   .exp-btn-outline {
     background: transparent;
     border: 1px solid rgba(246, 215, 142, 0.4);
@@ -883,8 +783,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-color: var(--color-exp-glow);
   }
 
-  /* a neutral companion to .exp-btn-outline — plain white outline, no gold
-     tint, for CTAs that shouldn't compete with the glow accent */
   .exp-btn-outline-neutral {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.4);
@@ -900,7 +798,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-color: #fff;
   }
 
-  /* ---------- responsive ---------- */
   @media (max-width: 760px) {
     .exp-phase-strip {
       padding-inline: 1.4rem;
@@ -966,18 +863,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
 }
 
-/* ============================================================
-   PAGE HERO — interior pages (About, Services, Contact, etc.) reuse
-   the Home Experience's `.exp-hero` billboard stage, layered color
-   system, grain, vignette and typography verbatim, but each holds a
-   single already-settled frame instead of crossfading through Home's
-   four-image story: interior pages don't replay the unfolding, they
-   inherit it. The board is fully lit and the ground-bloom fully
-   revealed from the first paint (no grayscale suspense — only Home
-   does that); the ambient ground-light wisps keep drifting at the
-   bottom as the visitor scrolls, same as Home, so the light reads as
-   continuing its journey rather than resetting on every page.
-   ============================================================ */
 @layer components {
   .exp-page-hero {
     min-height: 82vh;
@@ -1011,8 +896,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
   }
 
-  /* interior hero titles read bigger and lighter than Home's narration
-     caption — PageHero is interior-only, so this scopes safely */
   .exp-page-hero .exp-phase-caption {
     font-weight: 400;
     font-size: clamp(1.5rem, 3.4vw, 2.3rem);
@@ -1020,35 +903,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
 }
 
-/* ============================================================
-   INTERIOR PAGE CONTENT — About, Services, Contact.
-   Ported verbatim (colors, spacing) from the interior-page
-   prototype's "dark reading panel" pass: each chapter reads as
-   a near-black band throughout (dusk-adjacent, lifted off pure
-   black to reduce halation on the light serif text) — not the
-   light parchment tone Home settles into. Only the schedule/
-   contact-form embed stays on the light card, matching how the
-   prototype keeps its own scheduling embed light against the
-   dark page. Eyebrows are dropped on interior chapters and the
-   hero — at this size, dark-gold-on-dark-panel was unreadable,
-   and the italic title already names the section; the footer
-   keeps its eyebrow since it introduces the closing CTA.
-   ============================================================ */
 @layer components {
-  /* Services and Contact used to render through their own component, a 660px
-     reading column under a separate dusk header bar — a third layout system
-     next to Home's and About's. They now build from the same InteriorCollage
-     chapters About does, so the rules that styled that column are gone and
-     `.exp-collage-copy` below carries all three pages. */
 
-  /* The contact form is a light parchment island inside the dark panel. The
-     --s-* tokens are inherited from the section around it, so anything shared
-     that gets dropped in here renders its dark-panel colors on a light
-     background — the submit button worst of all, pale gold (--s-heading) on
-     pale parchment, near enough the same value that it stopped reading as a
-     button. The card republishes the whole contract inverted instead of
-     overriding one component: ink where the panel says glow, cream where it
-     says dusk. Anything else added to the card inherits the fix. */
   .exp-light-card {
     background-color: #e9dcb8;
     color: #241c0d;
@@ -1064,7 +920,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: var(--s-rule);
   }
 
-  /* footer / CTA blocks that sit on the interior dark panel */
   .exp-interior-tone {
     background-color: var(--color-exp-panel);
     color: var(--color-exp-tan);
@@ -1077,33 +932,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: var(--color-exp-dusk) !important;
   }
 
-  /* the hero's phase label ("Rising", "Arrived"...) narrates Home's
-     crossfade; interior heroes are static, so the label is dropped */
   .exp-page-hero .exp-phase-strip .exp-eyebrow {
     display: none;
   }
 
-  /* ---------- interior collage: chapters as a staggered two-column
-     image/copy grid, replacing the single 660px reading column. The two
-     columns flow independently, so the offset between a tall figure and
-     its copy is what produces the stagger — no absolute positioning. ---------- */
-  /* padding-block matches .exp-section-inner exactly, so a chapter on an
-     interior page breathes the same as a section on the home page */
-  /* Padding and max-width now live on the inner container in the JSX, matching
-     the home page's media-split section exactly. Only the full-bleed panel
-     color and its light/grain overlays are set here. */
   .exp-collage-section,
   .exp-team-section {
     position: relative;
     background-color: var(--color-exp-panel);
   }
 
-  /* The same --s-* contract .exp-pos-* publishes on the home page, so the
-     shared blocks in components/content-block (categories, steps, faq,
-     service-grid, pricing-list, features) resolve here too. Without it those
-     blocks reference undefined custom properties on interior pages and fall
-     back to inherited color. Interior pages don't run the muted → lit
-     transition, so each -lit token is just its own value. */
   .exp-collage-section,
   .exp-team-section,
   .exp-interior-tone {
@@ -1117,11 +955,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-rule-lit: var(--s-rule);
   }
 
-  /* Consecutive chapters otherwise share one flat panel color and run
-     together. Each one carries its own light instead: a warm glow off the
-     top-left corner, and a diagonal sheen sweeping across it, blended
-     soft-light so it reads as light falling on the panel rather than a
-     drawn divider. Both sit above the content but ignore the pointer. */
   .exp-collage-section::before,
   .exp-team-section::before {
     content: "";
@@ -1132,7 +965,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     opacity: 1;
     transition: opacity 1.6s var(--ease-exp-release);
   }
-  /* the glow arrives with the chapter rather than being there before it */
   .exp-collage-section.exp-reveal:not(.in-view)::before {
     opacity: 0;
   }
@@ -1154,8 +986,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
       url("/images/hero/grain.png");
   }
 
-  /* typography comes from the shared heading/eyebrow rules — only the panel
-     color is set here, so interior chapters can't drift from the home page */
   .exp-collage-section .exp-eyebrow {
     color: var(--color-exp-gold);
   }
@@ -1180,5 +1010,4 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: var(--color-exp-cream);
   }
 
-  /* the two share a panel and a token set — see .exp-collage-section above */
 }

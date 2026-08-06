@@ -129,9 +129,6 @@ const ContactForm = () => {
             />
           </CustomFormField>
 
-          {/* Colors come from the .exp-light-card token block on the card
-              around it, so this matches every other CTA on the site instead of
-              carrying its own one-off background. */}
           <Button
             type="submit"
             disabled={isLoading}

@@ -2,9 +2,6 @@ import NextImage from "next/image";
 
 import type { TestimonialItem } from "@/types";
 
-/** Initials, so a card without a client photo still has an anchor under the
- *  quote instead of a gap. Falls back to nothing rather than a stock face —
- *  a stranger's photo attached to a named review would misrepresent them. */
 const initialsOf = (name: string) =>
   name
     .split(" ")
@@ -34,10 +31,6 @@ const Stars = ({ rating = 5 }: { rating?: number }) => (
 );
 
 const TestimonialGrid = ({ items }: { items: TestimonialItem[] }) => (
-  /* CSS columns rather than a grid: the cards are of genuinely different
-     heights, and columns let each one flow to its natural height and stagger
-     against its neighbours — which is the whole look. `break-inside-avoid` on
-     each child is what stops a card splitting across a column boundary. */
   <div className="mt-12 columns-1 gap-6 sm:columns-2 lg:columns-3">
     {items.map((item, i) =>
       item.kind === "media" ? (

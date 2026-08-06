@@ -3,24 +3,14 @@
 import * as React from "react";
 
 import {
-  PAGE_HERO_SPILL_REST,
   type BoardBox,
   type BoardRect,
+  PAGE_HERO_SPILL_REST,
   computeBloom,
   computeLifeMask,
   measureBoardRect,
 } from "./engine";
 
-/**
- * Interior page-hero engine — the quiet sibling of useHeroExperience. These
- * pages don't replay Home's full unfolding story; they inherit it. The
- * billboard shows one settled, already-lit pose from the moment the page
- * opens (no grayscale suspense, no scroll-driven reveal). The ambient
- * ground-light wisps that keep drifting at the bottom as the visitor scrolls
- * are handled globally by `AmbientWave` in the root layout (via
- * useWaveFrontier) — mounting a second copy here would double up and fight
- * that loop, so this hook only owns the billboard settle.
- */
 export function usePageHeroExperience(board: BoardBox) {
   const heroRef = React.useRef<HTMLElement | null>(null);
   const stageRef = React.useRef<HTMLDivElement | null>(null);
@@ -34,9 +24,6 @@ export function usePageHeroExperience(board: BoardBox) {
   React.useEffect(() => {
     const s = state.current;
 
-    // glues the ground-spill pool to the billboard's true on-screen rect, and
-    // settles the board/street layers to their fully-lit state immediately —
-    // interior heroes open already arrived, not mid-transition
     const measureBoard = () => {
       const stageEl = stageRef.current;
       const anyFrame = frameRef.current;
@@ -58,9 +45,6 @@ export function usePageHeroExperience(board: BoardBox) {
         streetBloomRef.current.style.maskImage = bloom.maskImage;
         streetBloomRef.current.style.webkitMaskImage = bloom.maskImage;
       }
-      // a defined, tight pool of light under the board rather than Home's
-      // wider wash — spread too wide, a lift like this has no edge and reads
-      // as "slightly less dark" instead of as a glow
       if (s.BR && spillRef.current) {
         spillRef.current.style.left = `${s.BR.x - s.BR.w * 0.14}px`;
         spillRef.current.style.top = `${s.BR.y + s.BR.h - s.BR.h * 0.02}px`;

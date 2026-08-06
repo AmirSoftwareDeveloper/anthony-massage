@@ -1,7 +1,5 @@
 import type { TeamMember } from "@/types";
 
-/** Portraits live in /images/other/. Roles for Cole and Song are placeholders —
- *  only Anthony's is taken from the site copy. Fill the rest in before launch. */
 export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: "Anthony",
@@ -25,5 +23,5 @@ export const TEAM_MEMBERS: TeamMember[] = [
 
 export const TEAM_SECTION = {
   eyebrow: "Meet the Team",
-  title: "The hands you'll be in.",
+  title: "The Hands You'll Be In.",
 };

@@ -18,25 +18,6 @@ const PhaseStrip = ({ engine }: { engine: HeroExperienceEngine }) => {
         {engine.captionText}
       </p>
 
-      {/* <div className="exp-hero-cta-row">
-        <Link href={Routes.CONTACT}>
-          <Button
-            variant="experience"
-            size="experience"
-          >
-            Book Your First Session
-          </Button>
-        </Link>
-        <Link href={Routes.SERVICES}>
-          <Button
-            variant="experience-outline"
-            size="experience"
-          >
-            Explore Services
-          </Button>
-        </Link>
-      </div> */}
-
       <div className="flex items-center gap-4">
         <div
           className="flex gap-3"

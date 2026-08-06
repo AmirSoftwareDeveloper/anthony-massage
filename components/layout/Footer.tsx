@@ -5,11 +5,11 @@ import { usePathname } from "next/navigation";
 
 import { cn } from "@/utils";
 
-import { HOME_EXPERIENCE_FOOTER } from "@/constants/homeExperience";
-import { Routes } from "@/constants/routes";
-
 import type { HeroExperienceEngine } from "@/lib/experience/useHeroExperience";
 import { useReveal } from "@/lib/experience/useReveal";
+
+import { HOME_EXPERIENCE_FOOTER } from "@/constants/homeExperience";
+import { Routes } from "@/constants/routes";
 
 import { Button } from "@/components/ui/button";
 
@@ -21,13 +21,8 @@ const Footer = ({ engine }: Props) => {
   const pathname = usePathname();
   const reveal = useReveal<HTMLElement>();
 
-  // The homepage renders this same component itself, wired to its scroll engine
-  // (see screens/home/index.tsx) — skip the plain global render there.
   if (!engine && pathname === Routes.HOME) return null;
 
-  // Home settles into its lit pos-9 spine for this CTA; every other page is
-  // an "interior" page and stays on the dark reading panel instead — no
-  // scroll-driven color transition, just the static dusk-adjacent tone.
   const isInterior = !engine;
   const sectionIndex = HOME_EXPERIENCE_FOOTER.position - 1;
 
@@ -38,7 +33,7 @@ const Footer = ({ engine }: Props) => {
         reveal(el);
       }}
       className={cn(
-        "exp-reveal group flex flex-col items-center px-[2.2rem] pt-26 pb-16 text-center",
+        "exp-reveal group flex flex-col items-center px-[2.2rem] pt-26 pb-20 text-center",
         isInterior ? "exp-interior-tone" : cn("exp-section", `exp-pos-${HOME_EXPERIENCE_FOOTER.position}`)
       )}
     >

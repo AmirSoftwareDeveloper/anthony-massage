@@ -4,6 +4,8 @@ import * as React from "react";
 
 import { WISP_COUNT, clamp01, computeWisp } from "./engine";
 
+const FOOTER_OPACITY_SCALE = 0.3;
+
 export function useWaveFrontier() {
   const waveFrontierRef = React.useRef<HTMLDivElement | null>(null);
   const wispRefs = React.useRef<(SVGPathElement | null)[]>([]);
@@ -38,18 +40,16 @@ export function useWaveFrontier() {
       const atBottom = scrollY + vh >= docHeight - 2;
       const distanceToEnd = docHeight - (scrollY + vh);
       const flareRel = 1 - clamp01(distanceToEnd / (vh * 0.55));
-      const flare = Math.sin(Math.PI * clamp01(flareRel));
+      const footerNearness = clamp01(flareRel);
+      const flare = Math.sin(Math.PI * footerNearness);
+      const opacityScale = 1 + (FOOTER_OPACITY_SCALE - 1) * footerNearness;
 
       if (waveFrontierRef.current) {
         const restingOpacity = atBottom ? 0.85 : 0;
-        waveFrontierRef.current.style.opacity = String(Math.max(state.scrollGlow, flare * 0.9, restingOpacity));
+        const frontierOpacity = Math.max(state.scrollGlow, flare * 0.9, restingOpacity) * opacityScale;
+        waveFrontierRef.current.style.opacity = String(frontierOpacity);
       }
 
-      // recomputing a wisp's path forces the blur filter to re-rasterize it,
-      // which is the expensive part — during a fast scroll (already competing
-      // for main-thread time) that can fall behind and freeze the shapes into
-      // a smeared-looking band. Geometry updates every other frame; opacity
-      // stays smooth every frame since it's cheap.
       const updateGeometry = state.frame % 2 === 0;
       state.frame++;
       const wispPhase = now * 0.0016 * 1.4;
@@ -58,7 +58,7 @@ export function useWaveFrontier() {
         if (!el) continue;
         const wisp = computeWisp(w, wispPhase, flare);
         if (updateGeometry) el.setAttribute("d", wisp.d);
-        el.style.opacity = String(wisp.opacity);
+        el.style.opacity = String(wisp.opacity * opacityScale);
       }
 
       state.rafId = requestAnimationFrame(loop);

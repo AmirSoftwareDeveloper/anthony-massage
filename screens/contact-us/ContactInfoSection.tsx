@@ -12,11 +12,6 @@ import { INFO } from "@/constants";
 
 import Title from "@/components/title";
 
-/* The map takes the slot a photograph fills in every other chapter, so this
-   band is built here rather than through InteriorCollage — an iframe can't be
-   cropped to fill a row the way `object-cover` fills one. Everything else
-   matches a chapter: same section shell, same container, same rhythm. */
-
 const MAP_EMBED_URL = `https://maps.google.com/maps?q=${encodeURIComponent(INFO.PHYSICAL_ADDRESS)}&z=15&output=embed`;
 
 const linkClassName = "text-exp-glow underline decoration-exp-glow/40 underline-offset-4 hover:decoration-exp-glow";
@@ -42,13 +37,13 @@ const ContactInfoSection = () => {
           <Title
             variant="exp"
             subTitle="Where to Find Me"
-            title="Contact information."
+            title="Contact Information."
             titleClassName="mb-8 max-w-[15em] font-display text-3xl leading-tight font-normal text-exp-glow italic md:text-4xl"
           />
 
           <div className="exp-collage-copy">
             <p>
-              The studio is in Issaquah, with parking at the door. Reach out however suits you — the form above is
+              The studio is in Issaquah, with parking at the door. Reach out however suits you. The form above is
               fastest, but the phone and inbox below come straight to me.
             </p>
           </div>
@@ -87,8 +82,6 @@ const ContactInfoSection = () => {
           </div>
         </div>
 
-        {/* Desaturated to sit with the grayscale hero frames rather than
-            dropping a full-color Google map onto the dark panel. */}
         <div className="relative aspect-4/3 min-w-0 overflow-hidden rounded-xl bg-exp-tan/5 shadow-lg lg:aspect-16/13">
           <iframe
             title={`Map to ${INFO.BUSINESS_NAME}`}

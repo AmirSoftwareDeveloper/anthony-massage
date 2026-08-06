@@ -2,11 +2,6 @@ import type { FeatureEntry } from "@/types";
 
 import { getExperienceIcon } from "./icons";
 
-/** Two-up cards, each an icon over a short title and a single line of support
- *  copy. Unlike FeatureGrid — which divides three items with hairline rules and
- *  centres them — these are self-contained panels lifted a shade off the
- *  section background, so a longer list still reads as a scannable block beside
- *  a column of its own. */
 const ReasonGrid = ({ reasons }: { reasons: FeatureEntry[] }) => (
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
     {reasons.map((reason) => {

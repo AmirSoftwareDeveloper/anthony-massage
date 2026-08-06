@@ -9,9 +9,7 @@ const Faq = ({ sectionRef }: FaqProps) => (
   <HomeSection
     id="faq"
     eyebrow="Got a Question?"
-    heading="Frequently Asked Questions"
-    /* Same stop as Testimonials and "Massage Therapy That Looks Beyond Where It
-       Hurts." — see the note in Testimonials.tsx. */
+    heading="Frequently Asked Questions."
     position={3}
     layout="split"
     sectionRef={sectionRef}

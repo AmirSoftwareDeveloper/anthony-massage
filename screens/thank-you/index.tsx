@@ -20,7 +20,7 @@ const ThankYouPage = () => {
       />
       <div className="padding-y container">
         <Title
-          title="Your message has been sent!"
+          title="Your Message Has Been Sent!"
           subTitle="Thank You"
           description="We've received your inquiry and will get back to you as soon as possible."
           center

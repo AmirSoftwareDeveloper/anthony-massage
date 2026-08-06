@@ -106,9 +106,6 @@ export function useHeroExperience() {
       s.heroH = heroRef.current?.offsetHeight ?? s.vh;
     };
 
-    // glues the light-sweep and light-spill onto the billboard's true
-    // on-screen rectangle so the light path stays locked to the board
-    // instead of drifting as object-fit re-crops the image per viewport
     const measureBoard = () => {
       const stageEl = stageRef.current;
       const anyFrame = gFrameRefs.current[0];
@@ -220,8 +217,6 @@ export function useHeroExperience() {
       sweepRib2Ref.current?.setAttribute("d", sweep.rib2);
 
       if (boardColorRef.current) {
-        // color arrives on the board in the light band's own wake, not on an
-        // independent clock — ties the reveal edge to where the light visibly is
         const lifeV = clamp01((s.cur.sweep - LIGHT_IN) / (LIGHT_OUT - LIGHT_IN));
         const mask = computeLifeMask(lifeV, s.BR);
         boardColorRef.current.style.maskImage = mask;
@@ -274,10 +269,6 @@ export function useHeroExperience() {
         waveFrontierRef.current.style.opacity = String(Math.max(s.scrollGlow, flare * 0.9, restingOpacity));
       }
 
-      // geometry updates every other frame — recomputing a wisp's path forces
-      // the blur filter to re-rasterize it, which is the expensive part, and
-      // during a fast scroll that can fall behind and freeze the shapes into
-      // a smeared-looking band. Opacity stays smooth every frame since it's cheap.
       const updateWispGeometry = s.wispFrame % 2 === 0;
       s.wispFrame++;
       const wispPhase = now * 0.0016 * 1.4;

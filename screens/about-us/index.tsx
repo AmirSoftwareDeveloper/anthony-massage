@@ -8,9 +8,6 @@ import PageHero from "@/components/page-hero";
 import Title from "@/components/title";
 
 const AboutUs = () => {
-  /* The image side alternates across the chapters that *have* an image, so a
-     text-only chapter added later can't land two photographs on the same side.
-     Services and Contact count theirs the same way. */
   let illustrated = 0;
 
   return (

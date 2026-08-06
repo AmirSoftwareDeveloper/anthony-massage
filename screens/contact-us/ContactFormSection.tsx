@@ -6,11 +6,6 @@ import Title from "@/components/title";
 
 import ContactForm from "./ContactForm";
 
-/* The page's opener. It's built here rather than through InteriorCollage
-   because the form card takes the slot a photograph would — it needs the
-   width, and it can't be cropped to fill a row. Everything else about the
-   band matches a chapter: same section shell, same container, same rhythm,
-   so the form sits on the page's edges like every heading below it. */
 const ContactFormSection = () => {
   const reveal = useReveal<HTMLElement>();
 
@@ -25,7 +20,7 @@ const ContactFormSection = () => {
           <Title
             variant="exp"
             subTitle="Contact Us"
-            title="Let's find a time."
+            title="Let's Find a Time."
             titleClassName="mb-8 max-w-[15em] font-display text-3xl leading-tight font-normal text-exp-glow italic md:text-4xl"
           />
           <div className="exp-collage-copy">

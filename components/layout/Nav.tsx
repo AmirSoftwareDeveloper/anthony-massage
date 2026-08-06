@@ -38,8 +38,6 @@ const Nav = () => {
       ref={navRef as React.RefObject<HTMLElement>}
       className="exp-nav"
     >
-      {/* Same container every section uses, so the logo and links sit on the
-          same edges as the content below them all the way down the page. */}
       <div className="container flex items-center justify-between">
         <Logo />
 

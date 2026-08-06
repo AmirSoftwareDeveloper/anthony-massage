@@ -19,7 +19,7 @@ const ServicesList = () => {
         <div className="flex justify-between flex-wrap items-center gap-4 mb-6">
           <Title
             subTitle="Our Services"
-            title="Reliable solutions tailored to your needs with speed, quality, and care."
+            title="Reliable Solutions Tailored to Your Needs With Speed, Quality, and Care."
             className="max-sm:mb-0!"
           />
         </div>

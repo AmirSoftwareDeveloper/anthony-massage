@@ -14,8 +14,6 @@ const ContactUs = () => (
 
     <ContactFormSection />
 
-    {/* Last band on the page: the address, the hours, and the two ways to
-        reach me, gathered in one place after all the reading. */}
     <ContactInfoSection />
   </>
 );

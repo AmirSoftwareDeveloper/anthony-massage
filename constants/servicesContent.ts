@@ -4,7 +4,7 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
   {
     id: "intro",
     eyebrow: "Services",
-    title: "What it's like to be on my table.",
+    title: "What It's Like to Be on My Table.",
     lead: true,
     blocks: [
       { type: "p", text: "I'm interested in how you got here." },
@@ -23,7 +23,7 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
   {
     id: "both-sides",
     eyebrow: "From Both Sides",
-    title: "I've been there too.",
+    title: "I've Been There Too.",
     blocks: [
       {
         type: "p",
@@ -38,7 +38,7 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
   {
     id: "on-the-table",
     eyebrow: "On the Table",
-    title: "Where the work goes.",
+    title: "Where the Work Goes.",
     blocks: [
       {
         type: "p",
@@ -56,7 +56,7 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
   {
     id: "depth",
     eyebrow: "Depth",
-    title: "Without bracing.",
+    title: "Without Bracing.",
     blocks: [
       {
         type: "p",
@@ -67,7 +67,7 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
   {
     id: "your-voice",
     eyebrow: "Your Voice",
-    title: "Tell me what you feel.",
+    title: "Tell Me What You Feel.",
     blocks: [
       {
         type: "p",
@@ -96,7 +96,7 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
   {
     id: "the-moment",
     eyebrow: "The Moment",
-    title: "That's it.",
+    title: "That's It.",
     blocks: [
       {
         type: "p",
@@ -111,7 +111,7 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
   {
     id: "before-you-come",
     eyebrow: "Before You Come In",
-    title: "Begin where you are.",
+    title: "Begin Where You Are.",
     blocks: [
       {
         type: "p",
@@ -132,7 +132,7 @@ export const SERVICES_SECTIONS: InteriorSectionContent[] = [
   {
     id: "areas",
     eyebrow: "Areas I Commonly Work With",
-    title: "Where relief often begins.",
+    title: "Where Relief Often Begins.",
     blocks: [
       {
         type: "p",

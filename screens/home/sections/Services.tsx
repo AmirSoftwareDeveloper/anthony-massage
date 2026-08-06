@@ -16,15 +16,10 @@ const Services = ({ sectionRef }: ServicesProps) => (
     eyebrow="Our Services"
     heading="Therapeutic Massage Services in Issaquah, WA."
     layout="header-media"
-    /* Same stop as "Massage Therapy That Looks Beyond Where It Hurts." — see
-       the note in Testimonials.tsx. */
     position={3}
     sectionRef={sectionRef}
     lead={
       <>
-        {/* Flush right on wide screens so the copy and the button below it
-            share one edge — left-aligned text under a right-aligned button
-            reads as a mistake. */}
         <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0 lg:ml-auto lg:text-right">
           Discover personalized massage therapy designed to reduce tension, restore movement, and help you feel your
           best through thoughtful, hands-on care.
@@ -45,7 +40,7 @@ const Services = ({ sectionRef }: ServicesProps) => (
   >
     <ServiceCardGrid
       finale={{
-        title: "Not sure where to start?",
+        title: "Not Sure Where to Start?",
         text: "These aren't chosen from a menu in advance. They're brought in when your body is asking for them.",
         ctaText: "Book a Session",
         ctaHref: Routes.CONTACT,

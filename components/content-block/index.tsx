@@ -272,8 +272,6 @@ const ContentBlockView = ({ block }: { block: ContentBlock }) => {
   }
 
   if (block.type === "quiet") {
-    // `exp-quiet` is kept: its font-size / color / line-height are `!important` in
-    // globals.css, so those three still win over any utility written here.
     return <p className="exp-quiet mb-5 font-light last-of-type:mb-0">{block.text}</p>;
   }
 

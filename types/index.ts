@@ -31,11 +31,9 @@ export type ServiceEntry = {
   price?: string;
 };
 
-/** A photographic service card: image, hairline icon, and copy revealed on hover. */
 export type ServiceCardEntry = {
   icon: ServiceIconName;
   title: string;
-  /** One short line under the title, ahead of the fuller description. */
   tagline: string;
   text: string;
   imgSrc: string;
@@ -57,9 +55,7 @@ export type FeatureEntry = {
 };
 
 export type StatEntry = {
-  /** counted up from zero when the band scrolls into view */
   value: number;
-  /** rendered immediately after the figure, e.g. "+" */
   suffix?: string;
   label: string;
 };
@@ -98,9 +94,7 @@ export type InteriorImage = {
 };
 
 export type InteriorMedia = {
-  /** the tall feature image set beside the chapter's copy */
   main?: InteriorImage;
-  /** an optional pair of smaller images stacked beneath the copy */
   pair?: InteriorImage[];
 };
 
@@ -139,7 +133,6 @@ export type TeamMember = {
   role: string;
   image: string;
   imageAlt?: string;
-  /** falls back to the site-wide social links when a member has none of their own */
   socials?: SocialLink[];
 };
 
@@ -147,23 +140,16 @@ export type Testimonial = {
   name: string;
   testimonial: string;
   date: string;
-  /** client photo; when empty the card falls back to an initials avatar */
   imgSrc: string;
-  /** 1–5, rendered as filled stars. Defaults to 5 when omitted. */
   rating?: number;
 };
 
-/** A photo tile that sits in the testimonial masonry between the quote cards,
- *  so the section doesn't read as a solid wall of text. */
 export type TestimonialMedia = {
   imgSrc: string;
   alt: string;
-  /** when present the tile gets a play affordance and opens the clip */
   videoUrl?: string;
 };
 
-/** The masonry takes one ordered list so quotes and photo tiles can be
- *  interleaved deliberately rather than the layout guessing at a rhythm. */
 export type TestimonialItem = ({ kind: "quote" } & Testimonial) | ({ kind: "media" } & TestimonialMedia);
 
 export type Post = {

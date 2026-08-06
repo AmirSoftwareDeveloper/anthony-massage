@@ -17,8 +17,6 @@ type InteriorCollageProps = {
   eyebrow: string;
   title: string;
   media?: InteriorMedia;
-  /** flips the feature image to the right column — alternated down the page so
-   *  consecutive chapters don't stack their images on the same side */
   flip?: boolean;
   children: ReactNode;
 };
@@ -47,16 +45,8 @@ const InteriorCollage = ({ id, eyebrow, title, media, flip, children }: Interior
     />
   );
 
-  /* `exp-collage-copy` is kept: `.exp-collage-copy .exp-quiet` in globals.css
-     sets its color with `!important`, which no utility can beat. */
   const copy = <div className="exp-collage-copy">{children}</div>;
 
-  /* Not every chapter earns a photograph — Services and Contact both run
-     stretches of short, purely verbal ones. Rather than pad those with filler
-     images or drop them into a narrower column of their own, they reuse the
-     home page's "split" section: heading in a fixed left column, copy in the
-     wider right one. Same container, same vertical rhythm, so a text chapter
-     and an illustrated one read as the same kind of thing. */
   const mainImage = media?.main;
 
   return (
@@ -65,9 +55,6 @@ const InteriorCollage = ({ id, eyebrow, title, media, flip, children }: Interior
       ref={reveal}
       className="exp-reveal exp-collage-section"
     >
-      {/* Container and rhythm mirror the home page's media-split section
-          (components/home-section, layout="media-split") so a chapter here
-          breathes exactly like a section there. */}
       <div
         className={cn(
           "container section-y grid grid-cols-1 gap-9",
@@ -84,19 +71,12 @@ const InteriorCollage = ({ id, eyebrow, title, media, flip, children }: Interior
         ) : (
           <>
             <div className={cn("order-0 flex min-w-0 flex-col gap-10", flip && "lg:order-2")}>
-              {/* Fixed ratio while the chapter is stacked; from lg it fills the row
-                  instead, so the figure's top edge lines up with the eyebrow and its
-                  bottom edge with the last thing in the text column (the paired
-                  images, where a chapter has them). The section's vertical padding
-                  sits outside the grid tracks, so filling the row can't eat it. */}
               <Figure
                 image={mainImage}
                 className="aspect-13/14 lg:aspect-auto lg:h-full"
               />
             </div>
 
-            {/* Top-aligned rather than centered, so the eyebrow starts level with the
-                figure's top edge. */}
             <div className="flex min-w-0 flex-col justify-start gap-0">
               {heading}
               {copy}

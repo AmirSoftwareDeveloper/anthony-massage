@@ -16,8 +16,6 @@ const buttonVariants = cva(
         "outline-secondary": "border border-secondary text-secondary hover:bg-secondary hover:text-white",
         link: "text-neutral-900 underline-offset-4 hover:underline",
         neutral: "bg-white text-primary-dark hover:text-white",
-        // `exp-btn` is kept alongside the utilities on purpose: `.exp-interior-tone .exp-btn`
-        // in globals.css overrides background/color with `!important`, which no utility can beat.
         experience:
           "exp-btn rounded-full font-medium bg-(--s-heading,var(--color-exp-olive)) text-(--s-pre,var(--color-exp-paper)) hover:-translate-y-0.5 hover:opacity-90 [.lit_&]:bg-(--s-heading-lit,var(--s-heading)) [.lit_&]:text-(--s-post,var(--s-pre))",
         "experience-outline":

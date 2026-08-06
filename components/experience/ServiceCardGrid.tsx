@@ -9,7 +9,6 @@ const LotusIcon = SERVICE_ICONS.lotus;
 
 type ServiceCardGridProps = {
   services: ServiceCardEntry[];
-  /** Fills the grid's last cell, in the shape of a card already hovered. */
   finale?: { title: string; text: string; ctaText: string; ctaHref: string };
 };
 
@@ -31,21 +30,12 @@ const ServiceCardGrid = ({ services, finale }: ServiceCardGridProps) => (
             className="object-cover transition-transform duration-2200 ease-exp-release group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />
 
-          {/* Two washes: the first is always there so the title stays legible on
-              any photo; the second is the hover state, a warm brand gradient
-              that takes the whole card. */}
           <div className="absolute inset-0 bg-linear-to-t from-exp-ink/90 via-exp-ink/20 to-exp-ink/40" />
           <div className="absolute inset-0 bg-linear-to-br from-exp-gold/95 via-exp-ink-soft/95 to-exp-ink/95 opacity-0 transition-opacity duration-700 ease-exp-release group-hover:opacity-100 group-focus-visible:opacity-100" />
 
           <div className="relative flex w-full flex-col p-6 md:p-7">
             <Icon className="size-14 shrink-0 text-exp-cream" />
 
-            {/* Two flexible spacers trade places on hover, and `flex-grow` is
-                one of the few sizing properties the browser will interpolate.
-                At rest the top one holds the title against the bottom edge; on
-                hover it collapses, lifting title and tagline up under the icon
-                while the second spacer opens and drops the description to the
-                floor of the card. */}
             <div className="grow transition-[flex-grow] duration-700 ease-exp-release group-hover:grow-0 group-focus-visible:grow-0 motion-reduce:transition-none" />
 
             <h3 className="m-0 font-display text-2xl+ font-normal italic text-white lg:text-3xl+">{service.title}</h3>
@@ -74,9 +64,6 @@ const ServiceCardGrid = ({ services, finale }: ServiceCardGridProps) => (
       );
     })}
 
-    {/* Wearing the cards' hover gradient rather than a photo: it closes the
-        grid on the same note the cards resolve to, and gives the row an anchor
-        instead of a hole where a sixth service would be. */}
     {finale && (
       <Link
         href={finale.ctaHref}

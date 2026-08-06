@@ -4,11 +4,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/utils";
 
-/** Matches the hero's own scroll-hint threshold: the control appears once the
- *  billboard has been scrolled past, not while the visitor is still in it. */
 const THRESHOLD = 300;
 
-/** r=21 in a 48px box leaves room for the 1px ring to sit inside the border. */
 const RADIUS = 21;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
@@ -17,10 +14,6 @@ const ScrollToTop = () => {
   const progressRef = useRef<SVGCircleElement | null>(null);
   const reducedMotionRef = useRef(false);
 
-  /* Progress is written straight to the SVG attribute inside a rAF loop rather
-     than held in state: the arc updates every frame while scrolling, and routing
-     that through React would re-render the tree on every one. Same approach the
-     wave frontier uses. */
   useEffect(() => {
     reducedMotionRef.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -65,10 +58,6 @@ const ScrollToTop = () => {
   }, []);
 
   return (
-    /* Kept mounted and faded rather than unmounted, so it eases out the way the
-       hero's replay chip and scroll hint do instead of vanishing on a frame.
-       `pointer-events-none` while hidden keeps it unclickable and out of the
-       tab order is handled by `tabIndex`/`aria-hidden` below. */
     <button
       type="button"
       onClick={scrollToTop}
@@ -85,9 +74,6 @@ const ScrollToTop = () => {
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"
       )}
     >
-      {/* Progress arc: the same gold the section spine warms toward, drawn as a
-          ring around the arrow so the control doubles as a read of how far down
-          the page the visitor is. Rotated so it fills clockwise from 12 o'clock. */}
       <svg
         className="absolute inset-0 -rotate-90"
         viewBox="0 0 48 48"
@@ -108,9 +94,6 @@ const ScrollToTop = () => {
         />
       </svg>
 
-      {/* Hairline arrow, matching the 1px rules and 1.5px nav bars used elsewhere
-          rather than a filled glyph, which would read heavier than anything else
-          on the page. Lifts slightly on hover, like the CTA buttons do. */}
       <svg
         viewBox="0 0 24 24"
         fill="none"
