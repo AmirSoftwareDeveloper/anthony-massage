@@ -13,12 +13,12 @@ const Philosophy = ({ sectionRef }: PhilosophyProps) => (
   <HomeSection
     id="philosophy"
     eyebrow="Our Philosophy"
-    heading="Lasting change, not just temporary relief."
+    heading="Personalized Therapeutic Massage for Lasting Relief."
     layout="media-split"
     position={2}
     sectionRef={sectionRef}
     media={
-      <div className="relative aspect-[13/14] overflow-hidden rounded-3xl shadow-xl">
+      <div className="relative aspect-13/14 overflow-hidden rounded-3xl shadow-xl">
         <NextImage
           src="/images/about/philosophy.jpeg"
           alt="[Alt text]"
@@ -29,12 +29,6 @@ const Philosophy = ({ sectionRef }: PhilosophyProps) => (
       </div>
     }
     after={
-      /* NOT CONFIRMED: the first three figures are estimates, not Anthony's
-         records. They are internally consistent (8,000 sessions over 12 years
-         is ~14 a week) and plausible for a solo practitioner, but they are
-         public claims about a real business — check them against his actual
-         numbers before this goes live. The 90 minutes is the one real figure:
-         it's the extended session in the pricing section below. */
       <StatGrid
         stats={[
           { value: 8000, suffix: "+", label: "Sessions completed" },
@@ -63,7 +57,7 @@ const Philosophy = ({ sectionRef }: PhilosophyProps) => (
           variant="experience"
           size="experience"
         >
-          More About Me
+          More About Us
         </Button>
       </Link>
     </div>

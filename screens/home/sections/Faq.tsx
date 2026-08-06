@@ -10,7 +10,9 @@ const Faq = ({ sectionRef }: FaqProps) => (
     id="faq"
     eyebrow="Got a Question?"
     heading="Frequently Asked Questions"
-    position={11}
+    /* Same stop as Testimonials and "Massage Therapy That Looks Beyond Where It
+       Hurts." — see the note in Testimonials.tsx. */
+    position={3}
     layout="split"
     sectionRef={sectionRef}
   >

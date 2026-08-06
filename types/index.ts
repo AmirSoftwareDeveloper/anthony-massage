@@ -133,8 +133,24 @@ export type Testimonial = {
   name: string;
   testimonial: string;
   date: string;
+  /** client photo; when empty the card falls back to an initials avatar */
   imgSrc: string;
+  /** 1–5, rendered as filled stars. Defaults to 5 when omitted. */
+  rating?: number;
 };
+
+/** A photo tile that sits in the testimonial masonry between the quote cards,
+ *  so the section doesn't read as a solid wall of text. */
+export type TestimonialMedia = {
+  imgSrc: string;
+  alt: string;
+  /** when present the tile gets a play affordance and opens the clip */
+  videoUrl?: string;
+};
+
+/** The masonry takes one ordered list so quotes and photo tiles can be
+ *  interleaved deliberately rather than the layout guessing at a rhythm. */
+export type TestimonialItem = ({ kind: "quote" } & Testimonial) | ({ kind: "media" } & TestimonialMedia);
 
 export type Post = {
   title: string;

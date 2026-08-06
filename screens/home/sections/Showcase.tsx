@@ -11,7 +11,7 @@ const Showcase = ({ sectionRef }: ShowcaseProps) => (
     id="showcase"
     eyebrow="Client Care"
     heading="Providing thoughtful care, session after session."
-    position={9}
+    position={10}
     sectionRef={sectionRef}
   >
     <div

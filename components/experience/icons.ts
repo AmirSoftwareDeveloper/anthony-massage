@@ -1,9 +1,12 @@
 import {
   Activity,
+  Award,
   Droplet,
   Flame,
   Hand,
   Heart,
+  Leaf,
+  MessageCircle,
   Moon,
   Sparkles,
   Target,
@@ -23,6 +26,9 @@ export const EXPERIENCE_ICONS: Record<string, LucideIcon> = {
   target: Target,
   heart: Heart,
   moon: Moon,
+  award: Award,
+  leaf: Leaf,
+  message: MessageCircle,
 };
 
 export const getExperienceIcon = (name: string): LucideIcon => EXPERIENCE_ICONS[name] ?? Sparkles;

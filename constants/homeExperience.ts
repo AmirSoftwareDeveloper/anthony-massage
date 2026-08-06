@@ -6,7 +6,7 @@ export const PHASE_DOT_LABELS = [
 ] as const;
 
 export const HOME_EXPERIENCE_FOOTER = {
-  position: 12,
+  position: 14,
   eyebrow: "Anthony Massage Works",
   title: "Ready to imagine feeling different?",
   sub: "Reach out below, and I'll follow up to find a time that works.",

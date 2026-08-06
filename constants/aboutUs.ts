@@ -39,12 +39,10 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
       { type: "p", text: "What follows is less a philosophy and more a way of paying attention." },
     ],
     media: {
-      main: { src: "/images/about/the-work.jpeg", alt: "[Alt text]" },
+      main: { src: "/images/about/philosophy.jpeg", alt: "[Alt text]" },
       pair: [
         { src: "/images/about/the-work-detail.jpeg", alt: "[Alt text]" },
-        // PLACEHOLDER: the reference pairs two accents here, but the about
-        // folder had no tenth photo. Drop a real square-ish image in to replace.
-        { src: "/images/about/the-work-detail-2.jpeg", alt: "[Alt text]" },
+        { src: "/images/about/the-work-accent.jpeg", alt: "[Alt text]" },
       ],
     },
   },

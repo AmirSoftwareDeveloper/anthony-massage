@@ -11,7 +11,7 @@ const Welcome = ({ sectionRef }: WelcomeProps) => (
   <HomeSection
     id="welcome"
     eyebrow="Welcome to Anthony Massage Works"
-    heading="Personalized Therapeutic Massage and Bodywork in Issaquah, WA"
+    heading="Massage Therapy in Issaquah, WA for Pain Relief & Mobility"
     layout="centered"
     position={1}
     sectionRef={sectionRef}

@@ -9,7 +9,7 @@ type OurApproachProps = {
 const OurApproach = ({ sectionRef }: OurApproachProps) => (
   <HomeSection
     id="our-approach"
-    heading="Where the pain is rarely where it begins"
+    heading="Massage Therapy That Looks Beyond Where It Hurts."
     layout="header-media"
     position={3}
     sectionRef={sectionRef}

@@ -507,13 +507,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     opacity: 1;
   }
 
-  /* Positions 1-11 share one constant text palette (only the background
-     warms, step to step) across a smooth 11-stop interpolation from
-     #242018 to #766f57 — the same range positions 1-10 covered before,
-     re-spread over one more stop now that the "Our Approach" section was
-     added after Philosophy. Position 12 (footer) keeps the original,
-     separately-tuned "arrival" jump into full light — values unchanged,
-     only its index moved as the spine grew. */
+  /* Positions 1-13 share one constant text palette (only the background
+     warms, step to step) across a smooth interpolation from #242018 to
+     #847d67. The ramp grew a step at a time as sections were added: "Our
+     Approach" after Philosophy, then Testimonials before the FAQ, then "Why
+     Choose Us" after Services. Position 14 (footer) keeps the original,
+     separately-tuned "arrival" jump into full light — values unchanged, only
+     its index moved as the spine grew. */
   .exp-pos-1 {
     --s-pre: #242018;
     --s-post: #2b271e;
@@ -646,8 +646,40 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     --s-eyebrow-lit: #e3c98c;
     --s-rule-lit: rgba(227, 201, 140, 0.4);
   }
+  /* One more step on the same ramp, added when the Testimonials section landed
+     between "Why people keep coming back" and the FAQ. Rather than re-spreading
+     all eleven stops, the ramp simply runs one step further before the footer's
+     arrival. */
   .exp-pos-12 {
     --s-pre: #766f57;
+    --s-post: #7d7660;
+    --s-heading: #efd9a0;
+    --s-body: #e8dec4;
+    --s-eyebrow: #e3c98c;
+    --s-rule: rgba(227, 201, 140, 0.4);
+    --s-heading-lit: #efd9a0;
+    --s-body-lit: #e8dec4;
+    --s-eyebrow-lit: #e3c98c;
+    --s-rule-lit: rgba(227, 201, 140, 0.4);
+  }
+  /* Same again for "Why Choose Us", which landed between Services and Pricing.
+     The ramp keeps its step size and simply runs one stop further. */
+  .exp-pos-13 {
+    --s-pre: #7d7660;
+    --s-post: #847d67;
+    --s-heading: #efd9a0;
+    --s-body: #e8dec4;
+    --s-eyebrow: #e3c98c;
+    --s-rule: rgba(227, 201, 140, 0.4);
+    --s-heading-lit: #efd9a0;
+    --s-body-lit: #e8dec4;
+    --s-eyebrow-lit: #e3c98c;
+    --s-rule-lit: rgba(227, 201, 140, 0.4);
+  }
+  /* Footer: the separately-tuned "arrival" jump into full light. Values are
+     unchanged from when this was position 12 — only its index moved. */
+  .exp-pos-14 {
+    --s-pre: #847d67;
     --s-post: #e2d2ab;
     --s-heading: #fffcf3;
     --s-body: #fffef9;

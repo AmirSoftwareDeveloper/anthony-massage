@@ -10,7 +10,7 @@ const HowSessionsWork = ({ sectionRef }: HowSessionsWorkProps) => (
     id="how-sessions-work"
     eyebrow="How Sessions Work"
     heading="What happens when we begin."
-    position={8}
+    position={9}
     sectionRef={sectionRef}
   >
     <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">

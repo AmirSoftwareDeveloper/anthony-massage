@@ -10,7 +10,7 @@ const Pricing = ({ sectionRef }: PricingProps) => (
     id="pricing"
     eyebrow="Pricing"
     heading="Pricing plans for your wellness journey."
-    position={7}
+    position={8}
     sectionRef={sectionRef}
   >
     <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">

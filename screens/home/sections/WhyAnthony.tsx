@@ -12,7 +12,7 @@ const WhyAnthony = ({ sectionRef }: WhyAnthonyProps) => (
     id="why-anthony"
     eyebrow="Why Anthony"
     heading="Why people keep coming back."
-    position={10}
+    position={11}
     sectionRef={sectionRef}
   >
     <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">

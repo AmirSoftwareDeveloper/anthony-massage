@@ -50,18 +50,21 @@ const InteriorCollage = ({ id, eyebrow, title, media, flip, children }: Interior
       <div className="mx-auto grid w-full max-w-340 grid-cols-1 items-stretch gap-9 px-6 py-24 md:px-9 md:py-36 lg:grid-cols-2 lg:gap-x-18 lg:gap-y-10">
         <div className={cn("order-none flex min-w-0 flex-col gap-10", flip && "lg:order-2")}>
           {media?.main && (
+            /* Fixed ratio while the chapter is stacked; from lg it fills the row
+               instead, so the figure's top edge lines up with the eyebrow and its
+               bottom edge with the last thing in the text column (the paired
+               images, where a chapter has them). The section's vertical padding
+               sits outside the grid tracks, so filling the row can't eat it. */
             <Figure
               image={media.main}
-              className="min-h-104 flex-1"
+              className="aspect-13/14 lg:aspect-auto lg:h-full"
             />
           )}
         </div>
 
-        {/* Centered against the figure beside it rather than dropped down it:
-            the column still stretches to the row height, so the two columns end
-            flush, but the copy sits on the figure's vertical midline the way the
-            home page's media-split section does. */}
-        <div className="flex min-w-0 flex-col justify-center gap-0">
+        {/* Top-aligned rather than centered, so the eyebrow starts level with the
+            figure's top edge. */}
+        <div className="flex min-w-0 flex-col justify-start gap-0">
           <Title
             variant="exp"
             subTitle={eyebrow}
