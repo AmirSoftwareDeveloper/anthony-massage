@@ -18,11 +18,14 @@ const Logo = ({ className }: LogoProps) => {
     <Link
       href={Routes.HOME}
       aria-label={`${INFO.BUSINESS_NAME} home`}
-      className={cn("exp-nav-name", className)}
+      className={cn(
+        "font-display text-xl leading-tight font-bold tracking-[0.06em] text-exp-parchment uppercase",
+        className
+      )}
     >
       {leadWords}
       <br />
-      <span>{lastWord}</span>
+      <span className="font-bold text-exp-gold">{lastWord}</span>
     </Link>
   );
 };

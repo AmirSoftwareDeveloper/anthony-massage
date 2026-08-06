@@ -1,5 +1,5 @@
-import HomeSection from "@/components/home-section";
 import CategoryGrid from "@/components/experience/CategoryGrid";
+import HomeSection from "@/components/home-section";
 
 type WhatIHelpWithProps = {
   sectionRef: (el: HTMLElement | null) => void;
@@ -13,13 +13,15 @@ const WhatIHelpWith = ({ sectionRef }: WhatIHelpWithProps) => (
     position={5}
     sectionRef={sectionRef}
   >
-    <p>People come to the table for all kinds of reasons. Most of them fall into a few familiar shapes.</p>
+    <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
+      People come to the table for all kinds of reasons. Most of them fall into a few familiar shapes.
+    </p>
 
     <CategoryGrid
       entries={[
         {
           title: "Pain Relief",
-          text: "Tension that's settled in and stayed — in the neck, the low back, the jaw. Work aimed at the pattern underneath it, not just the spot that's loudest.",
+          text: "Tension that's settled in and stayed: in the neck, the low back, the jaw. Work aimed at the pattern underneath it, not just the spot that's loudest.",
         },
         {
           title: "Injury Recovery",
@@ -27,7 +29,7 @@ const WhatIHelpWith = ({ sectionRef }: WhatIHelpWithProps) => (
         },
         {
           title: "Mobility Improvement",
-          text: "Range that narrowed gradually, without one moment to point to — restored the same way it was lost, a little at a time.",
+          text: "Range that narrowed gradually, without one moment to point to, restored the same way it was lost, a little at a time.",
         },
         {
           title: "Stress & Tension Relief",
@@ -36,9 +38,9 @@ const WhatIHelpWith = ({ sectionRef }: WhatIHelpWithProps) => (
       ]}
     />
 
-    <p className="exp-quiet">
-      If what brought you here isn&apos;t listed above, that&apos;s alright. The body doesn&apos;t organize itself
-      into categories. People don&apos;t either.
+    <p className="exp-quiet mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
+      If what brought you here isn&apos;t listed above, that&apos;s alright. The body doesn&apos;t organize itself into
+      categories. People don&apos;t either.
     </p>
   </HomeSection>
 );

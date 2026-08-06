@@ -1,5 +1,5 @@
-import HomeSection from "@/components/home-section";
 import PricingList from "@/components/experience/PricingList";
+import HomeSection from "@/components/home-section";
 
 type PricingProps = {
   sectionRef: (el: HTMLElement | null) => void;
@@ -13,13 +13,13 @@ const Pricing = ({ sectionRef }: PricingProps) => (
     position={7}
     sectionRef={sectionRef}
   >
-    <p>
-      Simple, session-based pricing. No two bodies compensate the same, so no two sessions should be the same — but
-      every session starts from the same clear starting point.
+    <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
+      Simple, session-based pricing. No two bodies compensate the same, so no two sessions should be the same, but every
+      session starts from the same clear starting point.
     </p>
 
     <PricingList
-      note="Sample pricing shown below — reach out for current rates."
+      note="Sample pricing shown below. Reach out for current rates."
       services={[
         { icon: "hand", title: "Therapeutic Massage (60 min)", price: "from $110" },
         { icon: "activity", title: "Deep Tissue Massage (60 min)", price: "from $130" },

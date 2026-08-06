@@ -1,8 +1,8 @@
 "use client";
 
-import { INFO } from "@/constants";
-
 import type { HeroExperienceEngine } from "@/lib/experience/useHeroExperience";
+
+import { INFO } from "@/constants";
 
 import HeroStage from "./hero/HeroStage";
 import PhaseStrip from "./hero/PhaseStrip";
@@ -14,7 +14,7 @@ const Hero = ({ engine }: { engine: HeroExperienceEngine }) => {
       className="exp-hero"
     >
       <h1 className="sr-only">
-        {INFO.BUSINESS_NAME} — Massage Therapy for Pain Relief, Injury Recovery & Mobility in Issaquah, WA
+        {INFO.BUSINESS_NAME}: Massage Therapy for Pain Relief, Injury Recovery & Mobility in Issaquah, WA
       </h1>
 
       <HeroStage engine={engine} />

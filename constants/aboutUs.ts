@@ -4,17 +4,23 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
   {
     id: "intro",
     eyebrow: "About Us",
-    title: "Hi — I'm Anthony.",
+    title: "Hi, I'm Anthony.",
     lead: true,
     blocks: [
-      { type: "p", text: "When I first began studying massage, I thought I was learning how to help people feel better." },
+      {
+        type: "p",
+        text: "When I first began studying massage, I thought I was learning how to help people feel better.",
+      },
       { type: "p", text: "Over time, I realized I was learning something else." },
       { type: "p", text: "I was learning how to pay attention." },
       {
         type: "p",
         text: "To notice what changes. What doesn't. Where the body protects. Where it lets go. Where someone may have been carrying more than they realize.",
       },
-      { type: "p", text: "That way of seeing has shaped more than my work. It has shaped the way I move through life." },
+      {
+        type: "p",
+        text: "That way of seeing has shaped more than my work. It has shaped the way I move through life.",
+      },
     ],
     media: {
       main: { src: "/images/about/intro.jpeg", alt: "[Alt text]" },
@@ -49,7 +55,7 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
     blocks: [
       {
         type: "p",
-        text: "Fascia — the connective web wrapping every muscle, bone, nerve, and organ — tightens and adheres in response to injury, repetition, stress, or simply time. The pattern conforms. Layers form on layers.",
+        text: "Fascia, the connective web wrapping every muscle, bone, nerve, and organ, tightens and adheres in response to injury, repetition, stress, or simply time. The pattern conforms. Layers form on layers.",
       },
       {
         type: "p",
@@ -71,7 +77,7 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
       },
       {
         type: "p",
-        text: "Sustained, specific contact lets tissue soften and reorganize on its own terms. It isn't forced open — it's given the conditions to release.",
+        text: "Sustained, specific contact lets tissue soften and reorganize on its own terms. It isn't forced open. It's given the conditions to release.",
       },
       {
         type: "p",
@@ -79,7 +85,10 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
       },
       { type: "p", text: "Early on, I reached for change before the body was ready. It usually didn't stick." },
       { type: "p", text: "It took me a while to stop." },
-      { type: "p", text: "I can't make a nervous system do anything. I can only meet it. And when it's ready, it comes halfway." },
+      {
+        type: "p",
+        text: "I can't make a nervous system do anything. I can only meet it. And when it's ready, it comes halfway.",
+      },
     ],
     media: {
       main: { src: "/images/about/technique.jpeg", alt: "[Alt text]" },
@@ -90,13 +99,19 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
     eyebrow: "My Path",
     title: "I knew pain from the inside.",
     blocks: [
-      { type: "p", text: "I was twenty when I left for Alaska to work the Bering Sea. I spent years there as a crab fisherman." },
+      {
+        type: "p",
+        text: "I was twenty when I left for Alaska to work the Bering Sea. I spent years there as a crab fisherman.",
+      },
       {
         type: "p",
         text: "There were mornings I couldn't bend over to put on my boots. I used a pair of long vice grips to reach them, because the pain shooting down my legs was too much to fold into.",
       },
       { type: "p", text: "Like a lot of people, I kept working." },
-      { type: "p", text: "For a while I only wanted the pain to stop. I wanted to get away from it. None of that helped much." },
+      {
+        type: "p",
+        text: "For a while I only wanted the pain to stop. I wanted to get away from it. None of that helped much.",
+      },
       { type: "p", text: "The search led me to massage school." },
       {
         type: "p",
@@ -123,7 +138,10 @@ export const ABOUT_US_SECTIONS: InteriorSectionContent[] = [
         text: "I have always been curious about people. What helps us change. What allows us to feel safe. Why we hold on. And what sometimes becomes possible when we finally have enough room to let go.",
       },
       { type: "p", text: "Every person teaches me something." },
-      { type: "p", text: "Helping someone better understand what is happening within their own body remains one of the things I love most about this work." },
+      {
+        type: "p",
+        text: "Helping someone better understand what is happening within their own body remains one of the things I love most about this work.",
+      },
     ],
     media: {
       main: { src: "/images/about/still-learning.jpeg", alt: "[Alt text]" },

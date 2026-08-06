@@ -5,9 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import formatPhone from "@/utils/formatPhone";
-
 import { cn } from "@/utils";
+import formatPhone from "@/utils/formatPhone";
 
 import { INFO } from "@/constants";
 import navLinks from "@/constants/navLinks";
@@ -32,7 +31,7 @@ const MobileNavSheet = ({ open, onOpenChange }: Props) => {
       <SheetTrigger asChild>
         <button
           type="button"
-          className="exp-nav-toggle"
+          className="exp-nav-toggle block lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="primary-nav"

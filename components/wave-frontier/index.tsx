@@ -15,7 +15,7 @@ const WaveFrontier = ({ engine }: { engine: WaveFrontierEngine }) => {
       aria-hidden="true"
     >
       <svg
-        className="exp-ground-light"
+        className="absolute inset-0 h-full w-full"
         preserveAspectRatio="none"
         viewBox="0 0 1200 200"
       >

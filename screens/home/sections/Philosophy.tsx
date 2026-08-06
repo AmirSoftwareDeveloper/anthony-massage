@@ -1,8 +1,8 @@
-import Link from "next/link";
 import NextImage from "next/image";
+import Link from "next/link";
 
-import HomeSection from "@/components/home-section";
 import StatGrid from "@/components/experience/StatGrid";
+import HomeSection from "@/components/home-section";
 import { Button } from "@/components/ui/button";
 
 type PhilosophyProps = {
@@ -18,7 +18,7 @@ const Philosophy = ({ sectionRef }: PhilosophyProps) => (
     position={2}
     sectionRef={sectionRef}
     media={
-      <div className="exp-media-split-figure">
+      <div className="relative aspect-[13/14] overflow-hidden rounded-3xl shadow-xl">
         <NextImage
           src="/images/about/philosophy.jpeg"
           alt="[Alt text]"
@@ -45,19 +45,19 @@ const Philosophy = ({ sectionRef }: PhilosophyProps) => (
       />
     }
   >
-    <p>
+    <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
       I don&apos;t believe in one-size-fits-all bodywork. Pain rarely announces where it actually begins, so every
-      session starts by listening — to what your body is doing today, not what a routine says it should need. Finding
+      session starts by listening to what your body is doing today, not what a routine says it should need. Finding
       where a pattern starts is often the first step toward changing it.
     </p>
 
-    <p>
+    <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
       That means the work changes as you do. Some areas need patience before they need pressure, and a session that
       follows what your body is actually asking for will rarely look like the one before it. What stays the same is the
       attention.
     </p>
 
-    <div className="exp-inline-cta">
+    <div className="mt-7">
       <Link href="/about-us">
         <Button
           variant="experience"

@@ -14,15 +14,15 @@ const OurApproach = ({ sectionRef }: OurApproachProps) => (
     position={3}
     sectionRef={sectionRef}
     lead={
-      <p>
-        A shoulder can become restricted because of the chest. A headache may begin in the neck or jaw. Persistent
-        low back pain often has roots in the hips, legs, or years of compensation — and finding that beginning is
-        where change starts.
+      <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
+        A shoulder can become restricted because of the chest. A headache may begin in the neck or jaw. Persistent low
+        back pain often has roots in the hips, legs, or years of compensation, and finding that beginning is where
+        change starts.
       </p>
     }
   >
     <div
-      className="exp-header-media-figure"
+      className="relative overflow-hidden rounded-3xl shadow-xl"
       style={{ aspectRatio: "16 / 9" }}
     >
       <NextImage

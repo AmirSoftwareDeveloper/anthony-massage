@@ -38,15 +38,20 @@ const Nav = () => {
       ref={navRef as React.RefObject<HTMLElement>}
       className="exp-nav"
     >
-      <div className="container exp-nav-inner">
+      {/* Same container every section uses, so the logo and links sit on the
+          same edges as the content below them all the way down the page. */}
+      <div className="mx-auto flex w-full max-w-340 items-center justify-between px-6 md:px-9">
         <Logo />
 
-        <div className="exp-nav-links">
+        <div className="hidden items-center gap-10 lg:flex">
           {navLinks.map((item) => (
             <Link
               key={item.id}
               href={item.href}
-              className={cn(pathname === item.href && "exp-current")}
+              className={cn(
+                "text-sm text-exp-tan transition-colors duration-300",
+                pathname === item.href ? "text-exp-gold" : "hover:text-white"
+              )}
             >
               {item.title}
             </Link>

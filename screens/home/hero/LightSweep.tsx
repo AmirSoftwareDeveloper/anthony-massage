@@ -4,7 +4,7 @@ const LightSweep = ({ engine }: { engine: HeroExperienceEngine }) => {
   return (
     <svg
       ref={engine.sweepRef}
-      className="exp-light-sweep"
+      className="pointer-events-none absolute inset-auto z-6 h-auto w-auto opacity-0 mix-blend-screen"
       aria-hidden="true"
       preserveAspectRatio="none"
       viewBox="0 0 400 300"

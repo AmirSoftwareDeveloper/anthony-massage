@@ -3,7 +3,8 @@ import type { InteriorSectionContent } from "@/types";
 export const CONTACT_FAQS = [
   {
     question: "What should I wear?",
-    answer: "Comfortable clothing you can move in. We'll discuss what's appropriate to remove, if anything, based on the work.",
+    answer:
+      "Comfortable clothing you can move in. We'll discuss what's appropriate to remove, if anything, based on the work.",
   },
   {
     question: "How many sessions will I need?",
@@ -12,7 +13,7 @@ export const CONTACT_FAQS = [
   },
   {
     question: "Do you work with athletes, old injuries, or chronic pain?",
-    answer: "Yes — see the Services page for the patterns I work with most often, or just reach out and ask.",
+    answer: "Yes. See the Services page for the patterns I work with most often, or just reach out and ask.",
   },
 ];
 
@@ -35,11 +36,16 @@ export const CONTACT_SECTIONS: InteriorSectionContent[] = [
     blocks: [
       {
         type: "list",
-        items: ["Stretching and mobility work", "Intraoral (jaw) release", "Hot stones", "CBD-infused oil, where appropriate"],
+        items: [
+          "Stretching and mobility work",
+          "Intraoral (jaw) release",
+          "Hot stones",
+          "CBD-infused oil, where appropriate",
+        ],
       },
       {
         type: "p",
-        text: "These aren't a menu to choose from in advance. They're tools I bring in when your body is asking for them — you don't need to know which ones you'll need before you arrive.",
+        text: "These aren't a menu to choose from in advance. They're tools I bring in when your body is asking for them. You don't need to know which ones you'll need before you arrive.",
       },
     ],
   },

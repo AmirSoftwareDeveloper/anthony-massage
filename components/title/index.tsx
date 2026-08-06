@@ -40,11 +40,24 @@ const Title = ({
   ...props
 }: TitleProps) => {
   if (variant === "exp") {
+    /* Wrapped rather than returned as a fragment: as loose siblings the eyebrow
+       and heading become separate flex/grid items, so any parent `gap` lands
+       between them and the pair drifts apart from page to page. The block keeps
+       them together; the heading's own margin still spaces it from what follows. */
     return (
-      <>
-        {subTitle ? <p className={cn("exp-eyebrow", subTitleClassName)}>{subTitle}</p> : null}
+      <div className={cn("exp-title-block", className)}>
+        {subTitle ? (
+          <p
+            className={cn(
+              "exp-eyebrow mb-4 text-2xs font-medium tracking-[0.32em] text-(--s-eyebrow,var(--color-exp-gold)) uppercase transition-colors duration-2200 ease-exp-release [.lit_&]:text-(--s-eyebrow-lit,var(--s-eyebrow))",
+              subTitleClassName
+            )}
+          >
+            {subTitle}
+          </p>
+        ) : null}
         {title ? <HeadingTag className={titleClassName}>{title}</HeadingTag> : null}
-      </>
+      </div>
     );
   }
 

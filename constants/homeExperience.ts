@@ -1,8 +1,8 @@
 export const PHASE_DOT_LABELS = [
-  "Phase 1 — Compressed",
-  "Phase 2 — Light enters",
-  "Phase 3 — Rising",
-  "Phase 4 — Open and renewed",
+  "Phase 1: Compressed",
+  "Phase 2: Light enters",
+  "Phase 3: Rising",
+  "Phase 4: Open and renewed",
 ] as const;
 
 export const HOME_EXPERIENCE_FOOTER = {
@@ -11,7 +11,7 @@ export const HOME_EXPERIENCE_FOOTER = {
   title: "Ready to imagine feeling different?",
   sub: "Reach out below, and I'll follow up to find a time that works.",
   cta: "Book your first session",
-  fine: "Anthony Massage Works — Release. Realign. Renew.",
+  fine: "Anthony Massage Works. Release. Realign. Renew.",
 };
 
 export const HOME_EXPERIENCE_HERO_FRAMES = [

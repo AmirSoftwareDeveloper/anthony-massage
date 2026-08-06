@@ -1,5 +1,5 @@
-import HomeSection from "@/components/home-section";
 import ServiceGrid from "@/components/experience/ServiceGrid";
+import HomeSection from "@/components/home-section";
 
 type ServicesProps = {
   sectionRef: (el: HTMLElement | null) => void;
@@ -13,10 +13,10 @@ const Services = ({ sectionRef }: ServicesProps) => (
     position={6}
     sectionRef={sectionRef}
   >
-    <p>
-      The foundation is sustained, specific contact — the kind that lets fascia and tissue soften and reorganize on
-      its own terms, at whatever depth your nervous system can actually receive without bracing. When a session
-      calls for it, that work is joined by:
+    <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
+      The foundation is sustained, specific contact, the kind that lets fascia and tissue soften and reorganize on its
+      own terms, at whatever depth your nervous system can actually receive without bracing. When a session calls for
+      it, that work is joined by:
     </p>
 
     <ServiceGrid
@@ -31,7 +31,9 @@ const Services = ({ sectionRef }: ServicesProps) => (
       ctaHref="/services"
     />
 
-    <p>These aren&apos;t chosen from a menu in advance. They&apos;re brought in when your body is asking for them.</p>
+    <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
+      These aren&apos;t chosen from a menu in advance. They&apos;re brought in when your body is asking for them.
+    </p>
   </HomeSection>
 );
 

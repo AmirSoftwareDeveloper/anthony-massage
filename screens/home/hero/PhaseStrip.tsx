@@ -37,9 +37,9 @@ const PhaseStrip = ({ engine }: { engine: HeroExperienceEngine }) => {
         </Link>
       </div> */}
 
-      <div className="exp-phase-row">
+      <div className="flex items-center gap-4">
         <div
-          className="exp-phase-dots"
+          className="flex gap-3"
           role="group"
           aria-label="Transformation phases"
         >
@@ -47,7 +47,10 @@ const PhaseStrip = ({ engine }: { engine: HeroExperienceEngine }) => {
             <button
               key={label}
               type="button"
-              className={cn("exp-dot", i === engine.captionIndex && "exp-active")}
+              className={cn(
+                "size-3 cursor-pointer rounded-full border border-exp-gold bg-transparent transition duration-300 hover:scale-125",
+                i === engine.captionIndex && "bg-exp-gold"
+              )}
               aria-label={label}
               onClick={() => engine.goToPhase(i)}
             />
@@ -56,7 +59,10 @@ const PhaseStrip = ({ engine }: { engine: HeroExperienceEngine }) => {
 
         <button
           type="button"
-          className={cn("exp-replay", engine.replayVisible && "exp-show")}
+          className={cn(
+            "pointer-events-none cursor-pointer rounded-full border border-exp-tan/50 bg-transparent px-3.5 py-1.5 font-experience text-xs tracking-widest text-exp-tan opacity-0 transition duration-500 hover:border-exp-glow hover:text-exp-glow",
+            engine.replayVisible && "pointer-events-auto opacity-100"
+          )}
           aria-label="Replay the transformation"
           onClick={engine.replay}
         >
@@ -66,7 +72,10 @@ const PhaseStrip = ({ engine }: { engine: HeroExperienceEngine }) => {
 
       <Link
         href={Routes.SERVICES}
-        className={cn("exp-scroll-hint", engine.hintVisible && "exp-show")}
+        className={cn(
+          "mt-1 flex items-center gap-2.5 text-2xs tracking-[0.18em] text-exp-tan uppercase opacity-0 transition-opacity duration-1000",
+          engine.hintVisible && "opacity-85"
+        )}
       >
         <span> Explore Services</span>
         <div className="exp-scroll-line" />

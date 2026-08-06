@@ -25,15 +25,17 @@ const InteriorSection = ({ id, eyebrow, title, lead, className, children }: Inte
       <section
         id={id}
         ref={reveal}
-        className="exp-reveal exp-interior-lead"
+        className="exp-reveal"
       >
-        <div className="exp-interior-body">
-          <div className={cn("exp-interior-inner", className)}>
+        <div className="bg-exp-panel px-6 pt-12 pb-14 md:px-8 md:pt-17 md:pb-18">
+          {/* `exp-interior-inner` is kept: `.exp-interior-inner .exp-quiet` in globals.css
+              sets its color with `!important`, which no utility can beat. */}
+          <div className={cn("exp-interior-inner mx-auto max-w-[660px]", className)}>
             <Title
               variant="exp"
               subTitle={eyebrow}
               title={title}
-              titleClassName="exp-lead-title"
+              titleClassName="mb-8 max-w-[15em] font-display text-3xl leading-tight font-normal text-exp-cream italic md:text-4xl"
             />
             {children}
           </div>
@@ -46,21 +48,32 @@ const InteriorSection = ({ id, eyebrow, title, lead, className, children }: Inte
     <section
       id={id}
       ref={reveal}
-      className="exp-reveal exp-interior-chapter"
+      className="exp-reveal"
     >
-      <div className="exp-divider-band">
-        <div className="exp-divider-inner">
+      <div className="xs:min-h-22 flex min-h-31 items-center bg-exp-dusk px-8 pt-4 pb-3.5">
+        <div className="mx-auto w-full max-w-[720px]">
           <Title
             variant="exp"
             subTitle={eyebrow}
             title={title}
-            titleClassName="exp-divider-title"
+            titleClassName="mb-0 max-w-[15em] font-display text-3xl leading-tight font-normal text-exp-glow italic md:text-4xl"
           />
         </div>
       </div>
 
-      <div className="exp-interior-body">
-        <div className={cn("exp-interior-inner", className)}>{children}</div>
+      <div className="bg-exp-panel px-6 pt-10 pb-14 md:px-8 md:pt-12 md:pb-18">
+        {/* `exp-interior-inner` is kept: `.exp-interior-inner .exp-quiet` in globals.css
+            sets its color with `!important`, which no utility can beat.
+            The `before:*` utilities reproduce the chapter rule that
+            `.exp-interior-chapter .exp-interior-inner::before` used to draw. */}
+        <div
+          className={cn(
+            "exp-interior-inner mx-auto max-w-[660px] before:mx-auto before:mb-12 before:block before:h-px before:w-10 before:bg-exp-tan/15 before:content-['']",
+            className
+          )}
+        >
+          {children}
+        </div>
       </div>
     </section>
   );

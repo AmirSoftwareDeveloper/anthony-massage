@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import type { ServiceEntry } from "@/types";
-
 import { Button } from "@/components/ui/button";
+
+import type { ServiceEntry } from "@/types";
 
 import { getExperienceIcon } from "./icons";
 
@@ -14,30 +14,38 @@ type PricingListProps = {
 };
 
 const PricingList = ({ services, note, ctaText, ctaHref }: PricingListProps) => (
-  <div className="exp-pricing-block">
-    {note && <p className="exp-note">{note}</p>}
-    <ul className="exp-pricing-list">
+  <div className="mt-2.5">
+    {note && (
+      <p className="mt-2.5 mb-0 max-w-3xl font-sans text-base font-light not-italic leading-loose text-white/85 opacity-62">
+        {note}
+      </p>
+    )}
+    <ul className="mt-4 flex list-none flex-col">
       {services.map((service) => {
         const Icon = getExperienceIcon(service.icon);
         return (
           <li
-            className="exp-pricing-row"
+            className="flex items-center justify-between gap-4 border-b border-(--s-rule) py-4 transition-colors duration-2200 ease-exp-release [.lit_&]:border-(--s-rule-lit)"
             key={service.title}
           >
-            <span className="exp-pricing-label">
+            <span className="flex items-center gap-3.5 text-base font-medium">
               <Icon
-                className="exp-service-icon"
+                className="size-4 flex-none text-(--s-heading) transition-colors duration-2200 ease-exp-release [.lit_&]:text-(--s-heading-lit)"
                 aria-hidden="true"
               />
               {service.title}
             </span>
-            {service.price && <span className="exp-pricing-price">{service.price}</span>}
+            {service.price && (
+              <span className="flex-none font-display text-base italic text-(--s-heading) transition-colors duration-2200 ease-exp-release [.lit_&]:text-(--s-heading-lit)">
+                {service.price}
+              </span>
+            )}
           </li>
         );
       })}
     </ul>
     {ctaText && ctaHref && (
-      <div className="exp-inline-cta">
+      <div className="mt-7">
         <Link href={ctaHref}>
           <Button
             variant="experience"

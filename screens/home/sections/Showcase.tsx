@@ -15,7 +15,7 @@ const Showcase = ({ sectionRef }: ShowcaseProps) => (
     sectionRef={sectionRef}
   >
     <div
-      className="exp-media-frame"
+      className="relative mt-3.5 overflow-hidden rounded-xl shadow-lg"
       style={{ aspectRatio: "21 / 9" }}
     >
       <NextImage
@@ -27,14 +27,18 @@ const Showcase = ({ sectionRef }: ShowcaseProps) => (
       />
     </div>
 
-    <p>
-      From the moment we start talking, the goal is to understand your experience, not just your symptoms. Every
-      session is personalized, responsive, and unhurried — sometimes gentle, sometimes deep, always intentional.
+    <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
+      From the moment we start talking, the goal is to understand your experience, not just your symptoms. Every session
+      is personalized, responsive, and unhurried: sometimes gentle, sometimes deep, always intentional.
     </p>
 
-    <p>The goal isn&apos;t to chase symptoms. It&apos;s to restore movement where it has gradually become restricted.</p>
+    <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
+      The goal isn&apos;t to chase symptoms. It&apos;s to restore movement where it has gradually become restricted.
+    </p>
 
-    <p className="exp-quiet">The body often knows what to do once it has room to do it.</p>
+    <p className="exp-quiet mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
+      The body often knows what to do once it has room to do it.
+    </p>
   </HomeSection>
 );
 

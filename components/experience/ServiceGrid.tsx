@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import type { ServiceEntry } from "@/types";
-
 import { Button } from "@/components/ui/button";
+
+import type { ServiceEntry } from "@/types";
 
 import { getExperienceIcon } from "./icons";
 
@@ -14,18 +14,22 @@ type ServiceGridProps = {
 };
 
 const ServiceGrid = ({ services, note, ctaText, ctaHref }: ServiceGridProps) => (
-  <div className="exp-service-block">
-    {note && <p className="exp-note">{note}</p>}
-    <div className="exp-service-grid">
+  <div className="mt-2.5">
+    {note && (
+      <p className="mt-2.5 mb-0 max-w-3xl font-sans text-base font-light not-italic leading-loose text-white/85 opacity-62">
+        {note}
+      </p>
+    )}
+    <div className="mt-4 grid grid-cols-1 gap-3.5 sm:grid-cols-2">
       {services.map((service) => {
         const Icon = getExperienceIcon(service.icon);
         return (
           <div
-            className="exp-service-card"
+            className="flex items-center gap-3.5 rounded-xl border border-(--s-rule) px-5 py-4 text-base font-medium transition-colors duration-2200 ease-exp-release [.lit_&]:border-(--s-rule-lit)"
             key={service.title}
           >
             <Icon
-              className="exp-service-icon"
+              className="size-4 flex-none text-(--s-heading) transition-colors duration-2200 ease-exp-release [.lit_&]:text-(--s-heading-lit)"
               aria-hidden="true"
             />
             <span>{service.title}</span>
@@ -34,7 +38,7 @@ const ServiceGrid = ({ services, note, ctaText, ctaHref }: ServiceGridProps) => 
       })}
     </div>
     {ctaText && ctaHref && (
-      <div className="exp-inline-cta">
+      <div className="mt-7">
         <Link href={ctaHref}>
           <Button
             variant="experience"

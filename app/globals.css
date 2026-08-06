@@ -161,56 +161,9 @@ details::details-content {
 details[open]::details-content {
   block-size: auto;
 }
-
-.sheetContent {
-  @apply w-full outline-none ring-0;
-}
-
-.sheetContent > button {
-  display: none;
-}
-
-.parallax-background-container {
-  clip-path: inset(0 0 0 0);
-}
-
 .padding-y {
   @apply py-12 sm:py-16 lg:py-20;
 }
-
-.padding-t {
-  @apply pt-12 sm:pt-16 lg:pt-20;
-}
-
-.padding-b {
-  @apply pb-12 sm:pb-16 lg:pb-20;
-}
-
-.select-arrow {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  text-indent: 2px;
-  text-overflow: "";
-
-  background-image:
-    linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%),
-    linear-gradient(to right, #ccc, #ccc);
-
-  background-position:
-    calc(100% - 20px) calc(1em + 6px),
-    calc(100% - 15px) calc(1em + 6px),
-    calc(100% - 2.5em) 0.7em;
-
-  background-size:
-    5px 5px,
-    5px 5px,
-    1px 1.5em;
-
-  background-repeat: no-repeat;
-}
-
 input[type="date"]::-webkit-calendar-picker-indicator {
   position: absolute;
   right: 10px;
@@ -292,30 +245,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     mix-blend-mode: screen;
     will-change: opacity;
   }
-  .exp-ground-light {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
   .exp-ground-wisp {
     opacity: 0;
     will-change: opacity;
-  }
-
-  /* ---------- shared horizontal container: nav, hero and every
-     home section anchor to this same max-width + side gutter so
-     their content edges line up consistently down the page ---------- */
-  .exp-container {
-    width: 100%;
-    max-width: 1360px;
-    margin-inline: auto;
-    padding-inline: 2.2rem;
-  }
-  @media (max-width: 760px) {
-    .exp-container {
-      padding-inline: 1.4rem;
-    }
   }
 
   /* ---------- nav ---------- */
@@ -329,41 +261,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background: linear-gradient(rgba(20, 17, 11, 0.97), rgba(20, 17, 11, 0.93) 62%, rgba(20, 17, 11, 0.74));
     -webkit-backdrop-filter: blur(14px) saturate(120%);
     backdrop-filter: blur(14px) saturate(120%);
-  }
-  .exp-nav-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .exp-nav-name {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.25rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-exp-parchment);
-    line-height: 1.15;
-  }
-  .exp-nav-name span {
-    font-weight: 700;
-    color: var(--color-exp-gold);
-  }
-  .exp-nav-links {
-    display: flex;
-    gap: 2.5rem;
-    align-items: center;
-  }
-  .exp-nav-links a {
-    color: #d8cfb4;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.25s;
-  }
-  .exp-nav-links a:hover {
-    color: #fff;
-  }
-  .exp-nav-links a.exp-current {
-    color: var(--color-exp-gold);
   }
   .exp-nav-toggle {
     display: none;
@@ -434,32 +331,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     will-change: opacity;
     animation: exp-drift-push 60s ease-in-out infinite alternate;
   }
-  .exp-stage-vignette {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    box-shadow: inset 0 0 160px rgba(0, 0, 0, 0.42);
-  }
-
-  /* ---------- layered color system ---------- */
-  .exp-layer {
-    position: absolute;
-    inset: 0;
-  }
-  .exp-layer .exp-frame {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-  }
-  .exp-world-gray {
-    z-index: 1;
-    filter: grayscale(1) brightness(0.82) contrast(1.03);
-  }
   .exp-board-color {
     z-index: 2;
     -webkit-mask-image: linear-gradient(to left, #000 -20%, transparent 0%);
@@ -469,16 +340,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     z-index: 3;
     -webkit-mask-image: radial-gradient(ellipse 0% 0% at 18% 100%, #000 62%, transparent 94%);
     mask-image: radial-gradient(ellipse 0% 0% at 18% 100%, #000 62%, transparent 94%);
-  }
-  .exp-light-sweep {
-    position: absolute;
-    inset: auto;
-    width: auto;
-    height: auto;
-    pointer-events: none;
-    z-index: 6;
-    opacity: 0;
-    mix-blend-mode: screen;
   }
   .exp-light-spill {
     position: absolute;
@@ -591,72 +452,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .exp-hero-cta-row .exp-btn,
   .exp-hero-cta-row .exp-btn-outline {
     font-size: 0.88rem;
-  }
-  .exp-phase-row {
-    display: flex;
-    align-items: center;
-    gap: 1.1rem;
-  }
-  .exp-phase-dots {
-    display: flex;
-    gap: 0.75rem;
-  }
-  .exp-dot {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    border: 1px solid var(--color-exp-gold);
-    background: transparent;
-    cursor: pointer;
-    transition:
-      background 0.3s,
-      transform 0.3s;
-  }
-  .exp-dot:hover {
-    transform: scale(1.25);
-  }
-  .exp-dot.exp-active {
-    background: var(--color-exp-gold);
-  }
-  .exp-replay {
-    background: transparent;
-    border: 1px solid rgba(216, 207, 180, 0.5);
-    color: #d8cfb4;
-    font-family: var(--font-experience);
-    font-size: 0.76rem;
-    letter-spacing: 0.1em;
-    padding: 0.36rem 0.9rem;
-    border-radius: 999px;
-    cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    transition:
-      opacity 0.5s,
-      border-color 0.25s,
-      color 0.25s;
-  }
-  .exp-replay.exp-show {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .exp-replay:hover {
-    border-color: var(--color-exp-glow);
-    color: var(--color-exp-glow);
-  }
-  .exp-scroll-hint {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    color: #cfc6ab;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    opacity: 0;
-    transition: opacity 0.9s;
-    margin-top: 0.3rem;
-  }
-  .exp-scroll-hint.exp-show {
-    opacity: 0.85;
   }
   .exp-scroll-line {
     width: 1px;
@@ -868,29 +663,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .exp-section-inner {
     padding-block: 9rem;
   }
-  /* the "welcome" hero-style intro: eyebrow, heading and lead paragraph
-     centered on the page, instead of the default left-aligned reading
-     column — used for sections that open with a wide, centered statement */
-  .exp-section-inner--centered {
-    text-align: center;
-  }
-  .exp-section-inner--centered .exp-eyebrow {
+
+  /* Title(variant="exp") wraps its eyebrow and heading in this. It carries no
+     spacing of its own — the heading's margin-bottom is the single source of
+     the gap to whatever follows, on every page. Its job is to stop a parent's
+     flex/grid `gap` from landing between the eyebrow and the heading. */
+  .exp-title-block {
     display: block;
   }
-  .exp-section-inner--centered h2 {
-    max-width: 46em;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .exp-section-inner--centered > p {
-    max-width: 46rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
+
   /* The eyebrow is a <p>, so `.exp-section p` below (0-1-1) outranks a bare
-     `.exp-eyebrow` (0-1-0) and would blow the label up to body size. Excluding
-     it there lets this rule land, and carrying its own margin keeps the
-     eyebrow→heading gap identical on the home page and interior pages. */
+     `.exp-eyebrow` (0-1-0) and would blow the label up to body size — which is
+     why that rule excludes it. Title(variant="exp") now also inlines these as
+     utilities; what this rule still carries is the `display: block` that the
+     `.exp-page-hero .exp-phase-strip .exp-eyebrow` hide below overrides. */
   .exp-eyebrow {
     display: block;
     font-size: 0.7rem;
@@ -904,26 +690,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .exp-section.lit .exp-eyebrow {
     color: var(--s-eyebrow-lit, var(--s-eyebrow));
   }
-  /* One heading treatment for every section on the site, so a chapter title on
-     an interior page sits identically to a section title on the home page.
-     Interior titles differ only in color — they sit on the fixed panel
-     background rather than the scroll-driven color spine. */
-  .exp-section h2,
-  .exp-collage-title,
-  .exp-team-title {
+  /* The one heading treatment still driven from CSS: on the home page the
+     Title component renders its <h2> without a className, so this rule is what
+     styles it. Interior pages pass their own `titleClassName` utilities and no
+     longer depend on this. */
+  .exp-section h2 {
     font-family: var(--font-display);
     font-weight: 400;
     font-style: italic;
     font-size: clamp(1.7rem, 3.2vw, 2.5rem);
     line-height: 1.28;
     color: var(--s-heading, var(--color-exp-olive-deep));
-    margin: 0 0 2.1rem;
+    /* longhands, not the `margin` shorthand: the centered layout sets
+       margin-inline: auto on the heading, and a shorthand here would reset it
+       back to 0 and knock the heading off-center */
+    margin-top: 0;
+    margin-bottom: 2.1rem;
     max-width: 15em;
     transition: color 2.2s var(--ease-exp-release);
-  }
-  .exp-collage-title,
-  .exp-team-title {
-    color: var(--color-exp-glow);
   }
   .exp-section.lit h2 {
     color: var(--s-heading-lit, var(--s-heading));
@@ -1003,260 +787,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
   }
 
-  /* ---------- structured content: category grid ("What I Help With") ---------- */
-  .exp-category-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.4rem 2.2rem;
-    margin-top: 0.6rem;
-  }
-  .exp-category-card h3 {
-    margin-bottom: 0.5rem;
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-style: italic;
-    font-size: 1.28rem;
-    color: var(--s-heading, var(--color-exp-olive-deep));
-    transition: color 2.2s var(--ease-exp-release);
-  }
-  .exp-section.lit .exp-category-card h3 {
-    color: var(--s-heading-lit, var(--s-heading));
-  }
-  .exp-category-card p {
-    margin-bottom: 0;
-    font-size: 0.96rem;
-    line-height: 1.7;
-    opacity: 0.88;
-  }
-  @media (max-width: 560px) {
-    .exp-category-grid {
-      grid-template-columns: 1fr;
-      gap: 1.8rem;
-    }
-  }
-
-  /* ---------- structured content: numbered steps ("How Sessions Work") ---------- */
-  .exp-step-list {
-    display: flex;
-    flex-direction: column;
-    gap: 2.2rem;
-    margin-top: 0.6rem;
-  }
-  .exp-step {
-    display: flex;
-    gap: 1.4rem;
-    align-items: baseline;
-  }
-  .exp-step-num {
-    flex: 0 0 auto;
-    width: 2.6rem;
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-style: italic;
-    font-size: 1.6rem;
-    color: var(--s-heading, var(--color-exp-olive-deep));
-    opacity: 0.55;
-    transition: color 2.2s var(--ease-exp-release);
-  }
-  .exp-section.lit .exp-step-num {
-    color: var(--s-heading-lit, var(--s-heading));
-  }
-  .exp-step-body h3 {
-    margin-bottom: 0.4rem;
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-style: italic;
-    font-size: 1.2rem;
-    color: var(--s-heading, var(--color-exp-olive-deep));
-    transition: color 2.2s var(--ease-exp-release);
-  }
-  .exp-section.lit .exp-step-body h3 {
-    color: var(--s-heading-lit, var(--s-heading));
-  }
-  .exp-step-body p {
-    margin-bottom: 0;
-    font-size: 0.98rem;
-    line-height: 1.75;
-    opacity: 0.88;
-  }
-
-  /* ---------- structured content: inline text CTA within a section ---------- */
-  .exp-inline-cta {
-    margin-top: 1.8rem;
-  }
-
-  /* a small, unstyled aside for disclaimers ("sample pricing") — distinct
-     from .exp-quiet, which is a poetic emphasis line, not a footnote */
-  .exp-note {
-    margin-top: 0.6rem;
-    font-family: var(--font-sans);
-    font-size: 0.82rem;
-    font-style: normal;
-    opacity: 0.62;
-  }
-
-  /* ---------- structured content: framed image ---------- */
-  .exp-media-frame {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 4 / 3;
-    border-radius: 14px;
-    margin-top: 0.9rem;
-    box-shadow: 0 8px 28px rgba(28, 22, 11, 0.14);
-  }
-
-  /* ---------- structured content: service grid ("Our Services") ---------- */
-  .exp-service-block {
-    margin-top: 0.6rem;
-  }
-  .exp-service-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.9rem;
-    margin-top: 1rem;
-  }
-  .exp-service-card {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    padding: 1rem 1.2rem;
-    border-radius: 12px;
-    border: 1px solid var(--s-rule, rgba(77, 90, 58, 0.14));
-    font-size: 0.96rem;
-    font-weight: 500;
-    transition: border-color 2.2s var(--ease-exp-release);
-  }
-  .exp-section.lit .exp-service-card {
-    border-color: var(--s-rule-lit, var(--s-rule));
-  }
-  .exp-service-icon {
-    flex: 0 0 auto;
-    width: 1.15rem;
-    height: 1.15rem;
-    color: var(--s-heading, var(--color-exp-olive));
-    transition: color 2.2s var(--ease-exp-release);
-  }
-  .exp-section.lit .exp-service-icon {
-    color: var(--s-heading-lit, var(--s-heading));
-  }
-  @media (max-width: 560px) {
-    .exp-service-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* ---------- structured content: pricing list ("Pricing Plans") ---------- */
-  .exp-pricing-block {
-    margin-top: 0.6rem;
-  }
-  .exp-pricing-list {
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-    list-style: none;
-  }
-  .exp-pricing-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1.1rem 0;
-    border-bottom: 1px solid var(--s-rule, rgba(77, 90, 58, 0.14));
-    transition: border-color 2.2s var(--ease-exp-release);
-  }
-  .exp-section.lit .exp-pricing-row {
-    border-bottom-color: var(--s-rule-lit, var(--s-rule));
-  }
-  .exp-pricing-label {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    font-size: 0.98rem;
-    font-weight: 500;
-  }
-  .exp-pricing-price {
-    flex: 0 0 auto;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.05rem;
-    color: var(--s-heading, var(--color-exp-olive-deep));
-    transition: color 2.2s var(--ease-exp-release);
-  }
-  .exp-section.lit .exp-pricing-price {
-    color: var(--s-heading-lit, var(--s-heading));
-  }
-
-  /* ---------- structured content: feature grid ("Welcome") ---------- */
-  .exp-feature-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    margin-top: 3.2rem;
-  }
-  .exp-feature-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.9rem;
-    padding: 0 2.4rem;
-    border-left: 1px solid var(--s-rule, rgba(77, 90, 58, 0.14));
-    transition: border-color 2.2s var(--ease-exp-release);
-  }
-  .exp-section.lit .exp-feature-card {
-    border-left-color: var(--s-rule-lit, var(--s-rule));
-  }
-  .exp-feature-card:first-child {
-    border-left: none;
-    padding-left: 0;
-  }
-  .exp-feature-card:last-child {
-    padding-right: 0;
-  }
-  .exp-feature-icon {
-    width: 2.2rem;
-    height: 2.2rem;
-    color: var(--s-heading, var(--color-exp-olive));
-    transition: color 2.2s var(--ease-exp-release);
-  }
-  .exp-section.lit .exp-feature-icon {
-    color: var(--s-heading-lit, var(--s-heading));
-  }
-  .exp-feature-card h3 {
-    margin: 0;
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-style: italic;
-    font-size: 1.8rem;
-    transition: color 2.2s var(--ease-exp-release);
-  }
-  .exp-section.lit .exp-feature-card h3 {
-    color: #fff;
-  }
-  .exp-feature-card p {
-    margin: 0;
-    max-width: 26ch;
-    font-size: 0.92rem;
-    line-height: 1.7;
-    opacity: 0.88;
-    color: #fff;
-  }
-  .exp-feature-card .exp-btn,
-  .exp-feature-card .exp-btn-outline,
-  .exp-feature-card .exp-btn-outline-neutral {
-    margin-top: 0.4rem;
-  }
-  @media (max-width: 760px) {
-    .exp-feature-grid {
-      grid-template-columns: 1fr;
-      gap: 2.2rem;
-    }
-    .exp-feature-card {
-      border-left: none;
-      padding: 0;
-    }
-  }
-
   /* ---------- split layout: eyebrow/heading beside content ("FAQ") ---------- */
   .exp-section-inner--split {
     max-width: 1040px;
@@ -1273,182 +803,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .exp-section + .exp-section .exp-section-inner--split::before {
     content: none;
   }
-  .exp-split-head {
-    position: sticky;
-    top: 8rem;
-  }
-  .exp-split-body {
-    min-width: 0;
-  }
   @media (max-width: 860px) {
     .exp-section-inner--split {
       grid-template-columns: 1fr;
     }
-    .exp-split-head {
-      position: static;
-    }
-  }
-
-  /* ---------- header row: heading beside a lead paragraph, media below ("Our Approach") ---------- */
-  .exp-header-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 2rem 5rem;
-    align-items: start;
-    margin-bottom: 3.4rem;
-  }
-  .exp-header-row-heading h2 {
-    margin-bottom: 0;
-    max-width: 11em;
-  }
-  .exp-header-row-lead p {
-    margin-bottom: 1.4rem;
-  }
-  .exp-header-row-lead p:last-of-type {
-    margin-bottom: 0;
-  }
-  @media (max-width: 860px) {
-    .exp-header-row {
-      grid-template-columns: 1fr;
-      gap: 1.6rem;
-      margin-bottom: 2.2rem;
-    }
-  }
-
-  .exp-header-media-figure {
-    position: relative;
-    overflow: hidden;
-    border-radius: 22px;
-    box-shadow: 0 10px 32px rgba(28, 22, 11, 0.18);
-  }
-
-  /* ---------- media split: a portrait image beside the section's copy ("Philosophy") ---------- */
-  .exp-media-split {
-    display: grid;
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-    gap: 2.5rem 4.5rem;
-    align-items: center;
-  }
-  /* near-square, a touch portrait: the figure has to stand taller than the copy
-     beside it to anchor the section — a landscape frame reads as a stamp */
-  .exp-media-split-figure {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 13 / 14;
-    border-radius: 20px;
-    box-shadow: 0 10px 32px rgba(28, 22, 11, 0.2);
-  }
-  /* max-width only — the closing gap stays on the shared heading rule so this
-     heading sits like every other one on the site */
-  .exp-media-split-body h2 {
-    max-width: 13em;
-  }
-  @media (max-width: 860px) {
-    .exp-media-split {
-      grid-template-columns: 1fr;
-      gap: 2.2rem;
-    }
-  }
-
-  /* ---------- stats band: sits full-width beneath a section's main layout ---------- */
-  .exp-stat-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    margin-top: 5.5rem;
-  }
-  .exp-stat {
-    padding: 0 2.4rem;
-    border-left: 1px solid var(--s-rule, rgba(77, 90, 58, 0.14));
-    transition: border-color 2.2s var(--ease-exp-release);
-  }
-  .exp-section.lit .exp-stat {
-    border-left-color: var(--s-rule-lit, var(--s-rule));
-  }
-  .exp-stat:first-child {
-    border-left: none;
-    padding-left: 0;
-  }
-  .exp-stat-value {
-    display: block;
-    /* equal-width digits, so a counting figure doesn't jitter mid-count */
-    font-variant-numeric: tabular-nums;
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(2.2rem, 4.4vw, 3.2rem);
-    line-height: 1.1;
-    color: var(--s-heading, var(--color-exp-olive-deep));
-    transition: color 2.2s var(--ease-exp-release);
-  }
-  .exp-section.lit .exp-stat-value {
-    color: var(--s-heading-lit, var(--s-heading));
-  }
-  .exp-stat-label {
-    display: block;
-    margin-top: 0.6rem;
-    font-size: 0.95rem;
-    font-weight: 300;
-    line-height: 1.5;
-    color: var(--s-eyebrow, var(--color-exp-gold));
-    transition: color 2.2s var(--ease-exp-release);
-  }
-  .exp-section.lit .exp-stat-label {
-    color: var(--s-eyebrow-lit, var(--s-eyebrow));
-  }
-  @media (max-width: 860px) {
-    .exp-stat-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2.4rem 0;
-      margin-top: 3.5rem;
-    }
-    .exp-stat:nth-child(odd) {
-      border-left: none;
-      padding-left: 0;
-    }
-  }
-  @media (max-width: 420px) {
-    .exp-stat-grid {
-      grid-template-columns: 1fr;
-    }
-    .exp-stat {
-      border-left: none;
-      padding-left: 0;
-    }
-  }
-
-  /* ---------- structured content: FAQ accordion ---------- */
-  .exp-faq {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    margin-top: -1.4rem;
-  }
-  .exp-faq-item {
-    border-bottom: 1px solid var(--s-rule, rgba(77, 90, 58, 0.14));
-    padding: 0.2rem 0;
-    transition: border-color 2.2s var(--ease-exp-release);
-  }
-  .exp-section.lit .exp-faq-item {
-    border-bottom-color: var(--s-rule-lit, var(--s-rule));
-  }
-  .exp-faq-trigger {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 400;
-    font-size: 1.4rem;
-    color: #fff;
-    transition: color 0.3s ease;
-  }
-  .exp-section.lit .exp-faq-trigger {
-    color: #fff;
-  }
-  .exp-faq-trigger[data-state="open"],
-  .exp-section.lit .exp-faq-trigger[data-state="open"] {
-    color: var(--s-heading, var(--color-exp-gold));
-  }
-  .exp-faq-content {
-    font-size: 1.2rem;
-    line-height: 1.75;
-    opacity: 0.88;
   }
 
   /* ---------- the "experience" CTA button, driven by the same position spine ---------- */
@@ -1518,9 +876,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     .exp-nav-toggle {
       display: block;
     }
-    .exp-nav-links {
-      display: none;
-    }
   }
 
   @media (orientation: portrait) and (max-width: 900px) {
@@ -1585,9 +940,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
    continuing its journey rather than resetting on every page.
    ============================================================ */
 @layer components {
-  .exp-layer .exp-frame.exp-frame-solo {
-    opacity: 1;
-  }
   .exp-page-hero {
     min-height: 82vh;
   }
@@ -1644,41 +996,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
    keeps its eyebrow since it introduces the closing CTA.
    ============================================================ */
 @layer components {
-  .exp-divider-band {
-    display: flex;
-    align-items: center;
-    min-height: 5.6rem;
-    padding: 1rem 2rem 0.9rem;
-    background-color: var(--color-exp-dusk);
-  }
-  .exp-divider-inner {
-    max-width: 720px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  .exp-divider-band .exp-eyebrow {
-    display: none;
-  }
-  .exp-divider-title {
-    margin: 0;
-    max-width: 15em;
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-style: italic;
-    font-size: clamp(1.5rem, 3vw, 2.15rem);
-    line-height: 1.15;
-    color: var(--color-exp-glow);
-  }
-  @media (max-width: 430px) {
-    .exp-divider-band {
-      min-height: 7.8rem;
-    }
-  }
-
-  .exp-interior-body {
-    background-color: var(--color-exp-panel);
-    padding: 3rem 2rem 4.5rem;
-  }
   .exp-interior-inner {
     max-width: 660px;
     margin: 0 auto;
@@ -1687,7 +1004,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .exp-interior-inner ul {
     color: var(--color-exp-body);
   }
-  .exp-interior-inner p {
+  /* the eyebrow is a <p> and would otherwise be styled as body copy here,
+     exactly as it was under .exp-section p on the home page */
+  .exp-interior-inner p:not(.exp-eyebrow) {
     max-width: 34rem;
     margin-bottom: 1.3rem;
     font-weight: 350;
@@ -1695,7 +1014,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     line-height: 1.9;
     letter-spacing: 0.006em;
   }
-  .exp-interior-inner p:last-of-type {
+  .exp-interior-inner p:not(.exp-eyebrow):last-of-type {
     margin-bottom: 0;
   }
   .exp-interior-inner h2 {
@@ -1709,34 +1028,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
   .exp-interior-inner strong {
     color: var(--color-exp-cream);
-  }
-
-  /* the lead chapter sits directly under the hero, no divider band */
-  .exp-interior-lead .exp-interior-body {
-    padding-top: 4.2rem;
-  }
-  .exp-interior-lead .exp-eyebrow {
-    display: none;
-  }
-  .exp-lead-title {
-    margin: 0.5rem 0 1.4rem;
-    max-width: 15em;
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-style: italic;
-    font-size: clamp(1.7rem, 3.2vw, 2.5rem);
-    line-height: 1.28;
-    color: var(--color-exp-glow);
-  }
-
-  /* a thin chapter rule between the divider band and its body copy */
-  .exp-interior-chapter .exp-interior-inner::before {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 1px;
-    margin: 0 auto 3.2rem;
-    background: rgba(214, 199, 150, 0.14);
   }
 
   /* footer / CTA blocks that sit on the interior dark panel */
@@ -1764,10 +1055,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
      its copy is what produces the stagger — no absolute positioning. ---------- */
   /* padding-block matches .exp-section-inner exactly, so a chapter on an
      interior page breathes the same as a section on the home page */
+  /* Padding and max-width now live on the inner container in the JSX, matching
+     the home page's media-split section exactly. Only the full-bleed panel
+     color and its light/grain overlays are set here. */
   .exp-collage-section {
     position: relative;
     background-color: var(--color-exp-panel);
-    padding: 9rem 2rem;
   }
 
   /* Consecutive chapters otherwise share one flat panel color and run
@@ -1806,55 +1099,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
       ),
       url("/images/hero/grain.png");
   }
-  .exp-collage {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2.5rem;
-    align-items: stretch;
-    max-width: 1280px;
-    margin-inline: auto;
-  }
-  /* alternating chapters swap which column the figure sits in; the copy
-     column keeps its source order so the heading still reads first */
-  .exp-collage-section--flip .exp-collage-col--media {
-    order: 2;
-  }
-  .exp-collage-col {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    min-width: 0;
-  }
-  /* drops the copy down against the tall figure beside it, which is what
-     reads as the stagger rather than two columns starting flush */
-  .exp-collage-col--copy {
-    padding-top: 5rem;
-  }
-
-  .exp-collage-figure {
-    position: relative;
-    overflow: hidden;
-    border-radius: 14px;
-    background-color: rgba(214, 199, 150, 0.07);
-  }
-  /* the feature image spans its chapter rather than holding a fixed ratio:
-     chapter copy runs anywhere from 450px to 970px, so any single ratio leaves
-     one of them with a void beside it. Stretching keeps every chapter's two
-     columns ending flush, which is what makes the stagger read. */
-  .exp-collage-col--media .exp-collage-figure {
-    flex: 1;
-    min-height: 26rem;
-  }
-  /* accents are square and stay half-column wide even when there's only one —
-     a lone accent blown up to full column width outweighs the feature image */
-  .exp-collage-figure--small {
-    aspect-ratio: 1 / 1;
-  }
-  .exp-collage-pair {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem;
-  }
 
   /* typography comes from the shared heading/eyebrow rules — only the panel
      color is set here, so interior chapters can't drift from the home page */
@@ -1882,139 +1126,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: var(--color-exp-cream);
   }
 
-  @media (max-width: 900px) {
-    .exp-collage {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    /* stacked, the figure always leads its chapter — the flip only ever
-       meant "which side", which no longer applies in one column */
-    .exp-collage-section--flip .exp-collage-col--media {
-      order: 0;
-    }
-    .exp-collage-col--copy {
-      padding-top: 0;
-    }
-    .exp-collage-section {
-      padding: 6rem 1.4rem;
-    }
-  }
-
   /* ---------- team grid: portrait cards with name, role and socials ---------- */
   .exp-team-section {
     position: relative;
     background-color: var(--color-exp-panel);
-    padding: 9rem 2rem;
-  }
-  .exp-team-inner {
-    max-width: 1280px;
-    margin-inline: auto;
-  }
-  /* no margin of its own — the shared heading rule's 2.1rem closing gap is what
-     every other section on the site uses between a title and its content */
-  .exp-team-head {
-    margin-bottom: 0;
-  }
-  .exp-team-head .exp-eyebrow {
-    color: var(--color-exp-gold);
-  }
-
-  .exp-team-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2rem;
-  }
-  /* 4:5 matches the portrait source files, so headshots show uncropped */
-  .exp-team-photo {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 4 / 5;
-    border-radius: 14px;
-    margin-bottom: 1.1rem;
-    background-color: rgba(214, 199, 150, 0.07);
-  }
-  .exp-team-name {
-    margin: 0 0 0.25rem;
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-style: italic;
-    font-size: 1.3rem;
-    line-height: 1.25;
-    color: var(--color-exp-cream);
-  }
-  .exp-team-role {
-    margin: 0 0 0.9rem;
-    font-size: 0.92rem;
-    font-weight: 300;
-    color: var(--color-exp-muted);
-  }
-  .exp-team-socials {
-    display: flex;
-    gap: 0.9rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .exp-team-socials a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 999px;
-    border: 1px solid rgba(214, 199, 150, 0.22);
-    color: var(--color-exp-tan);
-    transition:
-      color 0.25s,
-      border-color 0.25s,
-      background-color 0.25s;
-  }
-  .exp-team-socials a:hover {
-    color: var(--color-exp-dusk);
-    background-color: var(--color-exp-glow);
-    border-color: var(--color-exp-glow);
-  }
-  .exp-team-socials a:focus-visible {
-    outline: 2px solid var(--color-exp-gold);
-    outline-offset: 3px;
-  }
-  .exp-team-social-icon {
-    width: 0.85rem;
-    height: 0.85rem;
-  }
-
-  @media (max-width: 1024px) {
-    .exp-team-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2rem 1.5rem;
-    }
-  }
-  @media (max-width: 560px) {
-    .exp-team-grid {
-      grid-template-columns: 1fr;
-    }
-    .exp-team-section {
-      padding: 6rem 1.4rem;
-    }
-  }
-
-  /* a light parchment card — same chrome the prototype used for its
-     scheduling embed, kept light against the dark page on purpose —
-     reused here to house the live contact form */
-  .exp-form-card {
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(51, 39, 17, 0.14);
-    box-shadow: 0 8px 28px rgba(28, 22, 11, 0.1);
-    background: #e9dcb8;
-    padding: clamp(1.6rem, 4vw, 2.6rem);
-  }
-  @media (max-width: 760px) {
-    .exp-interior-body {
-      padding: 2.4rem 1.4rem 3.5rem;
-    }
-    .exp-interior-lead .exp-interior-body {
-      padding-top: 3.2rem;
-    }
   }
 }

@@ -1,5 +1,5 @@
-import HomeSection from "@/components/home-section";
 import StepList from "@/components/experience/StepList";
+import HomeSection from "@/components/home-section";
 
 type HowSessionsWorkProps = {
   sectionRef: (el: HTMLElement | null) => void;
@@ -13,17 +13,19 @@ const HowSessionsWork = ({ sectionRef }: HowSessionsWorkProps) => (
     position={8}
     sectionRef={sectionRef}
   >
-    <p>Every session follows the same rhythm, even though no two sessions look the same.</p>
+    <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
+      Every session follows the same rhythm, even though no two sessions look the same.
+    </p>
 
     <StepList
       entries={[
         {
           title: "Listening First",
-          text: "We start by talking — what's been going on, what you're feeling, what you'd like out of today. Then I get a sense of how your body is actually moving, not just what it's reporting.",
+          text: "We start by talking about what's been going on, what you're feeling, what you'd like out of today. Then I get a sense of how your body is actually moving, not just what it's reporting.",
         },
         {
           title: "Personalized, Responsive Treatment",
-          text: "The work follows what your body shows me, session to session. What helped the first time may not be what's needed the fourth — so the plan changes as you do.",
+          text: "The work follows what your body shows me, session to session. What helped the first time may not be what's needed the fourth, so the plan changes as you do.",
         },
         {
           title: "Continued Progress",
@@ -32,7 +34,9 @@ const HowSessionsWork = ({ sectionRef }: HowSessionsWorkProps) => (
       ]}
     />
 
-    <p className="exp-quiet">This isn&apos;t rushed work. Sometimes gentle. Sometimes deep. Always intentional.</p>
+    <p className="exp-quiet mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
+      This isn&apos;t rushed work. Sometimes gentle. Sometimes deep. Always intentional.
+    </p>
   </HomeSection>
 );
 

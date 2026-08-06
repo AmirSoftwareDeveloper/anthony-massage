@@ -5,10 +5,9 @@ import formatPhone from "@/utils/formatPhone";
 import { INFO } from "@/constants";
 import { CONTACT_FAQS, CONTACT_SECTIONS } from "@/constants/contactContent";
 
-import PageHero from "@/components/page-hero";
-
 import ContentBlock from "@/components/content-block";
 import InteriorSection from "@/components/interior-section";
+import PageHero from "@/components/page-hero";
 
 import ContactFormSection from "./ContactFormSection";
 
@@ -46,8 +45,11 @@ const ContactUs = () => {
         title="What to expect."
       >
         {CONTACT_FAQS.map((faq) => (
-          <p key={faq.question}>
-            <strong>{faq.question}</strong> {faq.answer}
+          <p
+            key={faq.question}
+            className="mb-5 max-w-lg text-lg leading-loose font-light text-exp-body last-of-type:mb-0"
+          >
+            <strong className="text-exp-cream">{faq.question}</strong> {faq.answer}
           </p>
         ))}
       </InteriorSection>
@@ -73,7 +75,7 @@ const ContactUs = () => {
         eyebrow="Where to Find Me"
         title="Easy to arrive."
       >
-        <p>
+        <p className="mb-5 max-w-lg text-lg leading-loose font-light text-exp-body last-of-type:mb-0">
           <Link
             href={INFO.MAP_LOCATION_URL}
             target="_blank"
@@ -83,7 +85,9 @@ const ContactUs = () => {
             {INFO.PHYSICAL_ADDRESS}
           </Link>
         </p>
-        <p>{INFO.OPERATING_HOURS}</p>
+        <p className="mb-5 max-w-lg text-lg leading-loose font-light text-exp-body last-of-type:mb-0">
+          {INFO.OPERATING_HOURS}
+        </p>
       </InteriorSection>
 
       <InteriorSection
@@ -91,11 +95,11 @@ const ContactUs = () => {
         eyebrow="Still Have a Question?"
         title="Just ask."
       >
-        <p>
-          You don&rsquo;t need to know what you need before you reach out. If something here didn&rsquo;t answer
-          your question, send it along &mdash; I read every message myself.
+        <p className="mb-5 max-w-lg text-lg leading-loose font-light text-exp-body last-of-type:mb-0">
+          You don&rsquo;t need to know what you need before you reach out. If something here didn&rsquo;t answer your
+          question, send it along. I read every message myself.
         </p>
-        <p>
+        <p className="mb-5 max-w-lg text-lg leading-loose font-light text-exp-body last-of-type:mb-0">
           Email:{" "}
           <Link
             href={`mailto:${INFO.EMAIL_ADDRESS}`}
@@ -104,7 +108,7 @@ const ContactUs = () => {
             {INFO.EMAIL_ADDRESS}
           </Link>
         </p>
-        <p>
+        <p className="mb-5 max-w-lg text-lg leading-loose font-light text-exp-body last-of-type:mb-0">
           Phone:{" "}
           <Link
             href={`tel:${formatPhone(INFO.PHONE_NUMBER)}`}

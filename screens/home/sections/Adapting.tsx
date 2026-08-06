@@ -12,10 +12,17 @@ const Adapting = ({ sectionRef }: AdaptingProps) => (
     position={4}
     sectionRef={sectionRef}
   >
-    <p>The body is remarkably intelligent. When movement becomes restricted, it doesn&apos;t simply stop moving. It adapts.</p>
-    <p>Other muscles begin working harder. Posture changes. Movement patterns shift.</p>
-    <p>Over time, those compensations become so familiar they begin to feel normal.</p>
-    <p>Until they don&apos;t.</p>
+    <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
+      The body is remarkably intelligent. When movement becomes restricted, it doesn&apos;t simply stop moving. It
+      adapts.
+    </p>
+    <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
+      Other muscles begin working harder. Posture changes. Movement patterns shift.
+    </p>
+    <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
+      Over time, those compensations become so familiar they begin to feel normal.
+    </p>
+    <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">Until they don&apos;t.</p>
   </HomeSection>
 );
 

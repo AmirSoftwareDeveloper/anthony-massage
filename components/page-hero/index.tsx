@@ -2,9 +2,9 @@
 
 import { cn } from "@/utils";
 
-import { PAGE_HERO_VARIANTS, type PageHeroVariant } from "@/constants/pageHero";
-
 import { usePageHeroExperience } from "@/lib/experience/usePageHeroExperience";
+
+import { PAGE_HERO_VARIANTS, type PageHeroVariant } from "@/constants/pageHero";
 
 import Title from "@/components/title";
 
@@ -36,10 +36,10 @@ const PageHero = ({ srTitle, eyebrow, caption, variant = "arrived", className }:
         role="img"
         aria-label={caption}
       >
-        <div className="exp-layer exp-world-gray">
+        <div className="absolute inset-0 z-1 grayscale brightness-82 contrast-103">
           <img
             ref={engine.frameRef}
-            className="exp-frame exp-frame-solo"
+            className="exp-frame object-cover opacity-100"
             src={src}
             width={HERO_FRAME_WIDTH}
             height={HERO_FRAME_HEIGHT}
@@ -51,10 +51,10 @@ const PageHero = ({ srTitle, eyebrow, caption, variant = "arrived", className }:
 
         <div
           ref={engine.boardColorRef}
-          className="exp-layer exp-board-color"
+          className="exp-board-color absolute inset-0"
         >
           <img
-            className="exp-frame exp-frame-solo"
+            className="exp-frame object-cover opacity-100"
             src={iso}
             width={HERO_FRAME_WIDTH}
             height={HERO_FRAME_HEIGHT}
@@ -66,10 +66,10 @@ const PageHero = ({ srTitle, eyebrow, caption, variant = "arrived", className }:
 
         <div
           ref={engine.streetBloomRef}
-          className="exp-layer exp-street-bloom"
+          className="exp-street-bloom absolute inset-0"
         >
           <img
-            className="exp-frame exp-frame-solo"
+            className="exp-frame object-cover opacity-100"
             src={spill}
             width={HERO_FRAME_WIDTH}
             height={HERO_FRAME_HEIGHT}
@@ -84,7 +84,7 @@ const PageHero = ({ srTitle, eyebrow, caption, variant = "arrived", className }:
         />
 
         <div
-          className="exp-stage-vignette"
+          className="pointer-events-none absolute inset-0 shadow-[inset_0_0_160px_rgba(0,0,0,0.42)]"
           aria-hidden="true"
         />
       </div>

@@ -1,11 +1,10 @@
-import PageHero from "@/components/page-hero";
-
 import { ABOUT_US_SECTIONS } from "@/constants/aboutUs";
 import { TEAM_MEMBERS, TEAM_SECTION } from "@/constants/team";
 
 import ContentBlock from "@/components/content-block";
-import InteriorCollage from "@/components/interior-collage";
 import TeamGrid from "@/components/experience/TeamGrid";
+import InteriorCollage from "@/components/interior-collage";
+import PageHero from "@/components/page-hero";
 import Title from "@/components/title";
 
 const AboutUs = () => {
@@ -40,13 +39,13 @@ const AboutUs = () => {
         id="team"
         className="exp-team-section"
       >
-        <div className="exp-team-inner">
-          <div className="exp-team-head">
+        <div className="mx-auto w-full max-w-340 px-6 py-24 md:px-9 md:py-36">
+          <div className="mb-0">
             <Title
               variant="exp"
               subTitle={TEAM_SECTION.eyebrow}
               title={TEAM_SECTION.title}
-              titleClassName="exp-team-title"
+              titleClassName="mb-8 max-w-[15em] font-display text-3xl leading-tight font-normal text-exp-glow italic md:text-4xl"
             />
           </div>
 

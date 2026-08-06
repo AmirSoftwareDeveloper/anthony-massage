@@ -17,7 +17,7 @@ const Welcome = ({ sectionRef }: WelcomeProps) => (
     sectionRef={sectionRef}
     decoration={<SpillCascade />}
   >
-    <p>
+    <p className="mb-5 max-w-3xl text-base font-light leading-loose text-white/85 last:mb-0">
       Anthony Massage Works offers personalized massage therapy in Issaquah, WA, helping you relieve pain, improve
       mobility, and support lasting wellness through customized bodywork.
     </p>
