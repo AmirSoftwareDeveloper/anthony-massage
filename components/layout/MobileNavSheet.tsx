@@ -12,6 +12,7 @@ import { INFO } from "@/constants";
 import navLinks from "@/constants/navLinks";
 import { Routes } from "@/constants/routes";
 
+import Logo from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
@@ -48,9 +49,15 @@ const MobileNavSheet = ({ open, onOpenChange }: Props) => {
       >
         <SheetTitle className="sr-only">Site navigation</SheetTitle>
 
+        <div className="border-b border-white/10 px-8 pt-7 pr-12 pb-6">
+          <SheetClose asChild>
+            <Logo className="text-lg" />
+          </SheetClose>
+        </div>
+
         <nav
           aria-label="Mobile"
-          className="flex flex-col gap-1 px-8 pt-16 pb-6"
+          className="flex flex-col gap-1 px-8 pt-6 pb-6"
         >
           {navLinks.map((item) => (
             <SheetClose
@@ -87,7 +94,7 @@ const MobileNavSheet = ({ open, onOpenChange }: Props) => {
               <Button
                 variant="experience"
                 size="experience"
-                className="w-full justify-center"
+                className="w-full justify-center bg-exp-glow text-exp-dusk hover:opacity-90"
               >
                 Get In Touch
               </Button>

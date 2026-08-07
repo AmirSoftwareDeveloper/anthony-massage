@@ -20,7 +20,7 @@ type ComingSoonProps = {
   caption: string;
   variant?: PageHeroVariant;
   title: string;
-  intro: string;
+  intro?: string;
   note?: string;
 };
 

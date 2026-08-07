@@ -20,8 +20,8 @@ const Services = () => {
       caption="Where relief begins to take shape."
       variant="rising"
       title="The Full Service Menu Is on Its Way."
-      intro="Therapeutic massage, stretching and mobility work, intraoral jaw release, hot stones, and CBD-infused oil. The detailed pages for each are being finished now."
-      note="These aren't chosen from a menu in advance anyway. They're brought in when your body is asking for them."
+      // intro="Therapeutic massage, stretching and mobility work, intraoral jaw release, hot stones, and CBD-infused oil. The detailed pages for each are being finished now."
+      // note="These aren't chosen from a menu in advance anyway. They're brought in when your body is asking for them."
     />
   );
 

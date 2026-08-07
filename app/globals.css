@@ -930,7 +930,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 @layer components {
-
   .exp-light-card {
     background-color: #e9dcb8;
     color: #241c0d;
@@ -1035,5 +1034,4 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .exp-collage-copy strong {
     color: var(--color-exp-cream);
   }
-
 }

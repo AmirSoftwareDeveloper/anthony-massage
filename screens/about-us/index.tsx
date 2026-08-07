@@ -22,8 +22,6 @@ const AboutUs = () => {
       caption="The work, and the person behind it."
       variant="present"
       title="The Story Behind the Work."
-      intro="I'm putting this page together properly, with the training, the philosophy, and the people behind Anthony Massage Works. It will be here shortly."
-      note="In the meantime, the fastest way to know how I work is to come in and feel it."
     />
   );
 
