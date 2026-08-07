@@ -78,8 +78,8 @@ const HomeSection = ({
         </div>
       ) : layout === "aside-media" ? (
         <div className="container section-y exp-section-inner">
-          <div className="grid grid-cols-1 items-start gap-9 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:gap-x-14 lg:gap-y-10">
-            <div className="[&_h2]:mb-8 [&_h2]:max-w-[8em]">
+          <div className="grid grid-cols-1 items-start gap-9 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:items-stretch lg:gap-x-8 lg:gap-y-10">
+            <div className="flex flex-col lg:h-full [&_h2]:mb-8 [&_h2]:max-w-[8em]">
               {title}
               {media}
             </div>

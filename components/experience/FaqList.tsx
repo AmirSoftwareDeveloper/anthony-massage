@@ -13,10 +13,10 @@ const FaqList = ({ faqs }: { faqs: FAQEntry[] }) => (
         value={`faq-${i}`}
         className="border-(--s-rule) py-0.5 transition-colors duration-2200 ease-exp-release [.lit_&]:border-(--s-rule-lit)"
       >
-        <AccordionTrigger className="font-display text-2xl font-normal italic text-white transition-colors duration-300 hover:no-underline data-[state=open]:text-(--s-heading)">
+        <AccordionTrigger className="gap-4 font-display text-xl font-normal italic text-white transition-colors duration-300 hover:no-underline data-[state=open]:text-(--s-heading) sm:text-2xl">
           {item.question}
         </AccordionTrigger>
-        <AccordionContent className="mb-0 max-w-3xl text-xl font-light leading-relaxed text-white/85 opacity-88">
+        <AccordionContent className="mb-0 max-w-3xl text-base font-light leading-relaxed text-white/85 opacity-88 sm:text-lg md:text-xl">
           {item.answer}
         </AccordionContent>
       </AccordionItem>

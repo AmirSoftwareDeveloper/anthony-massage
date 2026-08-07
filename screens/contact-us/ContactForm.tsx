@@ -65,16 +65,17 @@ const ContactForm = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col w-full"
       >
-        <div className="grid sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <CustomFormField
             name="name"
             label="Full Name"
             required
-            className="col-span-2"
+            className="sm:col-span-2"
             labelClassName={labelClassName}
           >
             <Input
               placeholder="Full Name"
+              autoComplete="name"
               className={fieldClassName}
             />
           </CustomFormField>
@@ -87,6 +88,9 @@ const ContactForm = () => {
           >
             <Input
               placeholder="Phone Number"
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel"
               onChange={handlePhoneChange}
               className={fieldClassName}
             />
@@ -100,6 +104,10 @@ const ContactForm = () => {
           >
             <Input
               placeholder="Email Address"
+              type="email"
+              inputMode="email"
+              autoComplete="email"
+              autoCapitalize="none"
               className={fieldClassName}
             />
           </CustomFormField>
@@ -108,7 +116,7 @@ const ContactForm = () => {
             name="subject"
             label="Subject"
             required
-            className="col-span-2"
+            className="sm:col-span-2"
             labelClassName={labelClassName}
           >
             <Input
@@ -120,12 +128,12 @@ const ContactForm = () => {
           <CustomFormField
             name="message"
             label="Message"
-            className="col-span-2"
+            className="sm:col-span-2"
             labelClassName={labelClassName}
           >
             <Textarea
               placeholder="Describe your inquiry"
-              className={`${fieldClassName} min-h-32 h-auto py-3`}
+              className={`${fieldClassName} h-auto min-h-32 py-3`}
             />
           </CustomFormField>
 
@@ -134,7 +142,7 @@ const ContactForm = () => {
             disabled={isLoading}
             variant="experience"
             size="experience"
-            className="col-span-2 mt-2 justify-self-start"
+            className="mt-2 w-full justify-center sm:col-span-2 sm:w-auto sm:justify-self-start"
           >
             {isLoading ? "Sending..." : "Send Message"}
           </Button>

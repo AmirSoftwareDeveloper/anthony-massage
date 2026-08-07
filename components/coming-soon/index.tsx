@@ -1,44 +1,97 @@
+"use client";
+
 import Link from "next/link";
 
+import formatPhone from "@/utils/formatPhone";
+
+import { useReveal } from "@/lib/experience/useReveal";
+
 import { INFO } from "@/constants";
+import type { PageHeroVariant } from "@/constants/pageHero";
 import { Routes } from "@/constants/routes";
 
-import { Button } from "../ui/button";
+import PageHero from "@/components/page-hero";
+import Title from "@/components/title";
+import { Button } from "@/components/ui/button";
 
-const ComingSoon = () => {
+type ComingSoonProps = {
+  srTitle: string;
+  eyebrow: string;
+  caption: string;
+  variant?: PageHeroVariant;
+  title: string;
+  intro: string;
+  note?: string;
+};
+
+const ComingSoon = ({ srTitle, eyebrow, caption, variant = "rising", title, intro, note }: ComingSoonProps) => {
+  const reveal = useReveal<HTMLElement>();
+
   return (
-    <section className="exp-section exp-pos-9 flex flex-col items-center px-[2.2rem] py-20 text-center sm:py-24">
-      <span className="text-2xs mb-3 block font-medium tracking-[0.32em] text-(--s-eyebrow,var(--color-exp-gold)) uppercase">
-        Coming Soon
-      </span>
+    <>
+      <PageHero
+        srTitle={srTitle}
+        eyebrow={eyebrow}
+        caption={caption}
+        variant={variant}
+      />
 
-      <h1 className="mb-[0.7rem] font-display text-[clamp(2rem,5vw,3.2rem)] leading-[1.15] font-normal text-(--s-heading,var(--color-exp-olive-deep)) italic">
-        Coming Soon
-      </h1>
+      <section
+        id="coming-soon"
+        ref={reveal}
+        className="exp-reveal exp-collage-section"
+      >
+        <div className="container section-y flex max-w-3xl flex-col items-center text-center">
+          <Title
+            variant="exp"
+            subTitle="Coming Soon"
+            title={title}
+            className="[&_p]:mx-auto"
+            titleClassName="mb-6 font-display text-3xl leading-tight font-normal text-exp-glow italic md:text-4xl"
+          />
 
-      <p className="text-base+ mb-[1.9rem] block max-w-md font-light">We are working on something great. Stay tuned!</p>
+          <div className="exp-collage-copy [&_p]:mx-auto">
+            <p>{intro}</p>
+            {note ? <p className="exp-quiet">{note}</p> : null}
+          </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-4">
-        <Link href={Routes.HOME}>
-          <Button
-            variant="experience"
-            size="experience"
+          <div className="mt-10 flex w-full flex-col items-stretch gap-3.5 sm:w-auto sm:flex-row sm:items-center sm:justify-center sm:gap-4">
+            <Link
+              href={Routes.CONTACT}
+              className="w-full sm:w-auto"
+            >
+              <Button
+                variant="experience"
+                size="experience"
+                className="w-full justify-center bg-exp-glow text-exp-dusk hover:opacity-90 sm:w-auto"
+              >
+                Book a Session
+              </Button>
+            </Link>
+
+            <Link
+              href={`tel:${formatPhone(INFO.PHONE_NUMBER)}`}
+              className="w-full sm:w-auto"
+            >
+              <Button
+                variant="experience-outline"
+                size="experience"
+                className="w-full justify-center sm:w-auto"
+              >
+                Call {INFO.PHONE_NUMBER}
+              </Button>
+            </Link>
+          </div>
+
+          <Link
+            href={Routes.HOME}
+            className="mt-9 text-2xs tracking-[0.18em] text-exp-tan uppercase underline decoration-exp-tan/40 underline-offset-6 transition-colors hover:text-exp-glow hover:decoration-exp-glow"
           >
-            Back To Home
-          </Button>
-        </Link>
-
-        <Link href={`mailto:${INFO.EMAIL_ADDRESS}`}>
-          <Button
-            variant="outline"
-            size="experience"
-            className="rounded-full border-(--s-heading,var(--color-exp-olive-deep)) font-medium text-(--s-heading,var(--color-exp-olive-deep)) hover:bg-(--s-heading,var(--color-exp-olive-deep)) hover:text-(--s-pre,var(--color-exp-paper))"
-          >
-            Contact Us
-          </Button>
-        </Link>
-      </div>
-    </section>
+            Back to Home
+          </Link>
+        </div>
+      </section>
+    </>
   );
 };
 

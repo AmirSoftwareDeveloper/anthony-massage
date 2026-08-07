@@ -8,6 +8,7 @@ import Philosophy from "./sections/Philosophy";
 import Services from "./sections/Services";
 import Testimonials from "./sections/Testimonials";
 import Welcome from "./sections/Welcome";
+import WhyChooseUs from "./sections/WhyChooseUs";
 
 const Sections = ({ engine }: { engine: HeroExperienceEngine }) => {
   const reveal = useReveal<HTMLElement>();
@@ -23,6 +24,7 @@ const Sections = ({ engine }: { engine: HeroExperienceEngine }) => {
       <Philosophy sectionRef={sectionRef(1)} />
       <OurApproach sectionRef={sectionRef(2)} />
       <Services sectionRef={sectionRef(5)} />
+      <WhyChooseUs sectionRef={sectionRef(7)} />
       <Testimonials sectionRef={sectionRef(11)} />
       <Faq sectionRef={sectionRef(12)} />
     </>

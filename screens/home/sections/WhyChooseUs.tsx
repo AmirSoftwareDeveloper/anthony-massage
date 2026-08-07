@@ -10,15 +10,14 @@ type WhyChooseUsProps = {
 const WhyChooseUs = ({ sectionRef }: WhyChooseUsProps) => (
   <HomeSection
     id="why-choose-us"
-    eyebrow="Why Choose Us"
-    heading="Every session here includes:"
+    heading="Why Choose Anthony Massage Works."
     layout="aside-media"
-    position={7}
+    position={1}
     sectionRef={sectionRef}
     media={
-      <div className="relative aspect-4/5 overflow-hidden rounded-3xl shadow-xl">
+      <div className="relative aspect-4/5 min-h-0 flex-1 overflow-hidden rounded-3xl shadow-xl lg:aspect-auto">
         <NextImage
-          src="/images/about/technique.jpeg"
+          src="/images/about/room-towels.jpeg"
           alt="[Alt text]"
           fill
           sizes="(min-width: 1024px) 420px, 100vw"
@@ -30,34 +29,34 @@ const WhyChooseUs = ({ sectionRef }: WhyChooseUsProps) => (
     <ReasonGrid
       reasons={[
         {
-          icon: "hand",
-          title: "Tailored Sessions",
-          text: "Built Around Your Body, Not a Routine",
+          icon: "lotus",
+          title: "A Conversation First",
+          text: "We start by talking through what hurts, what changed, and what you want out of today.",
         },
         {
-          icon: "target",
-          title: "Root-Cause Work",
-          text: "Relief That Holds Beyond the Table",
+          icon: "vesica",
+          title: "Assessment Before Pressure",
+          text: "I look at how your body is actually moving before any deep work begins.",
         },
         {
-          icon: "award",
-          title: "Advanced Training",
-          text: "Trained in Fascia-Focused Bodywork",
+          icon: "petal",
+          title: "Therapeutic & Fascia Work",
+          text: "Slow, specific contact held long enough for tissue to soften, at a depth you can receive.",
         },
         {
-          icon: "moon",
-          title: "A Quiet Studio",
-          text: "Calm, Private Space to Fully Settle",
+          icon: "drop",
+          title: "Techniques Matched to You",
+          text: "Hot stones, stretching, intraoral jaw release, or CBD oil, only when your body asks.",
         },
         {
-          icon: "message",
-          title: "Clear Guidance",
-          text: "You'll Understand What We're Doing",
+          icon: "foliage",
+          title: "Unhurried Time, Quiet Studio",
+          text: "60 or 90 focused minutes in a private Issaquah room, with parking at the door.",
         },
         {
-          icon: "leaf",
-          title: "Ongoing Support",
-          text: "Simple Practices for the Days After",
+          icon: "uplift",
+          title: "Aftercare You Can Use",
+          text: "Simple stretches and self-care to help the work hold between sessions.",
         },
       ]}
     />

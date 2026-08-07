@@ -1,26 +1,25 @@
 import type { FeatureEntry } from "@/types";
 
-import { getExperienceIcon } from "./icons";
+import { getReasonIcon } from "./reason-icons";
 
 const ReasonGrid = ({ reasons }: { reasons: FeatureEntry[] }) => (
-  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+  <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
     {reasons.map((reason) => {
-      const Icon = getExperienceIcon(reason.icon);
+      const Icon = getReasonIcon(reason.icon);
       return (
         <div
           key={reason.title}
-          className="flex flex-col rounded-2xl border border-(--s-rule) bg-white/4 px-7 py-8 transition-colors duration-2200 ease-exp-release [.lit_&]:border-(--s-rule-lit)"
+          className="flex min-h-54 flex-col justify-between rounded-3xl border border-(--s-rule) bg-white/4 p-7 transition-colors duration-2200 ease-exp-release [.lit_&]:border-(--s-rule-lit)"
         >
-          <Icon
-            className="size-9 stroke-[1.15] text-(--s-heading) transition-colors duration-2200 ease-exp-release [.lit_&]:text-(--s-heading-lit)"
-            aria-hidden="true"
-          />
+          <Icon className="size-12 text-(--s-heading) transition-colors duration-2200 ease-exp-release [.lit_&]:text-(--s-heading-lit)" />
 
-          <h3 className="mt-9 mb-2 font-display text-xl font-normal italic text-(--s-heading) transition-colors duration-2200 ease-exp-release [.lit_&]:text-(--s-heading-lit)">
-            {reason.title}
-          </h3>
+          <div>
+            <h3 className="mb-1.5 font-display text-2xl leading-[1.35] font-normal tracking-[-0.01em] text-(--s-heading) italic transition-colors duration-2200 ease-exp-release [.lit_&]:text-(--s-heading-lit)">
+              {reason.title}
+            </h3>
 
-          <p className="mb-0 text-sm+ font-light leading-relaxed text-white/85 opacity-88">{reason.text}</p>
+            <p className="mb-0 text-sm+ leading-[1.65] font-light text-white/85">{reason.text}</p>
+          </div>
         </div>
       );
     })}
